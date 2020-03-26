@@ -17,6 +17,8 @@
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "babel-loader": "^8.1.0"
+    "babel-loader": "^8.1.0",
+    "file-system": "^2.2.2",
+    "google-trends-api": "^4.9.0"
   }
 }

@@ -90,10 +90,22 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _trends_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./trends.js */ \"./src/trends.js\");\n/* harmony import */ var _trends_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_trends_js__WEBPACK_IMPORTED_MODULE_0__);\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  console.log(\"hello\");\n  \n  // getting test data from gist\n  const testData = () => {d3.csv(\"https://gist.githubusercontent.com/herreon/e269f2355aefc4abbbaff6528664b997/raw/7a50cc28506d418128d9b228a19dc329a2d5159c/test.csv\")\n    .then(data => {\n        console.log(data);\n    })};\n\n  \n//   document.getElementsByClassName(\"test\")[0].innerHTML = testData();\nconst data = Object(_trends_js__WEBPACK_IMPORTED_MODULE_0__[\"getVscoData\"])();\n  document.getElementsByClassName(\"test\")[0].innerHTML = data;\n  \n\n  \n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/trends.js":
+/*!***********************!*\
+  !*** ./src/trends.js ***!
+  \***********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("document.addEventListener(\"DOMContentLoaded\", function () {\n    console.log('hello')\n    // const dataset = d3.csv(\"./data.csv\");\n})\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("throw new Error(\"Module parse failed: Invalid number (9:34)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|   {\\n|     keyword: \\\"vsco girl\\\",\\n>     startTime: new Date(2017, 12, 01),\\n|     geo: \\\"US\\\"\\n|   })\");\n\n//# sourceURL=webpack:///./src/trends.js?");
 
 /***/ })
 
