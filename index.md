@@ -13,6 +13,7 @@
 
 <body>
     <h1>Words on the Rise</h1>
+    <h2> coming soon </h2>
     <div id="container" class="svg-container"></div>
     <script class="test"></script>
     <div class="test"></div>
