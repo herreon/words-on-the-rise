@@ -1,7 +1,6 @@
 const fs = require("fs");
 const googleTrends = require("google-trends-api");
 
-
 let searchPoints = {};
 
 function vscoGirl () {googleTrends.interestOverTime(
@@ -10,10 +9,13 @@ function vscoGirl () {googleTrends.interestOverTime(
     startTime: new Date(2017, 12, 01),
     geo: "US"
   })
+
   .then(results => {
     
     let resultsArray = JSON.parse(results).default.timelineData;
 
+    console.log(resultsArray[0]);
+    
     resultsArray.forEach(res => {
       searchPoints[res.formattedAxisTime] = res.value[0];  
     });

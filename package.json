@@ -4,15 +4,16 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "webpack --watch --mode=development",
-    "test": "ws --spa dist/index.html"
+    "start": "webpack-dev-server --open & webpack --watch",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "@babel/core": "^7.9.0",
