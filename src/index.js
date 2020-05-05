@@ -1,7 +1,10 @@
-// const test = require('./assets/test.csv')
+// import * as generator from "./generator.js";
 
 document.addEventListener("DOMContentLoaded", function() {
+
   console.log("index.js dom content has loaded");
+
+  // generator.dataGenerator();
 
   const width = 960;
   const height = 500;
