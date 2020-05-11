@@ -45,13 +45,4 @@ function dataGenerator () {
 
 }
 
-// .then(res => console.log(res))
-
-
-
-// let termOutput = JSON.stringify(termArray, null, '\t')
-
 dataGenerator();
-
-
-const test = {"hell": [1, 2, 3], "here": [4, 5, 6]}
