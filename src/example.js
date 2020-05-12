@@ -71,40 +71,30 @@ export default function test_function () {
                 })
             ]);
 
-            // const testx = d3.extent(data, function (d) {
-            //   return timeConv(d.date);
-            // });
-
-            // const testy = d3.max(slices, function (c) {
-            //   return d3.max(c.values, function (d) {
-            //     return d.measurement + 4;
-            //   });
-            // });
-
-            // console.log(testx, testy);
-            console.log("xScale", xScale());
+            // returns undefined:
+            // console.log("example_xScale", xScale());
 
 
             //-----------------------------AXES------------------------------//
 
             const yaxis = d3.axisLeft().ticks(slices[0].values.length).scale(yScale);
 
-            const xaxis = d3
-                .axisBottom()
-                .ticks(d3.timeDay.every(1))
-                .tickFormat(d3.timeFormat("%b %d"))
-                .scale(xScale);
+            // const xaxis = d3
+            //     .axisBottom()
+            //     .ticks(d3.timeDay.every(1))
+            //     .tickFormat(d3.timeFormat("%b %d"))
+            //     .scale(xScale);
 
             //----------------------------LINES------------------------------//
 
-            const line = d3.line()
-                .x(function (d) { return xScale(d.date); })
-                .y(function (d) { return yScale(d.measurement); });
+            // const line = d3.line()
+            //     .x(function (d) { return xScale(d.date); })
+            //     .y(function (d) { return yScale(d.measurement); });
 
-            let id = 0;
-            const ids = function () {
-                return "line-" + id++;
-            }
+            // let id = 0;
+            // const ids = function () {
+            //     return "line-" + id++;
+            // }
 
 
             //-------------------------2. DRAWING----------------------------//
@@ -112,11 +102,11 @@ export default function test_function () {
             //-----------------------------AXES------------------------------//
 
 
-            svg
-                .append("g")
-                .attr("class", "axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xaxis);
+            // svg
+            //     .append("g")
+            //     .attr("class", "axis")
+            //     .attr("transform", "translate(0," + height + ")")
+            //     .call(xaxis);
 
             svg
                 .append("g")
@@ -131,13 +121,13 @@ export default function test_function () {
 
             //----------------------------LINES------------------------------//
 
-            const lines = svg.selectAll("lines")
-                .data(slices)
-                .enter()
-                .append("g");
+            // const lines = svg.selectAll("lines")
+            //     .data(slices)
+            //     .enter()
+            //     .append("g");
 
-            lines.append("path")
-                .attr("d", function (d) { return line(d.values); });
+            // lines.append("path")
+            //     .attr("d", function (d) { return line(d.values); });
 
 
         });

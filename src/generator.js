@@ -10,11 +10,11 @@ function dataGenerator () {
 
   searchTerms.forEach(term => {
 
-    // console.log("term", term)
+    console.log("term", term)
 
     googleTrends.interestOverTime({
       keyword: term,
-      startTime: new Date(2017, 12, 1),
+      startTime: new Date(2017, 11, 1),
       geo: "US"
     })
 

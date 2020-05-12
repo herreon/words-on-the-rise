@@ -1,5 +1,5 @@
 h1 {
-    color: pink;
+    color: darkblue;
 }
 
 /* .svg-container {
@@ -8,27 +8,24 @@ h1 {
 
 /* AXES */
 /* ticks */
-.axis {
-stroke: #706f6f;
+.axis line {
+/* stroke: #706f6f; */
+stroke: red;
 stroke-width: 0.5;
 shape-rendering: crispEdges;
 }
-/* .axis line {
-stroke: #706f6f;
-stroke-width: 0.5;
-shape-rendering: crispEdges;
-} */
 
 /* axis contour */
 .axis path {
-stroke: #706f6f;
+/* stroke: #706f6f; */
+stroke: red;
 stroke-width: 0.7;
 shape-rendering: crispEdges;
 }
 
 /* axis text */
 .axis text {
-fill: #2b2929;
+fill: red;
 font-family: Georgia;
 font-size: 120%;
 }
