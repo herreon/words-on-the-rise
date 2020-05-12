@@ -1,14 +1,16 @@
+// import { searchTerms } from "./searchTerms.js";
 const fs = require("fs");
 const googleTrends = require("google-trends-api");
 
-let searchTerms = ["vsco girl", "boomer"];
+const searchTerms = require("./searchTerms.js");
+
 let allTerms = {};
 
 function dataGenerator () {
 
   searchTerms.forEach(term => {
 
-    console.log(term)
+    // console.log("term", term)
 
     googleTrends.interestOverTime({
       keyword: term,
@@ -17,6 +19,8 @@ function dataGenerator () {
     })
 
     .then(termResult => {
+
+      // console.log("termResult", termResult)
       
       let termArray = JSON.parse(termResult).default.timelineData;
 

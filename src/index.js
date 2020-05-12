@@ -1,4 +1,5 @@
 import test_function from "./example.js";
+const searchTerms = require("./searchTerms.js");
 
 //------------------------1. PREPARATION------------------------//
 //-----------------------------SVG------------------------------// 
@@ -26,7 +27,9 @@ const svg = d3
 
 //-----------------------------DATA------------------------------//
 // parse the date and time
-const timeConv = d3.timeParse("%B %-d, %Y");
+const timeConv = d3.timeParse("%b %d, %Y");
+const dataset = d3.json("./dist/assets/data.json");
+
 
 //----------------------------SCALES-----------------------------//
 // stretch data values from 0 to the svg's width
@@ -67,6 +70,28 @@ function draw(data, searchTerm) {
 document.addEventListener("DOMContentLoaded", function () {
 
   console.log("index.js content has loaded");
+  console.log("search terms", searchTerms)
+
+  dataset.then(function (data) {
+    let slices = [];
+
+    searchTerms.forEach(term => {
+      
+      const slice = {
+        term: term,
+        values: data[term].map(function (d) {
+          return {
+            date: timeConv(d.formattedAxisTime),
+            point: +d.value[0]
+          }
+        })
+      }
+      
+      slices.push(slice);
+    })
+
+    console.log("slices", slices);
+  });
 
   // d3.json("./dist/assets/data.json").then(function(inputData) {
 
@@ -75,10 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //   // draw(inputData, "boomer");
   // });
 
-  d3.json("./dist/assets/data.json").then(function(data) {
-    draw(data, "boomer");
-  });
+  // d3.json(dataset).then(function(data) {
+  //   draw(data, "boomer");
+  // });
   
-  test_function();
+  // test_function();
 
 });

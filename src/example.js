@@ -23,7 +23,7 @@ export default function test_function () {
         const dataset = d3.csv("./dist/assets/test.csv");
 
         dataset.then(function (data) {
-            console.log("data", data)
+            console.log("example_data", data)
             const slices = data.columns.slice(1).map(function (id) {
                 return {
                     id: id,
@@ -40,7 +40,7 @@ export default function test_function () {
             //    console.log("Column headers", data.columns);
             //  console.log("Column headers without date", data.columns.slice(1));
             //    // returns the sliced dataset
-            console.log("Slices", slices);
+            console.log("example_slices", slices);
             //    // returns the first slice
             //    console.log("First slice",slices[0]);
             //    // returns the array in the first slice
