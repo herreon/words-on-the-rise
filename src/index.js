@@ -99,14 +99,28 @@ document.addEventListener("DOMContentLoaded", function () {
   
   const xAxis = d3
     .axisBottom()
-    .ticks(d3.timeMonth.every(6))
+    .ticks(d3.timeMonth.every(12))
     .tickFormat(d3.timeFormat("%b %Y"))
+    // .ticks(d3.timeYear.every(1))
+    // .tickFormat(d3.timeFormat("%Y"))
     .scale(xScale);
 
   const yAxis = d3
     .axisLeft()
     .ticks(slices[0].values.length / 10)
     .scale(yScale);
+
+  //----------------------------[prep]LINES------------------------------//
+
+  const line = d3
+    .line()
+    .x(function (d) { return xScale(d.date); })
+    .y(function (d) { return yScale(d.point); });
+
+  // let id = 0;
+  // const ids = function () {
+  //     return "line-" + id++;
+  // }
   
   //-----------------------------[drawing]AXES------------------------------//
 
@@ -114,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
+    .call(xAxis)
 
   svg
     .append("g")
@@ -122,10 +136,22 @@ document.addEventListener("DOMContentLoaded", function () {
     .call(yAxis)
     .append("text")
     .text("Frequency")
-    // .attr("transform", "rotate(-90)")
     .attr("dy", "0.75em")
     .attr("y", -40)
     .style("text-anchor", "end");
+
+  //----------------------------[drawing]LINES------------------------------//
+
+  const lines = svg
+    .selectAll("lines")
+    .data(slices)
+    .enter()
+    .append("g");
+
+  lines
+    .append("path")
+    .attr("d", function (d) { return line(d.values); });
+
 
   // test_function();
   
