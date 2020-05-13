@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const adj = 80;
 
   // append SVG
-  const svg = d3
-    .select("#container")
-    .append("svg")
+  const svg = d3.select("#container").append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
     // .attr("width", width)
     // .attr("height", height*2)
@@ -111,16 +109,24 @@ document.addEventListener("DOMContentLoaded", function () {
     .scale(yScale);
 
   //----------------------------[prep]LINES------------------------------//
-
+  
+  // accessor function. Takes in the data array and extracts the x,y coordinates
   const line = d3
     .line()
     .x(function (d) { return xScale(d.date); })
     .y(function (d) { return yScale(d.point); });
-
-  // let id = 0;
-  // const ids = function () {
-  //     return "line-" + id++;
-  // }
+  
+  // to illustrate line.y()
+  // const line = d3
+  //   .line()
+  //   .x(function (d) { return xScale(d.date); })
+  //   .y(function (d) { return d.point; });
+  
+  // to differentiate lines
+  let lineId = 0;
+  const lineIds = function () {
+      return "line-" + lineId++;
+  }
   
   //-----------------------------[drawing]AXES------------------------------//
 
@@ -128,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(xAxis)
+    .call(xAxis) // .call calls the function xAxis on the elements of the selection g
 
   svg
     .append("g")
@@ -142,16 +148,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //----------------------------[drawing]LINES------------------------------//
 
-  const lines = svg
-    .selectAll("lines")
+  const lines = svg.selectAll("lines")
     .data(slices)
     .enter()
-    .append("g");
+    .append("g")
 
-  lines
-    .append("path")
-    .attr("d", function (d) { return line(d.values); });
+  lines.append("path")
+    .attr("class", lineIds) // differentiate lines
+    .attr("d", function (d) { return line(d.values); })
+  
 
+  // add labels to each line
+  lines.append("text")
+    .attr("class", "term_label" + " a")
+    .text(function (d) { return d.term })
+    .attr("x", 5)
+    .attr("transform", function (d) {
+      const numPoints = d.values.length - 1; // the index of the last data point
+      return "translate(" + (xScale(d.values[numPoints].date) + 10)
+        + "," + (yScale(d.values[numPoints].point) + 5) + ")";
+    })
+    
+
+  // to illustrate svg path mini-language
+    // svg.append("path")
+    // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
 
   // test_function();
   

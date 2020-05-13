@@ -79,22 +79,22 @@ export default function test_function () {
 
             const yaxis = d3.axisLeft().ticks(slices[0].values.length).scale(yScale);
 
-            // const xaxis = d3
-            //     .axisBottom()
-            //     .ticks(d3.timeDay.every(1))
-            //     .tickFormat(d3.timeFormat("%b %d"))
-            //     .scale(xScale);
+            const xaxis = d3
+                .axisBottom()
+                .ticks(d3.timeDay.every(1))
+                .tickFormat(d3.timeFormat("%b %d"))
+                .scale(xScale);
 
             //----------------------------LINES------------------------------//
 
-            // const line = d3.line()
-            //     .x(function (d) { return xScale(d.date); })
-            //     .y(function (d) { return yScale(d.measurement); });
+            const line = d3.line()
+                .x(function (d) { return xScale(d.date); })
+                .y(function (d) { return yScale(d.measurement); });
 
-            // let id = 0;
-            // const ids = function () {
-            //     return "line-" + id++;
-            // }
+            let id = 0;
+            const ids = function () {
+                return "line-" + id++;
+            }
 
 
             //-------------------------2. DRAWING----------------------------//
@@ -102,11 +102,11 @@ export default function test_function () {
             //-----------------------------AXES------------------------------//
 
 
-            // svg
-            //     .append("g")
-            //     .attr("class", "axis")
-            //     .attr("transform", "translate(0," + height + ")")
-            //     .call(xaxis);
+            svg
+                .append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xaxis);
 
             svg
                 .append("g")
@@ -121,15 +121,30 @@ export default function test_function () {
 
             //----------------------------LINES------------------------------//
 
-            // const lines = svg.selectAll("lines")
-            //     .data(slices)
-            //     .enter()
-            //     .append("g");
+            const lines = svg.selectAll("lines")
+                .data(slices)
+                .enter()
+                .append("g");
 
-            // lines.append("path")
-            //     .attr("d", function (d) { return line(d.values); });
+            lines.append("path")
+                .attr("class", ids)
+                .attr("d", function (d) { return line(d.values); });
 
-
+            lines.append("text")
+                .attr("class", "serie_label")
+                // .datum(function (d) {
+                //     return {
+                //         ide: d.id,
+                //         valuee: d.values[d.values.length - 1]
+                //     };
+                // })
+                .attr("transform", function (d) {
+                    return "translate(" + (xScale(d.values[d.values.length - 1].date) + 10)
+                        + "," + (yScale(d.values[d.values.length - 1].measurement) + 5) + ")";
+                })
+                .attr("x", 5)
+                .text(function (d) { return ("Serie ") + d.id })
+                // .attr("class", function(d) { return d.value } )
         });
 
     // })
