@@ -127,7 +127,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const lineIds = function () {
       return "line-" + lineId++;
   }
+
+  //----------------------------[prep]TOOLTIP------------------------------//
   
+  const tooltip = d3.select("body").append("div") // currently experimenting with select
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute");
+  
+  // experimenting with selectors
+  // console.log("g", d3.select("g")); // selecting g returns an empty array
+  // console.log("g2", d3.selectAll("g")); // similar to above; no elements returned
+  // console.log("g3", d3.select("body"));
+  // console.log("svg", d3.select("svg")); 
+
   //-----------------------------[drawing]AXES------------------------------//
 
   svg
@@ -165,15 +178,101 @@ document.addEventListener("DOMContentLoaded", function () {
     .attr("x", 5)
     .attr("transform", function (d) {
       const numPoints = d.values.length - 1; // the index of the last data point
-      return "translate(" + (xScale(d.values[numPoints].date) + 10)
-        + "," + (yScale(d.values[numPoints].point) + 5) + ")";
+      const labelX = xScale(d.values[numPoints].date) + 10;
+      const labelY = yScale(d.values[numPoints].point) + 5;
+      return "translate(" + labelX + "," + labelY + ")";
     })
     
 
   // to illustrate svg path mini-language
     // svg.append("path")
     // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
+  
+  
+  //----------------------------[interactive]POINTS------------------------------//
 
+  lines.selectAll("points")
+    .data(function (d) { return d.values })
+    .enter()
+    .append("circle")
+    .attr("cx", function (d) { return xScale(d.date); })
+    .attr("cy", function (d) { return yScale(d.point); })
+    .attr("r", 1)
+    .attr("class", "point")
+    .style("opacity", 1);
+
+  //----------------------------[interactive]EVENTS------------------------------//
+
+  // add invisible circles to increase responsive area
+  lines.selectAll("points")
+    .data(function (d) { return (d.values); })
+    .enter()
+    .append("circle")
+    .attr("cx", function (d) { return xScale(d.date); })
+    .attr("cy", function (d) { return yScale(d.point); })
+    .attr('r', 10)
+    .style("opacity", 0)
+
+    // configure events
+    .on('mouseover', function (d) {
+      
+      tooltip.transition()
+        .duration(200)
+        .delay(30)
+        .style("opacity", 1);
+        // .style("fill", "red") // removed because unnecessary
+      
+      tooltip.html(d.point)
+      .attr("cx", ( xScale(d.date) ))
+      .attr("cy", ( yScale(d.point) ));
+      // .style("left", (d3.event.pageX + 25) + "px")
+      // .style("top", (d3.event.pageY) + "px");
+
+      const selection = d3.select(this) // [this] is the invisible circle
+        .raise(); // .raise() re-inserts each selected element, in order, as the last child of its parent
+      
+      // console.log(this);
+      // console.log(d);
+      
+      selection
+        .transition()
+        .delay("20")
+        .duration("200")
+        .attr("r", 6)
+        .style("opacity", 1)
+        .style("fill", "#ed3700");
+      })
+      
+
+  .on("mouseout", function (d) {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", 0);
+      
+    const selection = d3.select(this);
+
+    selection
+      .transition()
+      .delay("20")
+      .duration("200")
+      .attr("r", 10)
+      .style("opacity", 0);
+    });
+  
+  // test transitions 1
+  // d3.select("body")
+  // .transition()
+  // .delay(2000)
+  // .on("start", function() {d3.select(this).style("background-color", "green")}) // works the same if you replace [this] with ["body"]
+  // .style("background-color", "red")
+  
+  // test transitions 2
+  // d3.select("body")
+  // .transition().delay(1000).duration(2000)
+  // .styleTween("background-color", function() { return d3.interpolate("green", "red")})
+  
+
+  // run data visualization from example.js
   // test_function();
   
   });

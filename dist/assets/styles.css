@@ -2,9 +2,15 @@ h1 {
     color: pink;
 }
 
-/* .svg-container {
-    color: black;
-} */
+.svg-container {
+    /* position: relative; */
+    /* background-color: yellow; */
+}
+
+.svg-content {
+    /* position: relative; */
+    /* background-color: purple; */
+}
 
 /* AXES */
 /* ticks */
@@ -62,3 +68,22 @@ font-size: 80%;
 .a {
 fill: blue
 }
+
+/* interactive elements */
+/* TOOLTIP */
+.tooltip {
+    fill: #2b2929;
+    font-family: arial;
+    font-size: 20px;
+}
+
+/* POINTS */
+.point {
+    stroke: none;
+    fill: #9c9c9c;
+}
+
+/* for experimenting - coloring elements */
+/* svg {
+    background-color: orange;
+} */
