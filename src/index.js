@@ -1,4 +1,6 @@
 import test_function from "./example.js";
+import '../dist/assets/styles.scss';
+
 const searchTerms = require("./searchTerms.js");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -36,21 +38,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
   dataset.then(function (data) {
     let slices = [];
+    let i;
 
-    searchTerms.forEach(term => {
-
+    for (i = 0; i < searchTerms.length; i++){
       const slice = {
-        term: term,
-        values: data[term].map(function (d) {
+        term: searchTerms[i],
+        values: data.map(function (d) {
           return {
             date: timeConv(d.formattedAxisTime),
-            point: +d.value[0]
+            point: +d.value[i]
           }
         })
       }
+      slices.push(slice)
+    }
+    
+    // for reference: previous way of creating slices
+    // searchTerms.forEach(term => {
 
-      slices.push(slice);
-    })
+    //   const slice = {
+    //     term: term,
+    //     values: data[term].map(function (d) {
+    //       return {
+    //         date: timeConv(d.formattedAxisTime),
+    //         point: +d.value[0]
+    //       }
+    //     })
+    //   }
+
+    //   slices.push(slice);
+    // })
 
     console.log("slices", slices);
 
@@ -217,8 +234,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .on('mouseover', function (d) {
       
       tooltip.transition()
-        .duration(200)
         .delay(30)
+        .duration(200)
         .style("opacity", 1);
         // .style("fill", "red") // removed because unnecessary
       
