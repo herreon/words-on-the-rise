@@ -1,5 +1,5 @@
 import test_function from "./example.js";
-import '../dist/assets/styles.scss';
+import '../dist/assets/styles/styles.scss';
 
 const searchTerms = require("./searchTerms.js");
 
