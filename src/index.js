@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // set the dimensions and margins of the graph
   const width = 800;
   const height = 400;
-  const margin = 5;
-  const padding = 5;
   const adj = 80;
 
   // append SVG
@@ -27,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
       (width + adj * 3) + " " +
       (height + adj * 3)
     )
-    .style("padding", padding)
-    .style("margin", margin)
     .classed("svg-content", true);
 
   //-----------------------------[prep]DATA------------------------------//

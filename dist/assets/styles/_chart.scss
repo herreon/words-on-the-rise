@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@100;300;400&family=Titillium+Web:wght@300&display=swap');
+
+/* variables */
+$padding: 60px;
+$margin: 5;
+$chart-label: 'Roboto', sans-serif;
+
 .svg-container {
-    /* position: relative; */
-    /* background-color: yellow; */
+    height: 100vh;
 }
 
 .svg-content {
-    /* position: relative; */
-    /* background-color: purple; */
+    width: 50%;
+    padding: $padding;
+    margin: $margin;
+    box-sizing: border-box;
 }
 
 /* AXES */
@@ -31,7 +39,7 @@ shape-rendering: crispEdges;
 /* axis text */
 .axis text {
 fill: #2b2929;
-font-family: Georgia;
+font-family: $chart-label;
 font-size: 120%;
 }
 
@@ -97,7 +105,7 @@ stroke: red;
 .term_label {
 /* fill: #2b2929; */
 fill: red;
-font-family: Georgia;
+font-family: $chart-label;
 font-size: 80%;
 }
 

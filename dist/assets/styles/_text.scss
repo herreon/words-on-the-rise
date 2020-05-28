@@ -1,3 +1,54 @@
-h1 {
-    color: green;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@100;300;400&family=Titillium+Web:wght@300&display=swap');
+
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Roboto Mono', monospace;
+// font-family: 'Titillium Web', sans-serif;
+// rgb(241, 242, 242);
+
+$intro-height-top: 80vh;
+
+#intro {
+    background-color: rgb(255, 255, 255);   
+    height: $intro-height-top;
 }
+
+#title {
+    font: {
+        family: 'Roboto', sans-serif;
+        weight: 300;
+    };
+    line-height: 1.6;
+    height: 100%;
+    width: 50%;
+    padding-left: 60px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    // align-items: flex-end;
+    
+}
+
+#title h1 {
+    font: {
+        family: 'Titillium Web', sans-serif;
+        size: 60px;
+    };
+    color: rgb(6, 47, 135);
+    line-height: 1;
+    padding-bottom: 20px;
+    // padding-top: 50px;
+}
+
+#title p {
+    // padding: 10px;
+    width: 100%;
+}
+
+#intro-divider {
+    background-color: rgb(232, 251, 255);
+    height: (100vh - $intro-height-top);
+    // width: 100%;
+}
+
