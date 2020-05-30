@@ -4,16 +4,21 @@
 $padding: 60px;
 $margin: 5;
 $chart-label: 'Roboto', sans-serif;
+$chart-width: 50%;
+// $chart-width: 800px;
+$chart-height: 100vh;
+// $chart-height: 600px;
+$chart-adj: 100px;
 
 .svg-container {
-    height: 100vh;
+    // width: $chart-width;
+    // height: $chart-height;
+    // box-sizing: border-box;
 }
 
 .svg-content {
-    width: 50%;
-    padding: $padding;
-    margin: $margin;
-    box-sizing: border-box;
+    // padding: $padding;
+    // margin: $margin;
 }
 
 /* AXES */
