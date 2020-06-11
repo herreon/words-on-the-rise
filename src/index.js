@@ -1,44 +1,57 @@
 import test_function from "./example.js";
+import simple_example from "./simple.js";
+
 import '../dist/assets/styles/styles.scss';
 
 // searchTerms is the array of the most rising words of 2019
 const searchTerms = require("./searchTerms.js");
 
-// set the dimensions and margins of the svg
-const width = 700;
-const height = 600;
-const adj = 100;
+// creating reusable chart
+function chartTemplate() {
+  
+  // set the dimensions and margins of the svg
+  let width = 600;
+  let height = 300;
+  let adj = 100;
 
-// parse the date and time
-const timeConv = d3.timeParse("%b %d, %Y");
-const dataset = d3.json("./dist/assets/data.json");
+  // scales
 
-const slices = [];
-dataset.then(function (data) {
-  let i;
 
-  for (i = 0; i < searchTerms.length; i++) {
-    const slice = {
-      term: searchTerms[i],
-      values: data.map(function (d) {
-        return {
-          date: timeConv(d.formattedAxisTime),
-          point: +d.value[i]
-        }
-      })
-    }
-    slices.push(slice)
-  }
-})
+  // axes
 
-const chartTemplate = function() {
-  function make() {
-    
-  }
 
-  return make();
+
 }
 
+
+// // parse the date and time
+// const timeConv = d3.timeParse("%b %d, %Y");
+// const dataset = d3.json("./dist/assets/data.json");
+
+// const slices = [];
+
+// dataset.then(function (data) {
+//   let i;
+
+//   for (i = 0; i < searchTerms.length; i++) {
+//     const slice = {
+//       term: searchTerms[i],
+//       values: data.map(function (d) {
+//         return {
+//           date: timeConv(d.formattedAxisTime),
+//           point: +d.value[i]
+//         }
+//       })
+//     }
+//     slices.push(slice)
+//   }
+// })
+
+
+
+// to illustrate svg path mini-language
+// const illustration = svg.append("path")
+    // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
 
 // stretch data values from 0 to the svg's width
 // const xScale = d3.scaleTime().range([0, width]);
@@ -47,10 +60,17 @@ const chartTemplate = function() {
 document.addEventListener("DOMContentLoaded", function () {
   
   console.log("index.js content has loaded");
-  console.log("search terms", searchTerms)
+  // console.log("search terms", searchTerms)
 
-  console.log("slices", slices)
+  // console.log("slices", slices)
+
+  // simple_example();
+  // test_function();
+
+  
 });
+
+
 
   // // append SVG
   // const svg = d3.select("#container").append("svg")
@@ -120,71 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //   .ticks(countPoints / 10)
   //   .scale(yScale);
 
-  // //----------------------------[prep]LINES------------------------------//
 
-  // // const array1 = [1, 2, 3, 4];
-  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  // const calcAverage = function(array) {
-  //   return array.reduce(reducer) / array.length;
-  // }
-  // // console.log("test", calcAverage(array1));
-
-  // // accessor function. Takes in the data array and extracts the x,y coordinates
-  // const tracker = []
-  // const line = d3
-  //   .line()
-  //   .x(function (d) { return xScale(d.date); })
-  //   .y(function (d, i) {
-  //     console.log(d.point);
-  //     console.log("i", i);
-
-  //     if (i === 0) {
-  //       tracker.splice(0, tracker.length);
-  //     }
-      
-  //     tracker.push(d.point);
-  //     console.log("tracker", tracker)
-      
-  //     if (tracker.length < 12) {
-  //       return null
-  //     } else if (tracker.length === 12) {
-  //             console.log("tracker", tracker);
-
-  //              let averageValue = calcAverage(tracker);
-  //              tracker.shift();
-
-  //              console.log("averageValue", averageValue)
-  //             //  return yScale(averageValue)
-  //            }
-  //     return yScale(d.point); 
-  //   })
   
-  
-  // // to illustrate line.y()
-  // // const line = d3
-  // //   .line()
-  // //   .x(function (d) { return xScale(d.date); })
-  // //   .y(function (d) { return d.point; });
-  
-  // // to differentiate lines
-  // let lineId = 0;
-  // const lineIds = function () {
-  //     return "line-" + lineId++;
-  // }
-
-  // //----------------------------[prep]TOOLTIP------------------------------//
-  
-  // const tooltip = d3.select("body").append("div") // currently experimenting with select
-  //   .attr("class", "tooltip")
-  //   .style("opacity", 0)
-  //   .style("position", "absolute");
-  
-  // // experimenting with selectors
-  // // console.log("g", d3.select("g")); // selecting g returns an empty array
-  // // console.log("g2", d3.selectAll("g")); // similar to above; no elements returned
-  // // console.log("g3", d3.select("body"));
-  // // console.log("svg", d3.select("svg")); 
-
   // //-----------------------------[drawing]AXES------------------------------//
 
   // svg
@@ -228,9 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //   })
     
 
-  // // to illustrate svg path mini-language
-  //   // svg.append("path")
-  //   // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
+  
   
   
   // //----------------------------[interactive]POINTS------------------------------//
@@ -245,79 +200,4 @@ document.addEventListener("DOMContentLoaded", function () {
   //   .attr("class", "point")
   //   .style("opacity", 1);
 
-  // //----------------------------[interactive]EVENTS------------------------------//
-
-  // // add invisible circles to increase responsive area
-  // lines.selectAll("points")
-  //   .data(function (d) { return (d.values); })
-  //   .enter()
-  //   .append("circle")
-  //   .attr("cx", function (d) { return xScale(d.date); })
-  //   .attr("cy", function (d) { return yScale(d.point); })
-  //   .attr('r', 10)
-  //   .style("opacity", 0)
-
-  //   // configure events
-  //   .on('mouseover', function (d) {
-      
-  //     tooltip.transition()
-  //       .delay(30)
-  //       .duration(200)
-  //       .style("opacity", 1);
-  //       // .style("fill", "red") // removed because unnecessary
-      
-  //     tooltip.html(d.point)
-  //     .attr("cx", ( xScale(d.date) ))
-  //     .attr("cy", ( yScale(d.point) ));
-  //     // .style("left", (d3.event.pageX + 25) + "px")
-  //     // .style("top", (d3.event.pageY) + "px");
-
-  //     const selection = d3.select(this) // [this] is the invisible circle
-  //       .raise(); // .raise() re-inserts each selected element, in order, as the last child of its parent
-      
-  //     // console.log(this);
-  //     // console.log(d);
-      
-  //     selection
-  //       .transition()
-  //       .delay("20")
-  //       .duration("200")
-  //       .attr("r", 6)
-  //       .style("opacity", 1)
-  //       .style("fill", "#ed3700");
-  //     })
-      
-
-  // .on("mouseout", function (d) {
-  //     tooltip.transition()
-  //       .duration(200)
-  //       .style("opacity", 0);
-      
-  //   const selection = d3.select(this);
-
-  //   selection
-  //     .transition()
-  //     .delay("20")
-  //     .duration("200")
-  //     .attr("r", 10)
-  //     .style("opacity", 0);
-  //   });
-  
-  // // test transitions 1
-  // // d3.select("body")
-  // // .transition()
-  // // .delay(2000)
-  // // .on("start", function() {d3.select(this).style("background-color", "green")}) // works the same if you replace [this] with ["body"]
-  // // .style("background-color", "red")
-  
-  // // test transitions 2
-  // // d3.select("body")
-  // // .transition().delay(1000).duration(2000)
-  // // .styleTween("background-color", function() { return d3.interpolate("green", "red")})
-  
-
-  // // run data visualization from example.js
-  // // test_function();
-  
-  // });
 
