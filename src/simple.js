@@ -1,6 +1,8 @@
 
 const data = [3, 66, 2, 76, 5, 20, 1, 30, 50, 9, 80, 5, 7];
 const terr = [5, 5, 5, 5, 80, 80, 2, 3, 1, 2, 60, 1, 2, 33]
+const flower = [[5, 5], [1, 2], [80, 80]]
+const bee = [{value: 7, label:2}, {value: 1, label: 3}]
 
 function chartA () {
 
@@ -29,6 +31,10 @@ function chartA () {
         selection.each(function (data) {
 
             console.log("this", this)
+            const scaletest = d3.min(data, function(d){
+              return d.value;
+            });
+            console.log("scaletest", scaletest)
 
             // "this" is the selected element (in this case, div with id="#container")
             const chart = d3.select(this)
@@ -39,7 +45,7 @@ function chartA () {
     
             
 
-            chart.append("path").attr("d", function (d) {
+            chart.append("path").attr("d", function (strawberry) {
               return line(data);
             });
 
@@ -77,16 +83,13 @@ export default function simple_example () {
     // console.log("chartA's width", chartA().width())
     // console.log("chartA's my", chartA())
     
-    const chartB = chartA().height(300)
-    console.log("chartB's my", chartB)
-    console.log("chartB's height", chartB.height())
+    // const chartB = chartA().height(300)
+    // console.log("chartB's my", chartB)
+    // console.log("chartB's height", chartB.height())
 
-  //   d3.select("#container").datum(data).call(chartA())
-  //   console.log("chartA is complete")
+    // d3.select("#container").datum(data).call(chartA())
 
-   let c2 = d3.select("#container2")
-  //  console.log("c2", c2)
-   c2.datum(terr).call(chartB)
+  // d3.select("#container2").datum(bee).call(chartA())
 
 
 }

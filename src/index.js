@@ -6,46 +6,130 @@ import '../dist/assets/styles/styles.scss';
 // searchTerms is the array of the most rising words of 2019
 const searchTerms = require("./searchTerms.js");
 
+// parse the date and time; store data in variable dataA
+const timeConv = d3.timeParse("%b %d, %Y");
+let datasetA = d3.json("./dist/assets/data.json");
+
+datasetA = datasetA.then(function(data) {
+
+  let dataCarrier = [];
+  let i;
+
+  for (i = 0; i < searchTerms.length; i++) {
+    const dataASlice = {
+      term: searchTerms[i],
+      values: data.map(function (d) {
+        return {
+          date: timeConv(d.formattedAxisTime),
+          point: +d.value[i]
+        }
+      })
+    }
+
+    // console.log("slice", dataASlice);
+
+    dataCarrier.push(dataASlice);
+  }
+  return dataCarrier;
+})
+
+
 // creating reusable chart
 function chartTemplate() {
-  
+
   // set the dimensions and margins of the svg
   let width = 600;
   let height = 300;
   let adj = 100;
 
   // scales
+  
+  //   // define max value for domain on y-axis (points)
+  //   const maxY = d3.max(slices, function (s) {
+    //     return d3.max(s.values, function(v) {
+      //       return v.point
+      //     })
+      //   })
+      
+      
+      
+      //   // set domain of y-axis
+      //   yScale.domain([0, maxY])
+      
+      //   // FOR TESTING DOMAIN VALUES
+      //   // console.log("minX", startDate);
+      //   // console.log("maxX", endDate);
+      //   // console.log("maxY", maxY);
+      
+      // axes
+      
+      
+  // const line = d3.line()
+                  // .x(function(d) {return xScale(d.values.date)})
+                  // .y(function(d) {return yScale(d.values.point)})
 
+  function draw(selection) {
+    selection.each(function(data) {
 
-  // axes
+      console.log("data", data);
+      
+      // define min and max values for domain on x-axis (time)
+      const startDate = d3.min(data, function(d) {
+        return d3.min(d.values, function(v) {
+          return v.date
+        })
+      });
 
+      const endDate = d3.max(data, function(d) {
+        return d3.max(d.values, function(v) {
+          return v.date
+        })
+      });
 
+      // set domain and range of x-axis
+      // const xScale = d3.scaleTime().domain([startDate, endDate]).range([0, width]);
+      
+      
+      console.log("xscale-domain", startDate);
+      // console.log("xscale-range", xScale(startDate), xScale(endDate));
+      
+      // draw chart
+      const chart = d3.select(this)
+                      .append("svg")
+                      .attr("class", "chart")
+                      .attr("width", width)
+                      .attr("height", height)
+      
+      // chart.append("path").attr("d", function(d) {
+      //   return line(data)
+      // })
+    })
+  }
+
+  draw.width = function(value) {
+    if (!arguments.length) {
+      return width;
+    }
+    
+    width = value;
+    return draw;
+  };
+
+  draw.height = function(value) {
+    if (!arguments.length) {
+      return height;
+    }
+
+    height = value;
+    return draw;
+  };
+
+  return draw;
 
 }
 
 
-// // parse the date and time
-// const timeConv = d3.timeParse("%b %d, %Y");
-// const dataset = d3.json("./dist/assets/data.json");
 
-// const slices = [];
-
-// dataset.then(function (data) {
-//   let i;
-
-//   for (i = 0; i < searchTerms.length; i++) {
-//     const slice = {
-//       term: searchTerms[i],
-//       values: data.map(function (d) {
-//         return {
-//           date: timeConv(d.formattedAxisTime),
-//           point: +d.value[i]
-//         }
-//       })
-//     }
-//     slices.push(slice)
-//   }
-// })
 
 
 
@@ -54,7 +138,7 @@ function chartTemplate() {
     // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
 
 // stretch data values from 0 to the svg's width
-// const xScale = d3.scaleTime().range([0, width]);
+
 // const yScale = d3.scaleLinear().rangeRound([height, 0]);
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -62,7 +146,12 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("index.js content has loaded");
   // console.log("search terms", searchTerms)
 
-  // console.log("slices", slices)
+  // console.log("dataA-1", dataA)
+
+  datasetA.then((d) => {
+    d3.select("#container").datum(d).call(chartTemplate())
+  })
+ 
 
   // simple_example();
   // test_function();
@@ -86,43 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // dataset.then(function (data) {
 
   //   const countPoints = slices[0].values.length;
-
-
-  //   //----------------------------[prep]SCALES-----------------------------//
-   
-    
-
-  //   // define min and max values for domain on x-axis (time)
-  //   const startDate = d3.min(slices, function (s) {
-  //     return d3.min(s.values, function (v) {
-  //       return v.date
-  //     })
-  //   });
-
-  //   const endDate = d3.max(slices, function (s) {
-  //     return d3.max(s.values, function (v) {
-  //       return v.date
-  //     })
-  //   });
-
-    
-  //   // define max value for domain on y-axis (points)
-  //   const maxY = d3.max(slices, function (s) {
-  //     return d3.max(s.values, function(v) {
-  //       return v.point
-  //     })
-  //   })
-
-  //   // set domain of x-axis
-  //   xScale.domain([startDate, endDate])
-    
-  //   // set domain of y-axis
-  //   yScale.domain([0, maxY])
-
-  //   // FOR TESTING DOMAIN VALUES
-  //   // console.log("minX", startDate);
-  //   // console.log("maxX", endDate);
-  //   // console.log("maxY", maxY);
 
 
   // //-----------------------------[prep]AXES------------------------------//
