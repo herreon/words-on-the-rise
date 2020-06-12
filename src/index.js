@@ -26,7 +26,7 @@ datasetA = datasetA.then(function(data) {
       })
     }
 
-    // console.log("slice", dataASlice);
+    //// console.log("slice", dataASlice);
 
     dataCarrier.push(dataASlice);
   }
@@ -41,38 +41,17 @@ function chartTemplate() {
   let width = 600;
   let height = 300;
   let adj = 100;
-
-  // scales
   
-  //   // define max value for domain on y-axis (points)
-  //   const maxY = d3.max(slices, function (s) {
-    //     return d3.max(s.values, function(v) {
-      //       return v.point
-      //     })
-      //   })
-      
-      
-      
-      //   // set domain of y-axis
-      //   yScale.domain([0, maxY])
-      
-      //   // FOR TESTING DOMAIN VALUES
-      //   // console.log("minX", startDate);
-      //   // console.log("maxX", endDate);
-      //   // console.log("maxY", maxY);
-      
-      // axes
-      
-      
-  // const line = d3.line()
-                  // .x(function(d) {return xScale(d.values.date)})
-                  // .y(function(d) {return yScale(d.values.point)})
+
+  // axes
+
 
   function draw(selection) {
     selection.each(function(data) {
 
       console.log("data", data);
       
+      // SCALES: x-axis
       // define min and max values for domain on x-axis (time)
       const startDate = d3.min(data, function(d) {
         return d3.min(d.values, function(v) {
@@ -87,22 +66,49 @@ function chartTemplate() {
       });
 
       // set domain and range of x-axis
-      // const xScale = d3.scaleTime().domain([startDate, endDate]).range([0, width]);
+      const xScale = d3.scaleTime().domain([startDate, endDate])
+                        .range([0, width]);
+      
+      //// console.log("xscale-range", xScale(startDate), xScale(endDate));
+      
+      // SCALES: y-axis
+      // define max value for domain on y-axis (points)
+      const maxY = d3.max(data, function(s) {
+        return d3.max(s.values, function(v) {
+            return v.point
+        })
+      })
+
+      
+      // set domain of y-axis
+      const yScale = d3.scaleLinear().domain([0, maxY])
+                        .range([height, 0])
       
       
-      console.log("xscale-domain", startDate);
-      // console.log("xscale-range", xScale(startDate), xScale(endDate));
-      
-      // draw chart
-      const chart = d3.select(this)
+      const line = d3.line()
+                      .x(function (d) {
+                        return xScale(d.date);
+                      })
+                      .y(function (d) {
+                        return yScale(d.point);
+                      });              
+
+      // append svg
+      const svg = d3.select(this)
                       .append("svg")
                       .attr("class", "chart")
                       .attr("width", width)
                       .attr("height", height)
+
+      const lines = svg.selectAll("lines").data(data).enter().append("g");
+
+      lines
+        .append("path")
+        // .attr("class", lineIds) // differentiate lines
+        .attr("d", function (d) {
+          return line(d.values);
+        });      
       
-      // chart.append("path").attr("d", function(d) {
-      //   return line(data)
-      // })
     })
   }
 
@@ -144,9 +150,8 @@ function chartTemplate() {
 document.addEventListener("DOMContentLoaded", function () {
   
   console.log("index.js content has loaded");
-  // console.log("search terms", searchTerms)
-
-  // console.log("dataA-1", dataA)
+  
+  //// console.log("search terms", searchTerms)
 
   datasetA.then((d) => {
     d3.select("#container").datum(d).call(chartTemplate())
