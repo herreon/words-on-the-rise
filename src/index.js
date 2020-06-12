@@ -40,8 +40,13 @@ function chartTemplate() {
   // set the dimensions and margins of the svg
   let width = 600;
   let height = 300;
-  let adj = 100;
-  
+  let adj = 30;
+
+  // function to create distinct id for each line
+  let id = 0;
+  const lineId = function () {
+    return "line-" + id++;
+  };
 
   // axes
 
@@ -78,7 +83,6 @@ function chartTemplate() {
             return v.point
         })
       })
-
       
       // set domain of y-axis
       const yScale = d3.scaleLinear().domain([0, maxY])
@@ -93,18 +97,57 @@ function chartTemplate() {
                         return yScale(d.point);
                       });              
 
-      // append svg
-      const svg = d3.select(this)
-                      .append("svg")
-                      .attr("class", "chart")
-                      .attr("width", width)
-                      .attr("height", height)
 
+      // AXES
+      const xAxis = d3.axisBottom()
+                      .scale(xScale)
+                      .ticks(d3.timeMonth.every(12))
+                      .tickFormat(d3.timeFormat("%b %Y"))
+      
+      
+                      // .ticks(d3.timeYear.every(1))
+                      // .tickFormat(d3.timeFormat("%Y"))
+                      
+      const yAxis = d3.axisLeft()
+                      .scale(yScale);
+                      // .ticks(countPoints / 10)
+                      
+      // append svg
+      const svg = d3
+        .select(this)
+        .append("svg")
+        .attr("class", "chart")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", `-${adj} -${adj} ${width + adj * 4} ${height + adj * 2}`)
+        .attr("preserveAspectRatio", "xMinYMin meet");
+                    
+      // draw x-axis
+      svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", `translate(0, ${height})`)
+          .call(xAxis) // .call calls the function xAxis on the elements of the selection g
+      
+      d3.selectAll("g.tick:last-of-type").text("yo");
+      // console.log("test", d3.selectAll("g.tick:last-of-type"))
+
+      // draw y-axis
+      svg.append("g")
+        .attr("class", "axis")
+        .call(yAxis)
+        // .append("text")
+        // .text("Frequency")
+        // .attr("dy", "0.75em")
+        // .attr("y", -40)
+        // .style("text-anchor", "end");
+
+      
+      // draw lines
       const lines = svg.selectAll("lines").data(data).enter().append("g");
 
       lines
         .append("path")
-        // .attr("class", lineIds) // differentiate lines
+        .attr("class", lineId) // differentiate lines
         .attr("d", function (d) {
           return line(d.values);
         });      
@@ -174,59 +217,14 @@ document.addEventListener("DOMContentLoaded", function () {
   //   .attr("viewBox", `-${adj} -${adj} ${width + adj*3} ${height + adj*3}`)
   //   .classed("svg-content", true);
 
-  // //-----------------------------[prep]DATA------------------------------//
-  
-
-  // dataset.then(function (data) {
-
-  //   const countPoints = slices[0].values.length;
-
-
-  // //-----------------------------[prep]AXES------------------------------//
-  
-  // const xAxis = d3
-  //   .axisBottom()
-  //   .ticks(d3.timeMonth.every(12))
-  //   .tickFormat(d3.timeFormat("%b %Y"))
-  //   // .ticks(d3.timeYear.every(1))
-  //   // .tickFormat(d3.timeFormat("%Y"))
-  //   .scale(xScale);
-
-  // const yAxis = d3
-  //   .axisLeft()
-  //   .ticks(countPoints / 10)
-  //   .scale(yScale);
-
 
   
   // //-----------------------------[drawing]AXES------------------------------//
 
-  // svg
-  //   .append("g")
-  //   .attr("class", "axis")
-  //   .attr("transform", "translate(0," + height + ")")
-  //   .call(xAxis) // .call calls the function xAxis on the elements of the selection g
-
-  // svg
-  //   .append("g")
-  //   .attr("class", "axis")
-  //   .call(yAxis)
-  //   .append("text")
-  //   .text("Frequency")
-  //   .attr("dy", "0.75em")
-  //   .attr("y", -40)
-  //   .style("text-anchor", "end");
+  
 
   // //----------------------------[drawing]LINES------------------------------//
 
-  // const lines = svg.selectAll("lines")
-  //   .data(slices)
-  //   .enter()
-  //   .append("g")
-
-  // lines.append("path")
-  //   .attr("class", lineIds) // differentiate lines
-  //   .attr("d", function (d) { return line(d.values); })
   
 
   // // add labels to each line

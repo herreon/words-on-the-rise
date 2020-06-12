@@ -6,7 +6,7 @@ path {
 }
 
 /* variables */
-$padding: 60px;
+$padding: 20px;
 $margin: 5;
 $chart-label: 'Roboto', sans-serif;
 $chart-width: 50%;
@@ -14,6 +14,10 @@ $chart-width: 50%;
 $chart-height: 100vh;
 // $chart-height: 600px;
 $chart-adj: 100px;
+
+#container svg {
+    padding: $padding;
+}
 
 .svg-container {
     // width: $chart-width;
@@ -50,7 +54,7 @@ shape-rendering: crispEdges;
 .axis text {
 fill: #2b2929;
 font-family: $chart-label;
-font-size: 120%;
+font-size: 110%;
 }
 
 /* LINE CHART */
@@ -61,7 +65,7 @@ stroke: #ed3700;
 
 path.line-1 {
 fill: none;
-stroke: #2b2929;
+stroke: blue;
 /* stroke-dasharray: 2; */
 }
 
