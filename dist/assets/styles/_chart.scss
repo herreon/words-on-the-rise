@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@100;300;400&family=Titillium+Web:wght@300&display=swap');
+@use "sass:list";
 
 path {
     fill: none;
@@ -70,74 +71,29 @@ font-size: 110%;
 }
 
 /* LINE CHART */
-path.line-0 {
-fill: none;
-stroke: #ed3700;
+
+/* line */
+
+
+$colors: red, green, blue, orange, purple, grey;
+
+// @debug nth($colors, 1);
+
+@for $i from 0 through 3 {
+    .#{line-}#{$i}, .#{label-}#{$i} {
+        fill: none;
+        stroke: nth($colors, ($i + 1));
+    }
+
+    .#{label-}#{$i} {
+        fill: nth($colors, ($i + 1));
+        font-family: $chart-label;
+        font-size: 70%;
+        text-transform: uppercase;
+    }
 }
 
-path.line-1, .term_label-1 {
-fill: none;
-stroke: green;
-/* stroke-dasharray: 2; */
-}
 
-path.line-2 {
-fill: none;
-stroke: #9c9c9c;
-/* stroke-dasharray: 6; */
-}
-
-path.line-3 {
-fill: none;
-stroke: orange;
-}
-
-path.line-4 {
-fill: none;
-stroke: cyan;
-}
-
-path.line-5 {
-fill: none;
-stroke: pink;
-}
-
-path.line-6 {
-fill: none;
-stroke: blue;
-}
-
-path.line-7 {
-fill: none;
-stroke: black;
-}
-
-path.line-8 {
-fill: none;
-stroke: purple;
-}
-
-path.line-9 {
-fill: none;
-stroke: green;
-}
-
-path.line-10 {
-fill: none;
-stroke: red;
-}
-
-/* term labels */
-.term_label {
-/* fill: #2b2929; */
-fill: red;
-font-family: $chart-label;
-font-size: 80%;
-}
-
-.a {
-fill: blue
-}
 
 /* interactive elements */
 /* TOOLTIP */

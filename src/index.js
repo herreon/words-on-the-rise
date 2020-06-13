@@ -114,7 +114,7 @@ function chartTemplate() {
         .attr("class", "chart")
         .attr("width", width)
         .attr("height", height)
-        .attr("viewBox", `-${adj} -${adj} ${width + adj * 4} ${height + adj * 2}`)
+        .attr("viewBox", `-${adj} -${adj} ${width + adj * 10} ${height + adj * 2}`)
         .attr("preserveAspectRatio", "xMinYMin meet");
                       
       // draw x-axis
@@ -143,24 +143,18 @@ function chartTemplate() {
 
       lines
         .append("path")
-        .attr("class", function(d, i) {
-          return `line-${i}`
-        })
-        .attr("d", function(d) {
-          return line(d.values);
-        });
+        .attr("class", function(d, i) { return `line-${i}` })
+        .attr("d", function(d) { return line(d.values) });
 
       // add labels to each line
       lines.append("text")
-            .attr("class", function(d, i) {
-              return `label-${i}`
-            })
-            .text(function (d) { return d.term })
+            .attr("class", function(d, i) { return `label-${i}` })
+            .text(function(d) { return `⇽       ${d.term}`; })
             .attr("x", 5)
             .attr("transform", function (d) {
               const lastIndex = d.values.length - 1; // the index of the last data point
-              const labelX = xScale(d.values[lastIndex].date) + 10;
-              const labelY = yScale(d.values[lastIndex].point) + 5;
+              const labelX = xScale(d.values[lastIndex].date) + 1;
+              const labelY = yScale(d.values[lastIndex].point) + 1;
               return `translate(${labelX}, ${labelY})`
             })
 
@@ -190,11 +184,6 @@ function chartTemplate() {
   return draw;
 
 }
-
-
-
-
-
 
 // to illustrate svg path mini-language
 // const illustration = svg.append("path")
