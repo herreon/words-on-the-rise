@@ -39,21 +39,12 @@ function chartTemplate() {
 
   // set the dimensions and margins of the svg
   let width = 600;
-  let height = 300;
+  let height = 400;
   let adj = 30;
-
-  // function to create distinct id for each line
-  let id = 0;
-  const lineId = function () {
-    return "line-" + id++;
-  };
-
-  // axes
-
 
   function draw(selection) {
     selection.each(function(data) {
-
+      
       console.log("data", data);
       
       // SCALES: x-axis
@@ -72,9 +63,7 @@ function chartTemplate() {
 
       // set domain and range of x-axis
       const xScale = d3.scaleTime().domain([startDate, endDate])
-                        .range([0, width]);
-      
-      //// console.log("xscale-range", xScale(startDate), xScale(endDate));
+                        .range([0, width])
       
       // SCALES: y-axis
       // define max value for domain on y-axis (points)
@@ -86,7 +75,7 @@ function chartTemplate() {
       
       // set domain of y-axis
       const yScale = d3.scaleLinear().domain([0, maxY])
-                        .range([height, 0])
+                        .rangeRound([height, 0])
       
       
       const line = d3.line()
@@ -102,16 +91,22 @@ function chartTemplate() {
       const xAxis = d3.axisBottom()
                       .scale(xScale)
                       .ticks(d3.timeMonth.every(12))
-                      .tickFormat(d3.timeFormat("%b %Y"))
-      
-      
-                      // .ticks(d3.timeYear.every(1))
-                      // .tickFormat(d3.timeFormat("%Y"))
+                      .tickFormat(d3.timeFormat("%b %Y")) 
+                      .tickSizeOuter(0)
                       
-      const yAxis = d3.axisLeft()
-                      .scale(yScale);
-                      // .ticks(countPoints / 10)
-                      
+      // const yAxis = d3.axisLeft()
+      //                 .scale(yScale)
+      //                 .tickValues([])
+      //                 .tickSizeOuter(0)
+
+      // AXES: gridlines
+      const yAxisGrid = d3.axisLeft()
+                          .scale(yScale)
+                          .tickSize(-width)
+                          .tickFormat('')
+                          .tickValues([100/3, 200/3, 100])
+                          .tickSizeOuter(0)
+                        
       // append svg
       const svg = d3
         .select(this)
@@ -121,40 +116,58 @@ function chartTemplate() {
         .attr("height", height)
         .attr("viewBox", `-${adj} -${adj} ${width + adj * 4} ${height + adj * 2}`)
         .attr("preserveAspectRatio", "xMinYMin meet");
-                    
+                      
       // draw x-axis
       svg.append("g")
-          .attr("class", "axis")
+          .attr("class", "x-axis")
           .attr("transform", `translate(0, ${height})`)
           .call(xAxis) // .call calls the function xAxis on the elements of the selection g
-      
-      d3.selectAll("g.tick:last-of-type").text("yo");
+          
+        
+      // d3.selectAll("g.tick:last-of-type").text.append("Jan");
       // console.log("test", d3.selectAll("g.tick:last-of-type"))
 
       // draw y-axis
       svg.append("g")
-        .attr("class", "axis")
-        .call(yAxis)
+        .attr("class", "y-axis-grid")
+        .call(yAxisGrid)
         // .append("text")
         // .text("Frequency")
         // .attr("dy", "0.75em")
         // .attr("y", -40)
         // .style("text-anchor", "end");
 
-      
+        
       // draw lines
       const lines = svg.selectAll("lines").data(data).enter().append("g");
 
       lines
         .append("path")
-        .attr("class", lineId) // differentiate lines
-        .attr("d", function (d) {
+        .attr("class", function(d, i) {
+          return `line-${i}`
+        })
+        .attr("d", function(d) {
           return line(d.values);
-        });      
-      
-    })
+        });
+
+      // add labels to each line
+      lines.append("text")
+            .attr("class", function(d, i) {
+              return `label-${i}`
+            })
+            .text(function (d) { return d.term })
+            .attr("x", 5)
+            .attr("transform", function (d) {
+              const lastIndex = d.values.length - 1; // the index of the last data point
+              const labelX = xScale(d.values[lastIndex].date) + 10;
+              const labelY = yScale(d.values[lastIndex].point) + 5;
+              return `translate(${labelX}, ${labelY})`
+            })
+
+    })    
   }
 
+  // accessor / setter functions for width and height
   draw.width = function(value) {
     if (!arguments.length) {
       return width;
@@ -173,6 +186,7 @@ function chartTemplate() {
     return draw;
   };
 
+  // return draw function
   return draw;
 
 }
@@ -204,7 +218,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // simple_example();
   // test_function();
 
-  
 });
 
 
@@ -216,31 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //   .attr("height", height)
   //   .attr("viewBox", `-${adj} -${adj} ${width + adj*3} ${height + adj*3}`)
   //   .classed("svg-content", true);
-
-
-  
-  // //-----------------------------[drawing]AXES------------------------------//
-
-  
-
-  // //----------------------------[drawing]LINES------------------------------//
-
-  
-
-  // // add labels to each line
-  // lines.append("text")
-  //   .attr("class", "term_label" + " a")
-  //   .text(function (d) { return d.term })
-  //   .attr("x", 5)
-  //   .attr("transform", function (d) {
-  //     const numPoints = d.values.length - 1; // the index of the last data point
-  //     const labelX = xScale(d.values[numPoints].date) + 10;
-  //     const labelY = yScale(d.values[numPoints].point) + 5;
-  //     return "translate(" + labelX + "," + labelY + ")";
-  //   })
-    
-
-  
   
   
   // //----------------------------[interactive]POINTS------------------------------//
@@ -254,5 +242,3 @@ document.addEventListener("DOMContentLoaded", function () {
   //   .attr("r", 1)
   //   .attr("class", "point")
   //   .style("opacity", 1);
-
-

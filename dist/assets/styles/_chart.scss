@@ -37,6 +37,18 @@ stroke: #706f6f;
 stroke-width: 0.5;
 shape-rendering: crispEdges;
 }
+
+.y-axis-grid .tick {
+    stroke-dasharray: 5, 5;
+    stroke: #D4D9E2;
+    stroke-opacity: 0.3;
+    shape-rendering: crispEdges;
+}
+
+.y-axis-grid .domain {
+    stroke-opacity: 0;
+}
+
 /* .axis line {
 stroke: #706f6f;
 stroke-width: 0.5;
@@ -63,9 +75,9 @@ fill: none;
 stroke: #ed3700;
 }
 
-path.line-1 {
+path.line-1, .term_label-1 {
 fill: none;
-stroke: blue;
+stroke: green;
 /* stroke-dasharray: 2; */
 }
 
