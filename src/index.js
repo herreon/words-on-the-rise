@@ -1,37 +1,180 @@
 import test_function from "./example.js";
 import simple_example from "./simple.js";
+import { searchTerms, $2019_1, $2019_2, $2019_3 } from "./terms.js";
 
 import '../dist/assets/styles/styles.scss';
 
 // searchTerms is the array of the most rising words of 2019
-const searchTerms = require("./searchTerms.js");
+console.log("searchTerms", searchTerms)
+// const termsModule = require("./terms.js");
+// console.log(termsModule.searchTerms);
 
 // parse the date and time; store data in variable dataA
 const timeConv = d3.timeParse("%b %d, %Y");
-let datasetA = d3.json("./dist/assets/data.json");
 
-datasetA = datasetA.then(function(data) {
+let dA = d3.json("./dist/assets/data/2019_1.json");
+let dB = d3.json("./dist/assets/data/2019_2.json");
+let dC = d3.json("./dist/assets/data/2019_3.json");
 
-  let dataCarrier = [];
+let dataCarrier = [];
+let dTest = dA.then(function(dAdata) {
+  // let dataCarrier = [];
+
   let i;
 
-  for (i = 0; i < searchTerms.length; i++) {
-    const dataASlice = {
-      term: searchTerms[i],
-      values: data.map(function (d) {
+  for (i = 0; i < 3; i++) {
+    const dASlice = {
+      term: $2019_1[i],
+      values: dAdata.timelineData.map(function(d) {
         return {
           date: timeConv(d.formattedAxisTime),
-          point: +d.value[i]
-        }
-      })
-    }
+          point: +d.value[i],
+        };
+      }),
+    };
 
-    //// console.log("slice", dataASlice);
-
-    dataCarrier.push(dataASlice);
+    dataCarrier.push(dASlice);
   }
+
+  console.log("before transform", dataCarrier)
+
+  dB.then(function(dBdata) {
+
+    const newSlice = {
+      term: $2019_2[1],
+      values: dBdata.timelineData.map(function (d, i) {
+        console.log("d.value", d.value)
+  
+        let numerator = d.value[0];
+        let denominator = dataCarrier[dataCarrier.length - 1].values[i].point;
+        let ratio = numerator/denominator;
+        let calc = Math.round((+d.value[1] / ratio)*10)/10 ;
+        
+        console.log("numerator", numerator);
+        console.log("denominator", denominator);
+        console.log("ratio", ratio);
+        console.log("calc", calc);
+        console.log("math", Math.round(0.49) )
+
+
+        return {
+          date: timeConv(d.formattedAxisTime),
+          point: calc,
+        };
+      }),
+    }
+    dataCarrier.push(newSlice);
+  })
+  
+  console.log(dataCarrier);
   return dataCarrier;
+});
+
+
+// dA = dA.then(function(data) {
+//   let dataCarrier = [];
+//   let i;
+
+//   for (i = 0; i < 3; i++) {
+//     const dASlice = {
+//       term: $2019_1[i],
+//       values: data.timelineData.map(function (d) {
+//         return {
+//           date: timeConv(d.formattedAxisTime),
+//           point: +d.value[i],
+//         };
+//       }),
+//     };
+
+//     //// console.log("slice", dASlice);
+
+//     dataCarrier.push(dASlice);
+//   }
+//   console.log(dataCarrier);
+//   return dataCarrier;
+// })
+
+// dB = dB.then(function(data) {
+//   let dataCarrier = [];
+//   let i;
+
+//   for (i = 0; i < 2; i++) {
+//     const dBSlice = {
+//       term: $2019_2[i],
+//       values: data.timelineData.map(function (d) {
+//         return {
+//           date: timeConv(d.formattedAxisTime),
+//           point: +d.value[i],
+//         };
+//       }),
+//     };
+
+
+//     dataCarrier.push(dBSlice);
+//   }
+//   console.log(dataCarrier);
+//   return dataCarrier;
+// })
+
+console.log("dTest", dTest);
+
+dC = dC.then(function(data) {
+  let thiscarrier = [];
+  let i;
+
+  for (i = 0; i < 4; i++) {
+    const dCSlice = {
+      term: $2019_3[i],
+      values: data.timelineData.map(function (d, index) {
+
+        if(i===3){
+          let premade = d.value[i];
+          let mycreate = dataCarrier[i].values[index].point;
+          console.log("compare", premade, mycreate)
+        }
+
+        return {
+          date: timeConv(d.formattedAxisTime),
+          point: +d.value[i],
+        };
+      }),
+    };
+
+    thiscarrier.push(dCSlice);
+  }
+  console.log("dC", thiscarrier);
+  return thiscarrier;
 })
+
+
+// console.log("dC",dC)
+
+
+// ORIGINAL
+// let datasetA = d3.json("./dist/assets/data/2019_1.json");
+
+// datasetA = datasetA.then(function(data) {
+
+//   let dataCarrier = [];
+//   let i;
+
+//   for (i = 0; i < searchTerms.length; i++) {
+//     const dataASlice = {
+//       term: $2019[i],
+//       values: data.map(function (d) {
+//         return {
+//           date: timeConv(d.formattedAxisTime),
+//           point: +d.value[i]
+//         }
+//       })
+//     }
+
+//     //// console.log("slice", dataASlice);
+
+//     dataCarrier.push(dataASlice);
+//   }
+//   return dataCarrier;
+// })
 
 
 // creating reusable chart
@@ -199,9 +342,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //// console.log("search terms", searchTerms)
 
-  datasetA.then((d) => {
-    d3.select("#container").datum(d).call(chartTemplate())
-  })
+  // CALL DRAW CHART FUNCTION
+  // datasetA.then((d) => {
+  //   d3.select("#container").datum(d).call(chartTemplate())
+  // })
  
 
   // simple_example();

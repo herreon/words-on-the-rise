@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
@@ -20,9 +23,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "babel-loader": "^8.1.0",
     "google-trends-api": "^4.9.0",
     "node-sass": "^4.14.1"
   }

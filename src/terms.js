@@ -1,24 +1,11 @@
-// const $2019 = [
-//     'boomer',
-//     'vsco',
-//     'simp',
-//     'sfs',
-//     'fyp',
-//     'ngl',
-//     's/u',
-//     'iykyk',
-//     'sb',
-//     'sksksk',
-//     'yktv',
-//     'and i oop'
-// ]
+const maxNum = 5;
 
 const $2019 = [
     "boomer",
     "vsco",
-    "simp",
     "sfs",
     "fyp",
+    "simp",
     "ngl",
     "s/u",
     "iykyk",
@@ -28,13 +15,18 @@ const $2019 = [
     "and i oop"
 ]
 
+const $2019_1 = $2019.slice(0, 3);
+const $2019_2 = $2019.slice(2, 4);
+const $2019_3 = $2019.slice(0, 4);
+
 const oneHit = ["slatt", "ants"];
 
-let searchTerms = [];
+const searchTerms = [];
 
-$2019.forEach(term => {
-    // searchTerms.push("what does " + term + " mean")
-    searchTerms.push(`what does ${term} mean`)
+$2019.forEach((term, i) => {
+    if (i < maxNum) {
+        searchTerms.push(`what does ${term} mean`)
+    }
 })
 
 
@@ -98,4 +90,8 @@ const $2015 = [
     "vape"
 ]
 
-module.exports = searchTerms;
+// export { searchTerms };
+
+// export default searchTerms ;
+
+module.exports = { searchTerms, $2019, $2019_1, $2019_2, $2019_3 };
