@@ -1,5 +1,3 @@
-const maxNum = 5;
-
 const $2019 = [
     "boomer",
     "vsco",
@@ -15,19 +13,40 @@ const $2019 = [
     "and i oop"
 ]
 
-const $2019_1 = $2019.slice(0, 3);
-const $2019_2 = $2019.slice(2, 4);
-const $2019_3 = $2019.slice(0, 4);
-
 const oneHit = ["slatt", "ants"];
 
-const searchTerms = [];
 
-$2019.forEach((term, i) => {
-    if (i < maxNum) {
-        searchTerms.push(`what does ${term} mean`)
+function searchTermsGenerator(array) {
+    const searchTerms = [];
+
+    array.forEach((term) => {
+        searchTerms.push(`what does ${term} mean`);
+    });
+
+    // console.log(searchTerms);
+    return searchTerms;
+};
+
+
+function splitter(array, maxNum, joinIndex) {
+    const joinValue = array[joinIndex];
+    const interval = - 1+ maxNum;
+    let result = [];
+
+    for(let i = 1; i < array.length;) {
+        const group = array.slice(i, i + interval); 
+        const set = [joinValue].concat(group);
+        result.push(set);
+        i+= interval;
     }
-})
+
+    // console.log(result)
+    return result;
+}
+
+
+const $2019_searchTerms = searchTermsGenerator($2019);
+const $2019_sets = splitter($2019_searchTerms, 5, 0);
 
 
 const $2018 = [
@@ -90,8 +109,6 @@ const $2015 = [
     "vape"
 ]
 
-// export { searchTerms };
 
-// export default searchTerms ;
 
-module.exports = { searchTerms, $2019, $2019_1, $2019_2, $2019_3 };
+module.exports = { $2019_searchTerms, $2019_sets };

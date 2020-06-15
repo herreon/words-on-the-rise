@@ -17,12 +17,14 @@ let dB = d3.json("./dist/assets/data/2019_2.json");
 let dC = d3.json("./dist/assets/data/2019_3.json");
 
 let dataCarrier = [];
+
 let dTest = dA.then(function(dAdata) {
   // let dataCarrier = [];
 
   let i;
 
   for (i = 0; i < 3; i++) {
+
     const dASlice = {
       term: $2019_1[i],
       values: dAdata.timelineData.map(function(d) {
@@ -34,28 +36,32 @@ let dTest = dA.then(function(dAdata) {
     };
 
     dataCarrier.push(dASlice);
+    // console.log("dASlice", dASlice)
   }
 
-  console.log("before transform", dataCarrier)
+  console.log("before transform", dataCarrier[dataCarrier.length - 1]);
+  
 
   dB.then(function(dBdata) {
+
+    console.log("there")
 
     const newSlice = {
       term: $2019_2[1],
       values: dBdata.timelineData.map(function (d, i) {
-        console.log("d.value", d.value)
+        // console.log("d.value", d.value)
   
         let numerator = d.value[0];
         let denominator = dataCarrier[dataCarrier.length - 1].values[i].point;
         let ratio = numerator/denominator;
-        let calc = Math.round((+d.value[1] / ratio)*10)/10 ;
+        let calc = Math.round(+d.value[1] / ratio) ;
+        let calc2 = Math.round((+d.value[1] / ratio)*10)/10 ;
         
-        console.log("numerator", numerator);
-        console.log("denominator", denominator);
-        console.log("ratio", ratio);
+        // console.log("numerator", numerator);
+        // console.log("denominator", denominator);
+        // console.log("ratio", ratio);
         console.log("calc", calc);
-        console.log("math", Math.round(0.49) )
-
+        // console.log("math", Math.round(0.49) )
 
         return {
           date: timeConv(d.formattedAxisTime),
@@ -66,7 +72,7 @@ let dTest = dA.then(function(dAdata) {
     dataCarrier.push(newSlice);
   })
   
-  console.log(dataCarrier);
+  console.log("after transform", dataCarrier);
   return dataCarrier;
 });
 
@@ -116,7 +122,7 @@ let dTest = dA.then(function(dAdata) {
 //   return dataCarrier;
 // })
 
-console.log("dTest", dTest);
+// console.log("dTest", dTest);
 
 dC = dC.then(function(data) {
   let thiscarrier = [];
