@@ -1,186 +1,137 @@
 import test_function from "./example.js";
 import simple_example from "./simple.js";
-import { searchTerms, $2019_1, $2019_2, $2019_3 } from "./terms.js";
+import { $2019, $2019_searchTerms, $2019_sets } from "./terms.js";
 
 import '../dist/assets/styles/styles.scss';
 
-// searchTerms is the array of the most rising words of 2019
-console.log("searchTerms", searchTerms)
-// const termsModule = require("./terms.js");
-// console.log(termsModule.searchTerms);
 
 // parse the date and time; store data in variable dataA
 const timeConv = d3.timeParse("%b %d, %Y");
 
-let dA = d3.json("./dist/assets/data/2019_1.json");
-let dB = d3.json("./dist/assets/data/2019_2.json");
-let dC = d3.json("./dist/assets/data/2019_3.json");
 
-let dataCarrier = [];
+function retriever (mainSet, groupedSet) {
+  const retrievedPromises = [];
 
-let dTest = dA.then(function(dAdata) {
-  // let dataCarrier = [];
+  groupedSet.forEach((set, index) => {
+    // let datasetName = `dataset_${index}`;
+    retrievedPromises.push(d3.json(`./dist/assets/data/2019_${index}.json`));
+  });
 
-  let i;
+  return [mainSet.length, retrievedPromises];
 
-  for (i = 0; i < 3; i++) {
+}
 
-    const dASlice = {
-      term: $2019_1[i],
-      values: dAdata.timelineData.map(function(d) {
-        return {
-          date: timeConv(d.formattedAxisTime),
-          point: +d.value[i],
-        };
-      }),
-    };
+const dataset = [];
 
-    dataCarrier.push(dASlice);
-    // console.log("dASlice", dASlice)
-  }
+function createDataset ([numWords, arrayOfPromises]) {
 
-  console.log("before transform", dataCarrier[dataCarrier.length - 1]);
+
+  let mainIndex = 0;
+  let increment = 0;
   
 
-  dB.then(function(dBdata) {
+  let initialSet = arrayOfPromises[0];
+  let subseqSets = arrayOfPromises.slice(1);
 
-    console.log("there")
+  // first set
+  return initialSet = initialSet.then(function(data) {
+    while(increment < 5) {
 
-    const newSlice = {
-      term: $2019_2[1],
-      values: dBdata.timelineData.map(function (d, i) {
-        // console.log("d.value", d.value)
-  
-        let numerator = d.value[0];
-        let denominator = dataCarrier[dataCarrier.length - 1].values[i].point;
-        let ratio = numerator/denominator;
-        let calc = Math.round(+d.value[1] / ratio) ;
-        let calc2 = Math.round((+d.value[1] / ratio)*10)/10 ;
-        
-        // console.log("numerator", numerator);
-        // console.log("denominator", denominator);
-        // console.log("ratio", ratio);
-        console.log("calc", calc);
-        // console.log("math", Math.round(0.49) )
+      const slice = {
+        term: $2019[mainIndex],
+        values: data.map(function(d) {
+          return {
+            date: timeConv(d.formattedAxisTime),
+            point: +d.value[mainIndex],
+          };
+        }),
+      }
 
-        return {
-          date: timeConv(d.formattedAxisTime),
-          point: calc,
-        };
-      }),
+      dataset.push(slice);
+      mainIndex += 1;
+      increment += 1;
     }
-    dataCarrier.push(newSlice);
+
+    console.log("dataset with initial subset", dataset)
+    return dataset
   })
-  
-  console.log("after transform", dataCarrier);
-  return dataCarrier;
-});
 
+  // subseqSets = 
+  .then(function(dataset) {
+    // console.log("achieved", dataset)
+    // add subsequent sets
 
-// dA = dA.then(function(data) {
-//   let dataCarrier = [];
-//   let i;
+    let promises = [];
+    subseqSets.forEach(promise => {
 
-//   for (i = 0; i < 3; i++) {
-//     const dASlice = {
-//       term: $2019_1[i],
-//       values: data.timelineData.map(function (d) {
-//         return {
-//           date: timeConv(d.formattedAxisTime),
-//           point: +d.value[i],
-//         };
-//       }),
-//     };
+      let newPromise = promise.then(function(data) {
 
-//     //// console.log("slice", dASlice);
+        console.log("part 2 main index", mainIndex)
 
-//     dataCarrier.push(dASlice);
-//   }
-//   console.log(dataCarrier);
-//   return dataCarrier;
-// })
+        increment = 0;
+        
+        while(increment < 5 && mainIndex < numWords) {
+          const slice = {
+            term: $2019[mainIndex],
+            values: data.map(function(d, index) {
+              
+              let numerator = dataset[0].values[index].point; // comparison value in previous promise (already in var dataset)
+              let denominator = d.value[0]; // comparison value in current promise
+              let ratio;
+              
+              if (denominator === 0) {
+                ratio = 0;
+              } else {
+                ratio = numerator/denominator;
+              }
+    
+              let calibratedValue = Math.round(+d.value[1] * ratio);
+              // console.log(numerator, denominator, ratio, calibratedValue)
 
-// dB = dB.then(function(data) {
-//   let dataCarrier = [];
-//   let i;
+              return {
+                date: timeConv(d.formattedAxisTime),
+                point: calibratedValue,
+              };
+            }),
+          };
 
-//   for (i = 0; i < 2; i++) {
-//     const dBSlice = {
-//       term: $2019_2[i],
-//       values: data.timelineData.map(function (d) {
-//         return {
-//           date: timeConv(d.formattedAxisTime),
-//           point: +d.value[i],
-//         };
-//       }),
-//     };
+          dataset.push(slice);
 
+          mainIndex += 1;
+          increment += 1;
 
-//     dataCarrier.push(dBSlice);
-//   }
-//   console.log(dataCarrier);
-//   return dataCarrier;
-// })
-
-// console.log("dTest", dTest);
-
-dC = dC.then(function(data) {
-  let thiscarrier = [];
-  let i;
-
-  for (i = 0; i < 4; i++) {
-    const dCSlice = {
-      term: $2019_3[i],
-      values: data.timelineData.map(function (d, index) {
-
-        if(i===3){
-          let premade = d.value[i];
-          let mycreate = dataCarrier[i].values[index].point;
-          console.log("compare", premade, mycreate)
-        }
-
-        return {
-          date: timeConv(d.formattedAxisTime),
-          point: +d.value[i],
         };
-      }),
-    };
+        
+        // console.log("dataset after all 1", dataset)
 
-    thiscarrier.push(dCSlice);
-  }
-  console.log("dC", thiscarrier);
-  return thiscarrier;
-})
+        return dataset;
+      })
+
+      promises.push(newPromise);
+    })
+
+    return Promise.all(promises).then((result) => {
+
+      // console.log("promises yo", result[result.length - 1]);
+      // return result[result.length - 1];
+      console.log("dataset", dataset);
+      return dataset;
+
+    })
 
 
-// console.log("dC",dC)
+
+  })
+
+  // .then(res => {console.log("res",res)})
+
+  // console.log("slice", arrayOfPromises.slice(1,3))
+  
+  
+  
+}
 
 
-// ORIGINAL
-// let datasetA = d3.json("./dist/assets/data/2019_1.json");
-
-// datasetA = datasetA.then(function(data) {
-
-//   let dataCarrier = [];
-//   let i;
-
-//   for (i = 0; i < searchTerms.length; i++) {
-//     const dataASlice = {
-//       term: $2019[i],
-//       values: data.map(function (d) {
-//         return {
-//           date: timeConv(d.formattedAxisTime),
-//           point: +d.value[i]
-//         }
-//       })
-//     }
-
-//     //// console.log("slice", dataASlice);
-
-//     dataCarrier.push(dataASlice);
-//   }
-//   return dataCarrier;
-// })
 
 
 // creating reusable chart
@@ -334,13 +285,13 @@ function chartTemplate() {
 
 }
 
-// to illustrate svg path mini-language
-// const illustration = svg.append("path")
-    // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
+// // to illustrate svg path mini-language
+// // const illustration = svg.append("path")
+//     // .attr("d", "M1, 5L20, 20L40, 10L60, 40L80, 5L100, 60")
 
-// stretch data values from 0 to the svg's width
+// // stretch data values from 0 to the svg's width
 
-// const yScale = d3.scaleLinear().rangeRound([height, 0]);
+// // const yScale = d3.scaleLinear().rangeRound([height, 0]);
 
 document.addEventListener("DOMContentLoaded", function () {
   
@@ -348,10 +299,18 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //// console.log("search terms", searchTerms)
 
+  const testArray = retriever($2019, $2019_sets);
+
+  // console.log("testArray", testArray)
+
   // CALL DRAW CHART FUNCTION
-  // datasetA.then((d) => {
-  //   d3.select("#container").datum(d).call(chartTemplate())
-  // })
+  let test = createDataset(testArray);
+  // console.log('indexjs Test', test)
+
+  createDataset(testArray).then((d) => {
+    console.log("woohoo", d)
+    // d3.select("#container").datum(d).call(chartTemplate())
+  })
  
 
   // simple_example();
@@ -361,23 +320,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  // // append SVG
-  // const svg = d3.select("#container").append("svg")
-  //   .attr("preserveAspectRatio", "xMinYMin meet")
-  //   .attr("width", width)
-  //   .attr("height", height)
-  //   .attr("viewBox", `-${adj} -${adj} ${width + adj*3} ${height + adj*3}`)
-  //   .classed("svg-content", true);
+//   // // append SVG
+//   // const svg = d3.select("#container").append("svg")
+//   //   .attr("preserveAspectRatio", "xMinYMin meet")
+//   //   .attr("width", width)
+//   //   .attr("height", height)
+//   //   .attr("viewBox", `-${adj} -${adj} ${width + adj*3} ${height + adj*3}`)
+//   //   .classed("svg-content", true);
   
   
-  // //----------------------------[interactive]POINTS------------------------------//
+//   // //----------------------------[interactive]POINTS------------------------------//
 
-  // lines.selectAll("points")
-  //   .data(function (d) { return d.values })
-  //   .enter()
-  //   .append("circle")
-  //   .attr("cx", function (d) { return xScale(d.date); })
-  //   .attr("cy", function (d) { return yScale(d.point); })
-  //   .attr("r", 1)
-  //   .attr("class", "point")
-  //   .style("opacity", 1);
+//   // lines.selectAll("points")
+//   //   .data(function (d) { return d.values })
+//   //   .enter()
+//   //   .append("circle")
+//   //   .attr("cx", function (d) { return xScale(d.date); })
+//   //   .attr("cy", function (d) { return yScale(d.point); })
+//   //   .attr("r", 1)
+//   //   .attr("class", "point")
+//   //   .style("opacity", 1);

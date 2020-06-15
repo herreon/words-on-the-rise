@@ -111,4 +111,4 @@ const $2015 = [
 
 
 
-module.exports = { $2019_searchTerms, $2019_sets };
+module.exports = { $2019, $2019_searchTerms, $2019_sets };
