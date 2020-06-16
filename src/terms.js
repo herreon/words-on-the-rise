@@ -1,5 +1,5 @@
 const $2019 = [
-    "boomer",
+    // "boomer",
     "vsco",
     "sfs",
     "fyp",
