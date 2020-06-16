@@ -1,7 +1,7 @@
 // creating reusable chart
 export function chartTemplate() {
   // set the dimensions and margins of the svg
-  let width = 600;
+  let width = 800;
   let height = 800;
   let adj = 30;
 
@@ -124,10 +124,11 @@ export function chartTemplate() {
           return `⇽       ${d.term}`;
         })
         .attr("x", 5)
-        .attr("transform", function (d) {
+        .attr("transform", function (d, i) {
           const lastIndex = d.values.length - 1; // the index of the last data point
+          
           const labelX = xScale(d.values[lastIndex].date) + 1;
-          const labelY = yScale(d.values[lastIndex].point) + 1;
+          const labelY = yScale(d.values[lastIndex].point + 5*i) - 60 ;
           return `translate(${labelX}, ${labelY})`;
         })
     });
