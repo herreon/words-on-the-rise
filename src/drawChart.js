@@ -8,9 +8,7 @@ export function chartTemplate() {
 
   function draw(selection) {
     selection.each(function (data) {
-      console.log("data_draw", data);
       
-    
       // SCALES: x-axis
       // define min and max values for domain on x-axis (time)
       const startDate = d3.min(data, function (d) {
@@ -33,6 +31,7 @@ export function chartTemplate() {
         .domain([startDate, endDate])
         .range([0, width]);
 
+
       // SCALES: y-axis
       // define max value for domain on y-axis (points)
       const maxY = d3.max(data, function (s) {
@@ -43,6 +42,38 @@ export function chartTemplate() {
 
       // set domain of y-axis
       const yScale = d3.scaleLinear().domain([0, maxY]).rangeRound([height, 0]);
+    
+    // add splined values
+      data.forEach(function (termSlice, i) {
+      const dates = termSlice.values.map(function (v) {
+        return xScale(v.date); // get array of dates mapped onto the browser
+      });
+
+      const points = termSlice.values.map(function (v) {
+        return yScale(v.point);
+      });
+
+    //   console.log("points?", points)
+    //   console.log("maxY?", yScale(maxY))
+      console.log("maxpoints?", d3.min(points))
+      const splineDate = d3.interpolateBasis(dates);
+      
+      const splinePoint = d3.interpolateBasis(points);
+
+      //   console.log("quantDate", d3.quantize(splineDate, 113*2))
+    //   console.log("quantPoint", d3.quantize(splinePoint, 113));
+    //   console.log("quantPointmax", d3.min(d3.quantize(splinePoint, 110)));
+
+      const originalNumOfPoints = termSlice.values.length;
+      const degree = 10 * originalNumOfPoints;
+
+      termSlice.splined = d3.zip(
+        d3.quantize(splineDate, degree),
+        d3.quantize(splinePoint, degree)
+      );
+
+      // d.values[i].point = d3.quantize(spline, 113)[i]
+    });
 
       // AXES
       const xAxis = d3
@@ -63,7 +94,8 @@ export function chartTemplate() {
         .scale(yScale)
         .tickSize(-width)
         .tickFormat("")
-        .tickValues([100 / 3, 200 / 3, 100])
+        .tickValues([maxY/ 3, 2 * maxY / 3, maxY])
+        // .tickValues([50, 100])
         .tickSizeOuter(0);
 
       // append svg
@@ -75,7 +107,7 @@ export function chartTemplate() {
         .attr("height", height)
         .attr(
           "viewBox",
-          `-${adj} -${adj} ${width + adj * 10} ${height + adj * 2}`
+          `-${adj * 2} -${adj * 3} ${width + adj * 10} ${height + adj * 2}`
         )
         .attr("preserveAspectRatio", "xMinYMin meet");
 
@@ -99,90 +131,18 @@ export function chartTemplate() {
 
       // draw lines
 
-      // function to separate out labels that overlap
-      function addLabelCoords (dataset) {
-          let yLabelValues = [];
-          let yLabelValuesOriginal = [];
-          let space = 15;
+      
 
-          data.forEach(function (s) {
-              let lastIndex = s.values.length - 1;
-              s.labelX = xScale(s.values[lastIndex].date);
-              
-              s.labelY = yScale(s.values[lastIndex].point);
-              yLabelValues.push(s.labelY);
-              yLabelValuesOriginal.push(s.labelY);
+
+        const line = d3.line()
+            .x(function (d) {
+            //   return xScale(d.date);
+            return d[0];
+            })
+            .y(function (d) {
+                // return yScale(d.point);
+            return d[1];
             });
-
-            // console.log("ylabelvalues", yLabelValues)
-            
-            yLabelValues.forEach((v1,i) => {
-                yLabelValues.forEach((v2, j) => {
-                    let count = 0;
-                    let yDiff = Math.abs(v2 - v1);
-                    let movingY = (yLabelValuesOriginal[j] >= yLabelValuesOriginal[i]) ? (j) : (i)
-                    if (i !== j && yDiff < 3) {
-                        // console.log(i, j, yLabelValues[i], yLabelValues[j]);
-                        count += 1;
-                        yLabelValues[movingY] = v2 + space
-                        // console.log("after edit", i, j, yLabelValues[i], yLabelValues[j]);
-                    }
-                })
-            })
-            
-            data.forEach(function(s, i) {
-                s.labelY = yLabelValues[i];
-            })
-            // console.log("ylabelvalues", yLabelValues)
-        }
-
-        // call function
-        addLabelCoords(data)
-
-        data.forEach(function(d, i) {
-            // console.log("d", d)
-            // console.log("d.values", d.values)
-            const dates = d.values.map(function(v) {
-                  return xScale(v.date)
-              })
-
-            const points = d.values.map(function(v) {
-                  return v.point
-              })
-
-            //   console.log("dates", d.term, dates)
-            //   console.log("points", d.term, points   )
-              
-              const splineDate = d3.interpolateBasis(dates)
-            
-            const splinePoint = d3.interpolateBasis(points)
-            // console.log("quantDate", d3.quantize(splineDate, 113))
-            // console.log("quantPoint", d3.quantize(splinePoint, 113));
-              const originalNumOfPoints = d.values.length;
-            const degree = 10 * originalNumOfPoints;
-
-            d.splined = d3.zip(d3.quantize(splineDate, degree), d3.quantize(splinePoint, degree));
-
-            // d.values[i].point = d3.quantize(spline, 113)[i]
-        })
-
-        console.log("newdata", data)
-        
-        // const spline = d3.interpolateBasis([0, 0.2, 1])
-
-        // console.log("quant", d3.quantize(spline, 6))
-        
-        // console.log('spline', spline)
-
-        const line = d3
-        .line()
-        .x(function (d) {
-        //   return xScale(d.date);
-          return d[0];
-        })
-        .y(function (d) {
-          return yScale(d[1]);
-        });
 
       const lines = svg.selectAll("lines").data(data).enter().append("g");
 
@@ -192,6 +152,7 @@ export function chartTemplate() {
           return `line-${i}`;
         })
         .attr("d", function (d) {
+            // return line(d.values);
           return line(d.splined);
         });
 

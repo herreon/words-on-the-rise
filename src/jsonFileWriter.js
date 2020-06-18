@@ -3,15 +3,15 @@ const googleTrends = require("google-trends-api");
 
 const termsModule = require("./terms.js");
 const $2019_searchTerms = termsModule.$2019_searchTerms;
-const $2019_sets = termsModule.$2019_sets;
+const $2019_splitQueries = termsModule.$2019_splitQueries;
 
 
-function arrayDataGenerator (set, startTime, endTime, fileName) {
+function arrayDataGenerator (query, startTime, endTime, fileName) {
 
-  console.log("new set", set)
+  console.log("new query", query)
 
   googleTrends.interestOverTime({
-    keyword: set,
+    keyword: query,
     startTime: startTime,
     endTime: endTime,
     geo: "US"
@@ -23,8 +23,6 @@ function arrayDataGenerator (set, startTime, endTime, fileName) {
     let output = JSON.parse(res).default.timelineData;
     return JSON.stringify(output, null, 2);
 
-    // let averages = JSON.parse(res).default.averages;
-    // console.log("res.average", averages);
   })
 
   .then(res => {
@@ -38,10 +36,10 @@ function arrayDataGenerator (set, startTime, endTime, fileName) {
 }
 
 
-$2019_sets.forEach((set, i) => {
+$2019_splitQueries[0].forEach((query, i) => {
   const startTime = new Date(2017, 11, 1);
   const endTime = new Date(2019, 12, 31);
   const fileName = `2019_${i}`;
   
-  arrayDataGenerator(set, startTime, endTime, fileName);
+  arrayDataGenerator(query, startTime, endTime, fileName);
 })

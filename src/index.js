@@ -3,7 +3,7 @@ import simple_example from "./z_simple.js";
 
 // data
 import { retriever, createDataset } from "./dataTransformer.js";
-import { $2019, $2019_searchTerms, $2019_sets } from "./terms.js";
+import { $2019, $2019_searchTerms, $2019_splitQueries } from "./terms.js";
 
 // d3 chart
 import { chartTemplate } from "./drawChart.js";
@@ -24,14 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //// console.log("search terms", searchTerms)
 
-  const testArray = retriever($2019, $2019_sets);
-  console.log("testArray", testArray)
-  // let test = createDataset(testArray);
+  const test_retrieverPromises = retriever($2019_splitQueries[0]);
+  console.log("test_retrieverPromises", test_retrieverPromises)
+  // let test = createDataset(test_retrieverPromises);
   // console.log('indexjs Test', test)
 
   // CALL DRAW CHART FUNCTION
+  console.log("$2019_splitqueries", $2019_splitQueries)
 
-  createDataset(testArray).then((d) => {
+  createDataset($2019_splitQueries[1], test_retrieverPromises)
+  .then((d) => {
     console.log("woohoo", d)
     d3.select("#container").datum(d).call(chartTemplate())
   })
