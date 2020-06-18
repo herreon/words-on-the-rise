@@ -1,3 +1,5 @@
+import { addLabelCoords } from "./labelCoords.js"
+
 // creating reusable chart
 export function chartTemplate() {
   // set the dimensions and margins of the svg
@@ -8,7 +10,7 @@ export function chartTemplate() {
 
   function draw(selection) {
     selection.each(function (data) {
-      
+
       // SCALES: x-axis
       // define min and max values for domain on x-axis (time)
       const startDate = d3.min(data, function (d) {
@@ -43,36 +45,38 @@ export function chartTemplate() {
       // set domain of y-axis
       const yScale = d3.scaleLinear().domain([0, maxY]).rangeRound([height, 0]);
     
-    // add splined values
-      data.forEach(function (termSlice, i) {
-      const dates = termSlice.values.map(function (v) {
-        return xScale(v.date); // get array of dates mapped onto the browser
-      });
 
-      const points = termSlice.values.map(function (v) {
-        return yScale(v.point);
-      });
-
-    //   console.log("points?", points)
-    //   console.log("maxY?", yScale(maxY))
-      console.log("maxpoints?", d3.min(points))
-      const splineDate = d3.interpolateBasis(dates);
+    // add label coordinates to dataset's termSlices
+      addLabelCoords(data, 10, xScale, yScale);
       
-      const splinePoint = d3.interpolateBasis(points);
 
-      //   console.log("quantDate", d3.quantize(splineDate, 113*2))
-    //   console.log("quantPoint", d3.quantize(splinePoint, 113));
-    //   console.log("quantPointmax", d3.min(d3.quantize(splinePoint, 110)));
+    // VALUES: add splined values
+      data.forEach(function (termSlice, i) {
+        const dates = termSlice.values.map(function (v) {
+            return xScale(v.date); // get array of dates mapped onto the browser
+        });
 
-      const originalNumOfPoints = termSlice.values.length;
-      const degree = 10 * originalNumOfPoints;
+        const points = termSlice.values.map(function (v) {
+            return yScale(v.point);
+        });
 
-      termSlice.splined = d3.zip(
-        d3.quantize(splineDate, degree),
-        d3.quantize(splinePoint, degree)
-      );
+    
+        const splineDate = d3.interpolateBasis(dates);
+        
+        const splinePoint = d3.interpolateBasis(points);
 
-      // d.values[i].point = d3.quantize(spline, 113)[i]
+        //   console.log("quantDate", d3.quantize(splineDate, 113*2))
+        //   console.log("quantPoint", d3.quantize(splinePoint, 113));
+        //   console.log("quantPointmax", d3.min(d3.quantize(splinePoint, 110)));
+
+        const originalNumOfPoints = termSlice.values.length;
+        const degree = 21 * originalNumOfPoints;
+
+        termSlice.splined = d3.zip(
+            d3.quantize(splineDate, degree),
+            d3.quantize(splinePoint, degree)
+        );
+
     });
 
       // AXES
@@ -83,10 +87,10 @@ export function chartTemplate() {
         .tickFormat(d3.timeFormat("%b %Y"))
         .tickSizeOuter(0);
 
-      // const yAxis = d3.axisLeft()
-      //                 .scale(yScale)
-      //                 .tickValues([])
-      //                 .tickSizeOuter(0)
+      const yAxis = d3.axisLeft()
+                      .scale(yScale)
+                      .tickValues([])
+                      .tickSizeOuter(0)
 
       // AXES: gridlines
       const yAxisGrid = d3
@@ -95,7 +99,6 @@ export function chartTemplate() {
         .tickSize(-width)
         .tickFormat("")
         .tickValues([maxY/ 3, 2 * maxY / 3, maxY])
-        // .tickValues([50, 100])
         .tickSizeOuter(0);
 
       // append svg
@@ -130,19 +133,15 @@ export function chartTemplate() {
       // .style("text-anchor", "end");
 
       // draw lines
-
-      
-
-
-        const line = d3.line()
-            .x(function (d) {
-            //   return xScale(d.date);
+      const line = d3.line()
+        .x(function (d) {
+        //   return xScale(d.date);
             return d[0];
-            })
-            .y(function (d) {
-                // return yScale(d.point);
+        })
+        .y(function (d) {
+            // return yScale(d.point);
             return d[1];
-            });
+        });
 
       const lines = svg.selectAll("lines").data(data).enter().append("g");
 
@@ -167,13 +166,13 @@ export function chartTemplate() {
         })
         .attr("x", 5)
         .attr("transform", function (d, i) {
-            const lastIndex = d.values.length - 1;
-            const labelX = xScale(d.values[lastIndex].date);
-            const labelY = yScale(d.values[lastIndex].point);
+            // const lastIndex = d.values.length - 1;
+            // const labelX = xScale(d.values[lastIndex].date);
+            // const labelY = yScale(d.values[lastIndex].point);
 
 
-          return `translate(${labelX}, ${labelY})`;
-        //   return `translate(${d.labelX}, ${d.labelY})`;
+        //   return `translate(${labelX}, ${labelY})`;
+          return `translate(${d.labelX}, ${d.labelY})`;
         })
 
 

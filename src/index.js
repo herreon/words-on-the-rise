@@ -1,9 +1,9 @@
-import test_function from "./z_example.js";
-import simple_example from "./z_simple.js";
+import test_function from "./references/z_example.js";
+import simple_example from "./references/z_simple.js";
 
 // data
-import { retriever, createDataset } from "./dataTransformer.js";
-import { $2019, $2019_searchTerms, $2019_splitQueries } from "./terms.js";
+import { retriever, createDataset } from "./data/dataTransformer.js";
+import { $2019, $2019_searchTerms, $2019_splitQueries } from "./data/terms.js";
 
 // d3 chart
 import { chartTemplate } from "./drawChart.js";

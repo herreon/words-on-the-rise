@@ -39,6 +39,7 @@ function arrayDataGenerator (query, startTime, endTime, fileName) {
 $2019_splitQueries[0].forEach((query, i) => {
   const startTime = new Date(2017, 11, 1);
   const endTime = new Date(2019, 12, 31);
+  // const endTime = new Date(2019, 6, 30);
   const fileName = `2019_${i}`;
   
   arrayDataGenerator(query, startTime, endTime, fileName);

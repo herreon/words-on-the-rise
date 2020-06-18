@@ -5,20 +5,20 @@
     "formattedAxisTime": "Dec 3, 2017",
     "value": [
       2,
-      12,
-      2,
+      0,
+      0,
       0
     ],
     "hasData": [
       true,
-      true,
-      true,
+      false,
+      false,
       false
     ],
     "formattedValue": [
       "2",
-      "12",
-      "2",
+      "0",
+      "0",
       "0"
     ]
   },
@@ -28,19 +28,19 @@
     "formattedAxisTime": "Dec 10, 2017",
     "value": [
       0,
-      17,
+      0,
       2,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "0",
-      "17",
+      "0",
       "2",
       "0"
     ]
@@ -51,19 +51,19 @@
     "formattedAxisTime": "Dec 17, 2017",
     "value": [
       0,
-      14,
+      0,
       2,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "0",
-      "14",
+      "0",
       "2",
       "0"
     ]
@@ -74,19 +74,19 @@
     "formattedAxisTime": "Dec 24, 2017",
     "value": [
       0,
-      27,
+      0,
       0,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       false,
       false
     ],
     "formattedValue": [
       "0",
-      "27",
+      "0",
       "0",
       "0"
     ]
@@ -97,21 +97,21 @@
     "formattedAxisTime": "Dec 31, 2017",
     "value": [
       4,
-      17,
       0,
-      2
+      0,
+      0
     ],
     "hasData": [
       true,
-      true,
       false,
-      true
+      false,
+      false
     ],
     "formattedValue": [
       "4",
-      "17",
       "0",
-      "2"
+      "0",
+      "0"
     ]
   },
   {
@@ -120,19 +120,19 @@
     "formattedAxisTime": "Jan 7, 2018",
     "value": [
       2,
-      15,
+      0,
       2,
       0
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "2",
-      "15",
+      "0",
       "2",
       "0"
     ]
@@ -143,19 +143,19 @@
     "formattedAxisTime": "Jan 14, 2018",
     "value": [
       2,
-      16,
+      0,
       2,
       2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "16",
+      "0",
       "2",
       "2"
     ]
@@ -166,20 +166,20 @@
     "formattedAxisTime": "Jan 21, 2018",
     "value": [
       0,
-      14,
-      2,
+      0,
+      0,
       2
     ],
     "hasData": [
       false,
-      true,
-      true,
+      false,
+      false,
       true
     ],
     "formattedValue": [
       "0",
-      "14",
-      "2",
+      "0",
+      "0",
       "2"
     ]
   },
@@ -189,20 +189,20 @@
     "formattedAxisTime": "Jan 28, 2018",
     "value": [
       2,
-      14,
-      2,
+      0,
+      0,
       0
     ],
     "hasData": [
       true,
-      true,
-      true,
+      false,
+      false,
       false
     ],
     "formattedValue": [
       "2",
-      "14",
-      "2",
+      "0",
+      "0",
       "0"
     ]
   },
@@ -211,20 +211,20 @@
     "formattedTime": "Feb 4 – 10, 2018",
     "formattedAxisTime": "Feb 4, 2018",
     "value": [
-      3,
-      17,
+      4,
+      0,
       0,
       0
     ],
     "hasData": [
       true,
-      true,
+      false,
       false,
       false
     ],
     "formattedValue": [
-      "3",
-      "17",
+      "4",
+      "0",
       "0",
       "0"
     ]
@@ -235,19 +235,19 @@
     "formattedAxisTime": "Feb 11, 2018",
     "value": [
       4,
-      10,
+      0,
       0,
       0
     ],
     "hasData": [
       true,
-      true,
+      false,
       false,
       false
     ],
     "formattedValue": [
       "4",
-      "10",
+      "0",
       "0",
       "0"
     ]
@@ -258,20 +258,20 @@
     "formattedAxisTime": "Feb 18, 2018",
     "value": [
       2,
-      12,
-      2,
+      0,
+      0,
       0
     ],
     "hasData": [
       true,
-      true,
-      true,
+      false,
+      false,
       false
     ],
     "formattedValue": [
       "2",
-      "12",
-      "2",
+      "0",
+      "0",
       "0"
     ]
   },
@@ -281,19 +281,19 @@
     "formattedAxisTime": "Feb 25, 2018",
     "value": [
       2,
-      19,
+      0,
       0,
       0
     ],
     "hasData": [
       true,
-      true,
+      false,
       false,
       false
     ],
     "formattedValue": [
       "2",
-      "19",
+      "0",
       "0",
       "0"
     ]
@@ -304,21 +304,21 @@
     "formattedAxisTime": "Mar 4, 2018",
     "value": [
       2,
-      10,
-      2,
-      2
+      0,
+      0,
+      0
     ],
     "hasData": [
       true,
-      true,
-      true,
-      true
+      false,
+      false,
+      false
     ],
     "formattedValue": [
       "2",
-      "10",
-      "2",
-      "2"
+      "0",
+      "0",
+      "0"
     ]
   },
   {
@@ -327,19 +327,19 @@
     "formattedAxisTime": "Mar 11, 2018",
     "value": [
       4,
-      23,
+      0,
       0,
       0
     ],
     "hasData": [
       true,
-      true,
+      false,
       false,
       false
     ],
     "formattedValue": [
       "4",
-      "23",
+      "0",
       "0",
       "0"
     ]
@@ -350,19 +350,19 @@
     "formattedAxisTime": "Mar 18, 2018",
     "value": [
       0,
-      20,
+      0,
       3,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "0",
-      "20",
+      "0",
       "3",
       "0"
     ]
@@ -373,21 +373,21 @@
     "formattedAxisTime": "Mar 25, 2018",
     "value": [
       2,
-      14,
       0,
-      2
+      0,
+      0
     ],
     "hasData": [
       true,
-      true,
       false,
-      true
+      false,
+      false
     ],
     "formattedValue": [
       "2",
-      "14",
       "0",
-      "2"
+      "0",
+      "0"
     ]
   },
   {
@@ -396,20 +396,20 @@
     "formattedAxisTime": "Apr 1, 2018",
     "value": [
       0,
-      12,
-      3,
+      0,
+      2,
       2
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "0",
-      "12",
-      "3",
+      "0",
+      "2",
       "2"
     ]
   },
@@ -419,19 +419,19 @@
     "formattedAxisTime": "Apr 8, 2018",
     "value": [
       0,
-      18,
+      0,
       0,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       false,
       false
     ],
     "formattedValue": [
       "0",
-      "18",
+      "0",
       "0",
       "0"
     ]
@@ -442,19 +442,19 @@
     "formattedAxisTime": "Apr 15, 2018",
     "value": [
       2,
-      19,
+      0,
       2,
       2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "19",
+      "0",
       "2",
       "2"
     ]
@@ -465,20 +465,20 @@
     "formattedAxisTime": "Apr 22, 2018",
     "value": [
       0,
-      15,
-      5,
+      0,
+      4,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "0",
-      "15",
-      "5",
+      "0",
+      "4",
       "0"
     ]
   },
@@ -488,20 +488,20 @@
     "formattedAxisTime": "Apr 29, 2018",
     "value": [
       2,
-      11,
-      2,
+      0,
+      0,
       2
     ],
     "hasData": [
       true,
-      true,
-      true,
+      false,
+      false,
       true
     ],
     "formattedValue": [
       "2",
-      "11",
-      "2",
+      "0",
+      "0",
       "2"
     ]
   },
@@ -510,20 +510,20 @@
     "formattedTime": "May 6 – 12, 2018",
     "formattedAxisTime": "May 6, 2018",
     "value": [
-      3,
-      7,
+      4,
+      0,
       2,
       4
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
-      "3",
-      "7",
+      "4",
+      "0",
       "2",
       "4"
     ]
@@ -533,20 +533,20 @@
     "formattedTime": "May 13 – 19, 2018",
     "formattedAxisTime": "May 13, 2018",
     "value": [
-      2,
-      12,
+      0,
+      0,
       2,
       0
     ],
     "hasData": [
-      true,
-      true,
+      false,
+      false,
       true,
       false
     ],
     "formattedValue": [
-      "2",
-      "12",
+      "0",
+      "0",
       "2",
       "0"
     ]
@@ -557,19 +557,19 @@
     "formattedAxisTime": "May 20, 2018",
     "value": [
       5,
-      12,
+      0,
       2,
       2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "5",
-      "12",
+      "0",
       "2",
       "2"
     ]
@@ -580,19 +580,19 @@
     "formattedAxisTime": "May 27, 2018",
     "value": [
       2,
-      15,
+      0,
       2,
       0
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "2",
-      "15",
+      "0",
       "2",
       "0"
     ]
@@ -602,20 +602,20 @@
     "formattedTime": "Jun 3 – 9, 2018",
     "formattedAxisTime": "Jun 3, 2018",
     "value": [
-      2,
-      14,
+      0,
+      0,
       2,
       0
     ],
     "hasData": [
-      true,
-      true,
+      false,
+      false,
       true,
       false
     ],
     "formattedValue": [
-      "2",
-      "14",
+      "0",
+      "0",
       "2",
       "0"
     ]
@@ -626,21 +626,21 @@
     "formattedAxisTime": "Jun 10, 2018",
     "value": [
       0,
-      10,
+      0,
       2,
-      2
+      0
     ],
     "hasData": [
       false,
+      false,
       true,
-      true,
-      true
+      false
     ],
     "formattedValue": [
       "0",
-      "10",
+      "0",
       "2",
-      "2"
+      "0"
     ]
   },
   {
@@ -649,21 +649,21 @@
     "formattedAxisTime": "Jun 17, 2018",
     "value": [
       0,
-      16,
+      0,
       2,
-      3
+      2
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "0",
-      "16",
+      "0",
       "2",
-      "3"
+      "2"
     ]
   },
   {
@@ -672,19 +672,19 @@
     "formattedAxisTime": "Jun 24, 2018",
     "value": [
       2,
-      16,
+      0,
       2,
       3
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "16",
+      "0",
       "2",
       "3"
     ]
@@ -695,20 +695,20 @@
     "formattedAxisTime": "Jul 1, 2018",
     "value": [
       2,
-      14,
-      3,
+      0,
+      2,
       3
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "14",
-      "3",
+      "0",
+      "2",
       "3"
     ]
   },
@@ -718,20 +718,20 @@
     "formattedAxisTime": "Jul 8, 2018",
     "value": [
       3,
-      18,
       2,
+      0,
       2
     ],
     "hasData": [
       true,
       true,
-      true,
+      false,
       true
     ],
     "formattedValue": [
       "3",
-      "18",
       "2",
+      "0",
       "2"
     ]
   },
@@ -741,19 +741,19 @@
     "formattedAxisTime": "Jul 15, 2018",
     "value": [
       2,
-      15,
+      0,
       3,
       6
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "15",
+      "0",
       "3",
       "6"
     ]
@@ -764,20 +764,20 @@
     "formattedAxisTime": "Jul 22, 2018",
     "value": [
       2,
-      15,
-      4,
+      0,
+      3,
       2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "15",
-      "4",
+      "0",
+      "3",
       "2"
     ]
   },
@@ -786,22 +786,22 @@
     "formattedTime": "Jul 29 – Aug 4, 2018",
     "formattedAxisTime": "Jul 29, 2018",
     "value": [
-      2,
-      22,
       0,
-      4
+      0,
+      0,
+      6
     ],
     "hasData": [
-      true,
-      true,
+      false,
+      false,
       false,
       true
     ],
     "formattedValue": [
-      "2",
-      "22",
       "0",
-      "4"
+      "0",
+      "0",
+      "6"
     ]
   },
   {
@@ -809,21 +809,21 @@
     "formattedTime": "Aug 5 – 11, 2018",
     "formattedAxisTime": "Aug 5, 2018",
     "value": [
-      3,
-      17,
-      2,
+      4,
+      0,
+      0,
       4
     ],
     "hasData": [
       true,
-      true,
-      true,
+      false,
+      false,
       true
     ],
     "formattedValue": [
-      "3",
-      "17",
-      "2",
+      "4",
+      "0",
+      "0",
       "4"
     ]
   },
@@ -833,21 +833,21 @@
     "formattedAxisTime": "Aug 12, 2018",
     "value": [
       4,
-      16,
+      0,
       2,
-      4
+      2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "4",
-      "16",
+      "0",
       "2",
-      "4"
+      "2"
     ]
   },
   {
@@ -856,19 +856,19 @@
     "formattedAxisTime": "Aug 19, 2018",
     "value": [
       2,
-      23,
+      0,
       2,
       4
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "23",
+      "0",
       "2",
       "4"
     ]
@@ -879,21 +879,21 @@
     "formattedAxisTime": "Aug 26, 2018",
     "value": [
       2,
-      15,
+      0,
       5,
-      2
+      0
     ],
     "hasData": [
       true,
+      false,
       true,
-      true,
-      true
+      false
     ],
     "formattedValue": [
       "2",
-      "15",
+      "0",
       "5",
-      "2"
+      "0"
     ]
   },
   {
@@ -902,21 +902,21 @@
     "formattedAxisTime": "Sep 2, 2018",
     "value": [
       0,
-      10,
+      0,
       4,
-      5
+      6
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "0",
-      "10",
+      "0",
       "4",
-      "5"
+      "6"
     ]
   },
   {
@@ -925,19 +925,19 @@
     "formattedAxisTime": "Sep 9, 2018",
     "value": [
       0,
-      12,
+      0,
       2,
       0
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       false
     ],
     "formattedValue": [
       "0",
-      "12",
+      "0",
       "2",
       "0"
     ]
@@ -947,22 +947,22 @@
     "formattedTime": "Sep 16 – 22, 2018",
     "formattedAxisTime": "Sep 16, 2018",
     "value": [
-      3,
-      15,
+      4,
+      0,
       2,
-      5
+      8
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
-      "3",
-      "15",
+      "4",
+      "0",
       "2",
-      "5"
+      "8"
     ]
   },
   {
@@ -971,19 +971,19 @@
     "formattedAxisTime": "Sep 23, 2018",
     "value": [
       2,
-      21,
+      0,
       4,
       4
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "21",
+      "0",
       "4",
       "4"
     ]
@@ -994,20 +994,20 @@
     "formattedAxisTime": "Sep 30, 2018",
     "value": [
       2,
-      12,
-      3,
+      0,
+      2,
       5
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "12",
-      "3",
+      "0",
+      "2",
       "5"
     ]
   },
@@ -1017,21 +1017,21 @@
     "formattedAxisTime": "Oct 7, 2018",
     "value": [
       2,
-      17,
-      3,
-      4
+      0,
+      4,
+      3
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "17",
-      "3",
-      "4"
+      "0",
+      "4",
+      "3"
     ]
   },
   {
@@ -1040,19 +1040,19 @@
     "formattedAxisTime": "Oct 14, 2018",
     "value": [
       2,
-      19,
+      0,
       4,
       4
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "19",
+      "0",
       "4",
       "4"
     ]
@@ -1063,21 +1063,21 @@
     "formattedAxisTime": "Oct 21, 2018",
     "value": [
       2,
-      18,
+      0,
       4,
-      3
+      2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "18",
+      "0",
       "4",
-      "3"
+      "2"
     ]
   },
   {
@@ -1086,20 +1086,20 @@
     "formattedAxisTime": "Oct 28, 2018",
     "value": [
       0,
-      16,
-      4,
+      0,
+      2,
       6
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "0",
-      "16",
-      "4",
+      "0",
+      "2",
       "6"
     ]
   },
@@ -1108,21 +1108,21 @@
     "formattedTime": "Nov 4 – 10, 2018",
     "formattedAxisTime": "Nov 4, 2018",
     "value": [
-      4,
-      20,
       5,
+      0,
+      4,
       7
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
-      "4",
-      "20",
       "5",
+      "0",
+      "4",
       "7"
     ]
   },
@@ -1132,19 +1132,19 @@
     "formattedAxisTime": "Nov 11, 2018",
     "value": [
       2,
-      16,
+      0,
       4,
       9
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "16",
+      "0",
       "4",
       "9"
     ]
@@ -1155,21 +1155,21 @@
     "formattedAxisTime": "Nov 18, 2018",
     "value": [
       2,
-      27,
-      6,
-      13
+      0,
+      5,
+      11
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "27",
-      "6",
-      "13"
+      "0",
+      "5",
+      "11"
     ]
   },
   {
@@ -1178,21 +1178,21 @@
     "formattedAxisTime": "Nov 25, 2018",
     "value": [
       3,
-      27,
-      7,
-      5
+      0,
+      6,
+      6
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "3",
-      "27",
-      "7",
-      "5"
+      "0",
+      "6",
+      "6"
     ]
   },
   {
@@ -1201,21 +1201,21 @@
     "formattedAxisTime": "Dec 2, 2018",
     "value": [
       4,
-      16,
-      6,
-      6
+      0,
+      7,
+      7
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "4",
-      "16",
-      "6",
-      "6"
+      "0",
+      "7",
+      "7"
     ]
   },
   {
@@ -1224,20 +1224,20 @@
     "formattedAxisTime": "Dec 9, 2018",
     "value": [
       2,
-      23,
-      4,
+      0,
+      2,
       2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "23",
-      "4",
+      "0",
+      "2",
       "2"
     ]
   },
@@ -1247,21 +1247,21 @@
     "formattedAxisTime": "Dec 16, 2018",
     "value": [
       2,
-      26,
+      0,
       2,
-      9
+      11
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "26",
+      "0",
       "2",
-      "9"
+      "11"
     ]
   },
   {
@@ -1270,21 +1270,21 @@
     "formattedAxisTime": "Dec 23, 2018",
     "value": [
       0,
-      24,
+      0,
       2,
-      14
+      10
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "0",
-      "24",
+      "0",
       "2",
-      "14"
+      "10"
     ]
   },
   {
@@ -1292,21 +1292,21 @@
     "formattedTime": "Dec 30, 2018 – Jan 5, 2019",
     "formattedAxisTime": "Dec 30, 2018",
     "value": [
-      2,
-      22,
-      7,
+      0,
+      0,
+      8,
       8
     ],
     "hasData": [
-      true,
-      true,
+      false,
+      false,
       true,
       true
     ],
     "formattedValue": [
-      "2",
-      "22",
-      "7",
+      "0",
+      "0",
+      "8",
       "8"
     ]
   },
@@ -1316,21 +1316,21 @@
     "formattedAxisTime": "Jan 6, 2019",
     "value": [
       3,
-      25,
+      0,
       6,
-      6
+      7
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "3",
-      "25",
+      "0",
       "6",
-      "6"
+      "7"
     ]
   },
   {
@@ -1339,21 +1339,21 @@
     "formattedAxisTime": "Jan 13, 2019",
     "value": [
       2,
-      20,
-      6,
-      3
+      0,
+      4,
+      2
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "20",
-      "6",
-      "3"
+      "0",
+      "4",
+      "2"
     ]
   },
   {
@@ -1362,20 +1362,20 @@
     "formattedAxisTime": "Jan 20, 2019",
     "value": [
       2,
-      27,
-      9,
+      0,
+      8,
       13
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "27",
-      "9",
+      "0",
+      "8",
       "13"
     ]
   },
@@ -1385,19 +1385,19 @@
     "formattedAxisTime": "Jan 27, 2019",
     "value": [
       2,
-      33,
+      0,
       2,
       4
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "33",
+      "0",
       "2",
       "4"
     ]
@@ -1407,22 +1407,22 @@
     "formattedTime": "Feb 3 – 9, 2019",
     "formattedAxisTime": "Feb 3, 2019",
     "value": [
+      0,
+      0,
       2,
-      31,
-      3,
-      7
+      5
     ],
     "hasData": [
-      true,
-      true,
+      false,
+      false,
       true,
       true
     ],
     "formattedValue": [
+      "0",
+      "0",
       "2",
-      "31",
-      "3",
-      "7"
+      "5"
     ]
   },
   {
@@ -1431,21 +1431,21 @@
     "formattedAxisTime": "Feb 10, 2019",
     "value": [
       2,
-      25,
-      5,
-      8
+      0,
+      6,
+      7
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "25",
-      "5",
-      "8"
+      "0",
+      "6",
+      "7"
     ]
   },
   {
@@ -1454,21 +1454,21 @@
     "formattedAxisTime": "Feb 17, 2019",
     "value": [
       2,
-      30,
+      0,
       4,
-      5
+      6
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "30",
+      "0",
       "4",
-      "5"
+      "6"
     ]
   },
   {
@@ -1476,22 +1476,22 @@
     "formattedTime": "Feb 24 – Mar 2, 2019",
     "formattedAxisTime": "Feb 24, 2019",
     "value": [
-      2,
-      21,
-      6,
-      10
+      0,
+      0,
+      5,
+      7
     ],
     "hasData": [
-      true,
-      true,
+      false,
+      false,
       true,
       true
     ],
     "formattedValue": [
-      "2",
-      "21",
-      "6",
-      "10"
+      "0",
+      "0",
+      "5",
+      "7"
     ]
   },
   {
@@ -1500,21 +1500,21 @@
     "formattedAxisTime": "Mar 3, 2019",
     "value": [
       3,
-      26,
-      8,
-      5
+      0,
+      9,
+      7
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "3",
-      "26",
-      "8",
-      "5"
+      "0",
+      "9",
+      "7"
     ]
   },
   {
@@ -1523,20 +1523,20 @@
     "formattedAxisTime": "Mar 10, 2019",
     "value": [
       0,
-      28,
-      10,
+      0,
+      5,
       5
     ],
     "hasData": [
       false,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "0",
-      "28",
-      "10",
+      "0",
+      "5",
       "5"
     ]
   },
@@ -1546,21 +1546,21 @@
     "formattedAxisTime": "Mar 17, 2019",
     "value": [
       2,
-      25,
-      9,
-      6
+      0,
+      7,
+      5
     ],
     "hasData": [
       true,
-      true,
+      false,
       true,
       true
     ],
     "formattedValue": [
       "2",
-      "25",
-      "9",
-      "6"
+      "0",
+      "7",
+      "5"
     ]
   },
   {
@@ -1569,9 +1569,262 @@
     "formattedAxisTime": "Mar 24, 2019",
     "value": [
       4,
-      34,
-      8,
+      0,
+      7,
+      4
+    ],
+    "hasData": [
+      true,
+      false,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "4",
+      "0",
+      "7",
+      "4"
+    ]
+  },
+  {
+    "time": "1553990400",
+    "formattedTime": "Mar 31 – Apr 6, 2019",
+    "formattedAxisTime": "Mar 31, 2019",
+    "value": [
+      0,
+      0,
+      12,
+      5
+    ],
+    "hasData": [
+      false,
+      false,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "0",
+      "0",
+      "12",
+      "5"
+    ]
+  },
+  {
+    "time": "1554595200",
+    "formattedTime": "Apr 7 – 13, 2019",
+    "formattedAxisTime": "Apr 7, 2019",
+    "value": [
+      0,
+      0,
+      10,
+      10
+    ],
+    "hasData": [
+      false,
+      false,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "0",
+      "0",
+      "10",
+      "10"
+    ]
+  },
+  {
+    "time": "1555200000",
+    "formattedTime": "Apr 14 – 20, 2019",
+    "formattedAxisTime": "Apr 14, 2019",
+    "value": [
+      6,
+      0,
+      13,
       6
+    ],
+    "hasData": [
+      true,
+      false,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "6",
+      "0",
+      "13",
+      "6"
+    ]
+  },
+  {
+    "time": "1555804800",
+    "formattedTime": "Apr 21 – 27, 2019",
+    "formattedAxisTime": "Apr 21, 2019",
+    "value": [
+      2,
+      0,
+      5,
+      13
+    ],
+    "hasData": [
+      true,
+      false,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "0",
+      "5",
+      "13"
+    ]
+  },
+  {
+    "time": "1556409600",
+    "formattedTime": "Apr 28 – May 4, 2019",
+    "formattedAxisTime": "Apr 28, 2019",
+    "value": [
+      0,
+      0,
+      9,
+      8
+    ],
+    "hasData": [
+      false,
+      false,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "0",
+      "0",
+      "9",
+      "8"
+    ]
+  },
+  {
+    "time": "1557014400",
+    "formattedTime": "May 5 – 11, 2019",
+    "formattedAxisTime": "May 5, 2019",
+    "value": [
+      6,
+      4,
+      3,
+      15
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "6",
+      "4",
+      "3",
+      "15"
+    ]
+  },
+  {
+    "time": "1557619200",
+    "formattedTime": "May 12 – 18, 2019",
+    "formattedAxisTime": "May 12, 2019",
+    "value": [
+      0,
+      6,
+      7,
+      3
+    ],
+    "hasData": [
+      false,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "0",
+      "6",
+      "7",
+      "3"
+    ]
+  },
+  {
+    "time": "1558224000",
+    "formattedTime": "May 19 – 25, 2019",
+    "formattedAxisTime": "May 19, 2019",
+    "value": [
+      3,
+      5,
+      5,
+      12
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "3",
+      "5",
+      "5",
+      "12"
+    ]
+  },
+  {
+    "time": "1558828800",
+    "formattedTime": "May 26 – Jun 1, 2019",
+    "formattedAxisTime": "May 26, 2019",
+    "value": [
+      3,
+      29,
+      5,
+      11
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "3",
+      "29",
+      "5",
+      "11"
+    ]
+  },
+  {
+    "time": "1559433600",
+    "formattedTime": "Jun 2 – 8, 2019",
+    "formattedAxisTime": "Jun 2, 2019",
+    "value": [
+      3,
+      30,
+      8,
+      9
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "3",
+      "30",
+      "8",
+      "9"
+    ]
+  },
+  {
+    "time": "1560038400",
+    "formattedTime": "Jun 9 – 15, 2019",
+    "formattedAxisTime": "Jun 9, 2019",
+    "value": [
+      4,
+      34,
+      9,
+      15
     ],
     "hasData": [
       true,
@@ -1582,87 +1835,18 @@
     "formattedValue": [
       "4",
       "34",
-      "8",
-      "6"
-    ]
-  },
-  {
-    "time": "1553990400",
-    "formattedTime": "Mar 31 – Apr 6, 2019",
-    "formattedAxisTime": "Mar 31, 2019",
-    "value": [
-      0,
-      25,
-      13,
-      5
-    ],
-    "hasData": [
-      false,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "0",
-      "25",
-      "13",
-      "5"
-    ]
-  },
-  {
-    "time": "1554595200",
-    "formattedTime": "Apr 7 – 13, 2019",
-    "formattedAxisTime": "Apr 7, 2019",
-    "value": [
-      2,
-      35,
-      9,
-      10
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "2",
-      "35",
       "9",
-      "10"
+      "15"
     ]
   },
   {
-    "time": "1555200000",
-    "formattedTime": "Apr 14 – 20, 2019",
-    "formattedAxisTime": "Apr 14, 2019",
-    "value": [
-      4,
-      38,
-      12,
-      7
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "4",
-      "38",
-      "12",
-      "7"
-    ]
-  },
-  {
-    "time": "1555804800",
-    "formattedTime": "Apr 21 – 27, 2019",
-    "formattedAxisTime": "Apr 21, 2019",
+    "time": "1560643200",
+    "formattedTime": "Jun 16 – 22, 2019",
+    "formattedAxisTime": "Jun 16, 2019",
     "value": [
       2,
-      38,
-      6,
+      30,
+      8,
       11
     ],
     "hasData": [
@@ -1673,42 +1857,42 @@
     ],
     "formattedValue": [
       "2",
-      "38",
-      "6",
+      "30",
+      "8",
       "11"
     ]
   },
   {
-    "time": "1556409600",
-    "formattedTime": "Apr 28 – May 4, 2019",
-    "formattedAxisTime": "Apr 28, 2019",
+    "time": "1561248000",
+    "formattedTime": "Jun 23 – 29, 2019",
+    "formattedAxisTime": "Jun 23, 2019",
     "value": [
-      0,
-      30,
-      10,
+      6,
+      22,
+      5,
       10
     ],
     "hasData": [
-      false,
+      true,
       true,
       true,
       true
     ],
     "formattedValue": [
-      "0",
-      "30",
-      "10",
+      "6",
+      "22",
+      "5",
       "10"
     ]
   },
   {
-    "time": "1557014400",
-    "formattedTime": "May 5 – 11, 2019",
-    "formattedAxisTime": "May 5, 2019",
+    "time": "1561852800",
+    "formattedTime": "Jun 30 – Jul 6, 2019",
+    "formattedAxisTime": "Jun 30, 2019",
     "value": [
-      6,
-      32,
-      4,
+      3,
+      23,
+      8,
       15
     ],
     "hasData": [
@@ -1718,194 +1902,10 @@
       true
     ],
     "formattedValue": [
-      "6",
-      "32",
-      "4",
+      "3",
+      "23",
+      "8",
       "15"
-    ]
-  },
-  {
-    "time": "1557619200",
-    "formattedTime": "May 12 – 18, 2019",
-    "formattedAxisTime": "May 12, 2019",
-    "value": [
-      0,
-      33,
-      7,
-      9
-    ],
-    "hasData": [
-      false,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "0",
-      "33",
-      "7",
-      "9"
-    ]
-  },
-  {
-    "time": "1558224000",
-    "formattedTime": "May 19 – 25, 2019",
-    "formattedAxisTime": "May 19, 2019",
-    "value": [
-      3,
-      31,
-      9,
-      14
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "31",
-      "9",
-      "14"
-    ]
-  },
-  {
-    "time": "1558828800",
-    "formattedTime": "May 26 – Jun 1, 2019",
-    "formattedAxisTime": "May 26, 2019",
-    "value": [
-      3,
-      46,
-      9,
-      17
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "46",
-      "9",
-      "17"
-    ]
-  },
-  {
-    "time": "1559433600",
-    "formattedTime": "Jun 2 – 8, 2019",
-    "formattedAxisTime": "Jun 2, 2019",
-    "value": [
-      3,
-      54,
-      8,
-      8
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "54",
-      "8",
-      "8"
-    ]
-  },
-  {
-    "time": "1560038400",
-    "formattedTime": "Jun 9 – 15, 2019",
-    "formattedAxisTime": "Jun 9, 2019",
-    "value": [
-      4,
-      38,
-      8,
-      18
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "4",
-      "38",
-      "8",
-      "18"
-    ]
-  },
-  {
-    "time": "1560643200",
-    "formattedTime": "Jun 16 – 22, 2019",
-    "formattedAxisTime": "Jun 16, 2019",
-    "value": [
-      2,
-      40,
-      11,
-      12
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "2",
-      "40",
-      "11",
-      "12"
-    ]
-  },
-  {
-    "time": "1561248000",
-    "formattedTime": "Jun 23 – 29, 2019",
-    "formattedAxisTime": "Jun 23, 2019",
-    "value": [
-      5,
-      39,
-      7,
-      9
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "5",
-      "39",
-      "7",
-      "9"
-    ]
-  },
-  {
-    "time": "1561852800",
-    "formattedTime": "Jun 30 – Jul 6, 2019",
-    "formattedAxisTime": "Jun 30, 2019",
-    "value": [
-      3,
-      43,
-      8,
-      14
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "43",
-      "8",
-      "14"
     ]
   },
   {
@@ -1913,10 +1913,10 @@
     "formattedTime": "Jul 7 – 13, 2019",
     "formattedAxisTime": "Jul 7, 2019",
     "value": [
+      4,
+      16,
       5,
-      53,
-      5,
-      9
+      7
     ],
     "hasData": [
       true,
@@ -1925,10 +1925,10 @@
       true
     ],
     "formattedValue": [
+      "4",
+      "16",
       "5",
-      "53",
-      "5",
-      "9"
+      "7"
     ]
   },
   {
@@ -1937,8 +1937,8 @@
     "formattedAxisTime": "Jul 14, 2019",
     "value": [
       2,
-      55,
-      5,
+      20,
+      6,
       6
     ],
     "hasData": [
@@ -1949,8 +1949,8 @@
     ],
     "formattedValue": [
       "2",
-      "55",
-      "5",
+      "20",
+      "6",
       "6"
     ]
   },
@@ -1959,240 +1959,10 @@
     "formattedTime": "Jul 21 – 27, 2019",
     "formattedAxisTime": "Jul 21, 2019",
     "value": [
-      7,
-      40,
-      9,
-      14
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "7",
-      "40",
-      "9",
-      "14"
-    ]
-  },
-  {
-    "time": "1564272000",
-    "formattedTime": "Jul 28 – Aug 3, 2019",
-    "formattedAxisTime": "Jul 28, 2019",
-    "value": [
-      3,
-      39,
-      9,
-      14
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "39",
-      "9",
-      "14"
-    ]
-  },
-  {
-    "time": "1564876800",
-    "formattedTime": "Aug 4 – 10, 2019",
-    "formattedAxisTime": "Aug 4, 2019",
-    "value": [
-      3,
-      50,
-      11,
-      13
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "50",
-      "11",
-      "13"
-    ]
-  },
-  {
-    "time": "1565481600",
-    "formattedTime": "Aug 11 – 17, 2019",
-    "formattedAxisTime": "Aug 11, 2019",
-    "value": [
-      4,
-      42,
-      11,
-      10
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "4",
-      "42",
-      "11",
-      "10"
-    ]
-  },
-  {
-    "time": "1566086400",
-    "formattedTime": "Aug 18 – 24, 2019",
-    "formattedAxisTime": "Aug 18, 2019",
-    "value": [
-      3,
-      39,
-      21,
-      10
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "39",
-      "21",
-      "10"
-    ]
-  },
-  {
-    "time": "1566691200",
-    "formattedTime": "Aug 25 – 31, 2019",
-    "formattedAxisTime": "Aug 25, 2019",
-    "value": [
-      3,
-      39,
-      17,
-      7
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "39",
-      "17",
-      "7"
-    ]
-  },
-  {
-    "time": "1567296000",
-    "formattedTime": "Sep 1 – 7, 2019",
-    "formattedAxisTime": "Sep 1, 2019",
-    "value": [
-      3,
-      33,
-      9,
-      9
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "33",
-      "9",
-      "9"
-    ]
-  },
-  {
-    "time": "1567900800",
-    "formattedTime": "Sep 8 – 14, 2019",
-    "formattedAxisTime": "Sep 8, 2019",
-    "value": [
-      2,
-      47,
-      24,
-      7
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "2",
-      "47",
-      "24",
-      "7"
-    ]
-  },
-  {
-    "time": "1568505600",
-    "formattedTime": "Sep 15 – 21, 2019",
-    "formattedAxisTime": "Sep 15, 2019",
-    "value": [
-      3,
-      35,
-      20,
-      11
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "3",
-      "35",
-      "20",
-      "11"
-    ]
-  },
-  {
-    "time": "1569110400",
-    "formattedTime": "Sep 22 – 28, 2019",
-    "formattedAxisTime": "Sep 22, 2019",
-    "value": [
-      2,
-      37,
-      21,
-      10
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "2",
-      "37",
-      "21",
-      "10"
-    ]
-  },
-  {
-    "time": "1569715200",
-    "formattedTime": "Sep 29 – Oct 5, 2019",
-    "formattedAxisTime": "Sep 29, 2019",
-    "value": [
       6,
-      33,
-      20,
-      7
+      15,
+      9,
+      13
     ],
     "hasData": [
       true,
@@ -2202,66 +1972,20 @@
     ],
     "formattedValue": [
       "6",
-      "33",
-      "20",
-      "7"
-    ]
-  },
-  {
-    "time": "1570320000",
-    "formattedTime": "Oct 6 – 12, 2019",
-    "formattedAxisTime": "Oct 6, 2019",
-    "value": [
-      4,
-      39,
-      16,
-      9
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "4",
-      "39",
-      "16",
-      "9"
-    ]
-  },
-  {
-    "time": "1570924800",
-    "formattedTime": "Oct 13 – 19, 2019",
-    "formattedAxisTime": "Oct 13, 2019",
-    "value": [
-      7,
-      32,
-      20,
-      13
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "7",
-      "32",
-      "20",
+      "15",
+      "9",
       "13"
     ]
   },
   {
-    "time": "1571529600",
-    "formattedTime": "Oct 20 – 26, 2019",
-    "formattedAxisTime": "Oct 20, 2019",
+    "time": "1564272000",
+    "formattedTime": "Jul 28 – Aug 3, 2019",
+    "formattedAxisTime": "Jul 28, 2019",
     "value": [
       3,
-      36,
-      15,
-      13
+      10,
+      7,
+      16
     ],
     "hasData": [
       true,
@@ -2271,20 +1995,204 @@
     ],
     "formattedValue": [
       "3",
-      "36",
-      "15",
+      "10",
+      "7",
+      "16"
+    ]
+  },
+  {
+    "time": "1564876800",
+    "formattedTime": "Aug 4 – 10, 2019",
+    "formattedAxisTime": "Aug 4, 2019",
+    "value": [
+      2,
+      11,
+      10,
+      13
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "11",
+      "10",
       "13"
     ]
   },
   {
-    "time": "1572134400",
-    "formattedTime": "Oct 27 – Nov 2, 2019",
-    "formattedAxisTime": "Oct 27, 2019",
+    "time": "1565481600",
+    "formattedTime": "Aug 11 – 17, 2019",
+    "formattedAxisTime": "Aug 11, 2019",
+    "value": [
+      2,
+      16,
+      6,
+      7
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "16",
+      "6",
+      "7"
+    ]
+  },
+  {
+    "time": "1566086400",
+    "formattedTime": "Aug 18 – 24, 2019",
+    "formattedAxisTime": "Aug 18, 2019",
+    "value": [
+      2,
+      38,
+      18,
+      9
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "38",
+      "18",
+      "9"
+    ]
+  },
+  {
+    "time": "1566691200",
+    "formattedTime": "Aug 25 – 31, 2019",
+    "formattedAxisTime": "Aug 25, 2019",
+    "value": [
+      4,
+      26,
+      17,
+      8
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "4",
+      "26",
+      "17",
+      "8"
+    ]
+  },
+  {
+    "time": "1567296000",
+    "formattedTime": "Sep 1 – 7, 2019",
+    "formattedAxisTime": "Sep 1, 2019",
+    "value": [
+      4,
+      31,
+      7,
+      6
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "4",
+      "31",
+      "7",
+      "6"
+    ]
+  },
+  {
+    "time": "1567900800",
+    "formattedTime": "Sep 8 – 14, 2019",
+    "formattedAxisTime": "Sep 8, 2019",
+    "value": [
+      2,
+      43,
+      24,
+      8
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "43",
+      "24",
+      "8"
+    ]
+  },
+  {
+    "time": "1568505600",
+    "formattedTime": "Sep 15 – 21, 2019",
+    "formattedAxisTime": "Sep 15, 2019",
+    "value": [
+      2,
+      28,
+      11,
+      12
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "28",
+      "11",
+      "12"
+    ]
+  },
+  {
+    "time": "1569110400",
+    "formattedTime": "Sep 22 – 28, 2019",
+    "formattedAxisTime": "Sep 22, 2019",
+    "value": [
+      2,
+      31,
+      20,
+      9
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "2",
+      "31",
+      "20",
+      "9"
+    ]
+  },
+  {
+    "time": "1569715200",
+    "formattedTime": "Sep 29 – Oct 5, 2019",
+    "formattedAxisTime": "Sep 29, 2019",
     "value": [
       5,
-      40,
-      17,
-      15
+      34,
+      20,
+      5
     ],
     "hasData": [
       true,
@@ -2294,19 +2202,42 @@
     ],
     "formattedValue": [
       "5",
-      "40",
-      "17",
-      "15"
+      "34",
+      "20",
+      "5"
     ]
   },
   {
-    "time": "1572739200",
-    "formattedTime": "Nov 3 – 9, 2019",
-    "formattedAxisTime": "Nov 3, 2019",
+    "time": "1570320000",
+    "formattedTime": "Oct 6 – 12, 2019",
+    "formattedAxisTime": "Oct 6, 2019",
+    "value": [
+      4,
+      34,
+      15,
+      11
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "4",
+      "34",
+      "15",
+      "11"
+    ]
+  },
+  {
+    "time": "1570924800",
+    "formattedTime": "Oct 13 – 19, 2019",
+    "formattedAxisTime": "Oct 13, 2019",
     "value": [
       6,
-      48,
-      13,
+      20,
+      16,
       12
     ],
     "hasData": [
@@ -2317,8 +2248,77 @@
     ],
     "formattedValue": [
       "6",
-      "48",
+      "20",
+      "16",
+      "12"
+    ]
+  },
+  {
+    "time": "1571529600",
+    "formattedTime": "Oct 20 – 26, 2019",
+    "formattedAxisTime": "Oct 20, 2019",
+    "value": [
+      4,
+      26,
+      14,
+      16
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "4",
+      "26",
+      "14",
+      "16"
+    ]
+  },
+  {
+    "time": "1572134400",
+    "formattedTime": "Oct 27 – Nov 2, 2019",
+    "formattedAxisTime": "Oct 27, 2019",
+    "value": [
+      5,
+      21,
+      20,
+      14
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "5",
+      "21",
+      "20",
+      "14"
+    ]
+  },
+  {
+    "time": "1572739200",
+    "formattedTime": "Nov 3 – 9, 2019",
+    "formattedAxisTime": "Nov 3, 2019",
+    "value": [
+      5,
+      13,
+      9,
+      12
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "5",
       "13",
+      "9",
       "12"
     ]
   },
@@ -2328,9 +2328,9 @@
     "formattedAxisTime": "Nov 10, 2019",
     "value": [
       4,
-      42,
+      9,
       5,
-      16
+      15
     ],
     "hasData": [
       true,
@@ -2340,9 +2340,9 @@
     ],
     "formattedValue": [
       "4",
-      "42",
+      "9",
       "5",
-      "16"
+      "15"
     ]
   },
   {
@@ -2350,79 +2350,10 @@
     "formattedTime": "Nov 17 – 23, 2019",
     "formattedAxisTime": "Nov 17, 2019",
     "value": [
-      7,
-      43,
-      10,
-      17
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "7",
-      "43",
-      "10",
-      "17"
-    ]
-  },
-  {
-    "time": "1574553600",
-    "formattedTime": "Nov 24 – 30, 2019",
-    "formattedAxisTime": "Nov 24, 2019",
-    "value": [
-      5,
-      46,
-      5,
-      19
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "5",
-      "46",
-      "5",
-      "19"
-    ]
-  },
-  {
-    "time": "1575158400",
-    "formattedTime": "Dec 1 – 7, 2019",
-    "formattedAxisTime": "Dec 1, 2019",
-    "value": [
-      11,
-      50,
-      7,
-      11
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "11",
-      "50",
-      "7",
-      "11"
-    ]
-  },
-  {
-    "time": "1575763200",
-    "formattedTime": "Dec 8 – 14, 2019",
-    "formattedAxisTime": "Dec 8, 2019",
-    "value": [
       8,
-      42,
-      9,
-      17
+      20,
+      10,
+      16
     ],
     "hasData": [
       true,
@@ -2432,18 +2363,41 @@
     ],
     "formattedValue": [
       "8",
-      "42",
-      "9",
-      "17"
+      "20",
+      "10",
+      "16"
     ]
   },
   {
-    "time": "1576368000",
-    "formattedTime": "Dec 15 – 21, 2019",
-    "formattedAxisTime": "Dec 15, 2019",
+    "time": "1574553600",
+    "formattedTime": "Nov 24 – 30, 2019",
+    "formattedAxisTime": "Nov 24, 2019",
     "value": [
-      33,
-      48,
+      5,
+      9,
+      4,
+      18
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "5",
+      "9",
+      "4",
+      "18"
+    ]
+  },
+  {
+    "time": "1575158400",
+    "formattedTime": "Dec 1 – 7, 2019",
+    "formattedAxisTime": "Dec 1, 2019",
+    "value": [
+      10,
+      5,
       6,
       10
     ],
@@ -2454,44 +2408,21 @@
       true
     ],
     "formattedValue": [
-      "33",
-      "48",
+      "10",
+      "5",
       "6",
       "10"
     ]
   },
   {
-    "time": "1576972800",
-    "formattedTime": "Dec 22 – 28, 2019",
-    "formattedAxisTime": "Dec 22, 2019",
+    "time": "1575763200",
+    "formattedTime": "Dec 8 – 14, 2019",
+    "formattedAxisTime": "Dec 8, 2019",
     "value": [
-      100,
-      61,
-      4,
-      17
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "100",
-      "61",
-      "4",
-      "17"
-    ]
-  },
-  {
-    "time": "1577577600",
-    "formattedTime": "Dec 29, 2019 – Jan 4, 2020",
-    "formattedAxisTime": "Dec 29, 2019",
-    "value": [
-      65,
-      63,
+      8,
+      8,
       6,
-      12
+      18
     ],
     "hasData": [
       true,
@@ -2500,88 +2431,19 @@
       true
     ],
     "formattedValue": [
-      "65",
-      "63",
+      "8",
+      "8",
       "6",
-      "12"
+      "18"
     ]
   },
   {
-    "time": "1578182400",
-    "formattedTime": "Jan 5 – 11, 2020",
-    "formattedAxisTime": "Jan 5, 2020",
+    "time": "1576368000",
+    "formattedTime": "Dec 15 – 21, 2019",
+    "formattedAxisTime": "Dec 15, 2019",
     "value": [
-      43,
-      48,
-      7,
-      13
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "43",
-      "48",
-      "7",
-      "13"
-    ]
-  },
-  {
-    "time": "1578787200",
-    "formattedTime": "Jan 12 – 18, 2020",
-    "formattedAxisTime": "Jan 12, 2020",
-    "value": [
-      50,
-      50,
-      5,
-      14
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "50",
-      "50",
-      "5",
-      "14"
-    ]
-  },
-  {
-    "time": "1579392000",
-    "formattedTime": "Jan 19 – 25, 2020",
-    "formattedAxisTime": "Jan 19, 2020",
-    "value": [
-      80,
-      55,
-      4,
-      16
-    ],
-    "hasData": [
-      true,
-      true,
-      true,
-      true
-    ],
-    "formattedValue": [
-      "80",
-      "55",
-      "4",
-      "16"
-    ]
-  },
-  {
-    "time": "1579996800",
-    "formattedTime": "Jan 26 – Feb 1, 2020",
-    "formattedAxisTime": "Jan 26, 2020",
-    "value": [
-      64,
-      44,
+      30,
+      8,
       3,
       7
     ],
@@ -2592,10 +2454,148 @@
       true
     ],
     "formattedValue": [
-      "64",
-      "44",
+      "30",
+      "8",
       "3",
       "7"
+    ]
+  },
+  {
+    "time": "1576972800",
+    "formattedTime": "Dec 22 – 28, 2019",
+    "formattedAxisTime": "Dec 22, 2019",
+    "value": [
+      100,
+      8,
+      5,
+      15
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "100",
+      "8",
+      "5",
+      "15"
+    ]
+  },
+  {
+    "time": "1577577600",
+    "formattedTime": "Dec 29, 2019 – Jan 4, 2020",
+    "formattedAxisTime": "Dec 29, 2019",
+    "value": [
+      55,
+      8,
+      6,
+      12
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "55",
+      "8",
+      "6",
+      "12"
+    ]
+  },
+  {
+    "time": "1578182400",
+    "formattedTime": "Jan 5 – 11, 2020",
+    "formattedAxisTime": "Jan 5, 2020",
+    "value": [
+      39,
+      5,
+      7,
+      13
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "39",
+      "5",
+      "7",
+      "13"
+    ]
+  },
+  {
+    "time": "1578787200",
+    "formattedTime": "Jan 12 – 18, 2020",
+    "formattedAxisTime": "Jan 12, 2020",
+    "value": [
+      43,
+      8,
+      6,
+      12
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "43",
+      "8",
+      "6",
+      "12"
+    ]
+  },
+  {
+    "time": "1579392000",
+    "formattedTime": "Jan 19 – 25, 2020",
+    "formattedAxisTime": "Jan 19, 2020",
+    "value": [
+      72,
+      4,
+      4,
+      11
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "72",
+      "4",
+      "4",
+      "11"
+    ]
+  },
+  {
+    "time": "1579996800",
+    "formattedTime": "Jan 26 – Feb 1, 2020",
+    "formattedAxisTime": "Jan 26, 2020",
+    "value": [
+      58,
+      6,
+      2,
+      5
+    ],
+    "hasData": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "formattedValue": [
+      "58",
+      "6",
+      "2",
+      "5"
     ]
   }
 ]

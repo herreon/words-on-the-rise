@@ -8,11 +8,11 @@ const $2019 = [
     "s/u",
     "ngl",
     "simp",
-    "and i oop",
     "iykyk",
-    "sb",
-    "sksksk",
-    "yktv"
+    "sb"
+    // "and i oop",
+    // "sksksk",
+    // "yktv"
 ]
 
 const oneHit = ["slatt", "ants"];
