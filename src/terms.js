@@ -1,21 +1,22 @@
 const $2019 = [
-    // "boomer",
-    "vsco",
+    "sb",
+    // "ok boomer",
+    // "vsco",
     "sfs",
     "fyp",
-    "simp",
-    "ngl",
     "s/u",
-    "iykyk",
-    "sb",
-    "sksksk",
-    "yktv",
+    "ngl",
+    "simp",
     "and i oop"
+    // "yktv",
+    // "iykyk",
+    // "sksksk"
 ]
 
 const oneHit = ["slatt", "ants"];
 
-
+// takes in the (terms only) array;
+// returns an array of the actual search queries to be made using the Google Trends API
 function searchTermsGenerator(array) {
     const searchTerms = [];
 
@@ -27,20 +28,24 @@ function searchTermsGenerator(array) {
     return searchTerms;
 };
 
-
-function splitter(array, maxNum, joinIndex) {
-    const joinValue = array[joinIndex];
-    const interval = - 1+ maxNum;
+// Output: returns an array of arrays; each subarray will contain the 
+// search queries to be made, up to the maxNumOfQueries allowed on Google Trends API.
+// Thus, each subarray will later return a subdataset, each with a common term.
+// Input arg "array" is the array of terms as search queries.
+// Input arg joinIndex is the index of the common term on which we calibrate each subdataset.
+function splitter(array, maxNumOfQueries, joinIndex) {
+    const joinValue = array[joinIndex]; 
+    const interval = - 1+ maxNumOfQueries;
     let result = [];
 
     for(let i = 1; i < array.length;) {
         const group = array.slice(i, i + interval); 
         const set = [joinValue].concat(group);
         result.push(set);
-        i+= interval;
+        i+= interval; // jump to the next element in array which hasn't yet been added to a subarray
     }
 
-    // console.log(result)
+    // console.log("splitter",result)
     return result;
 }
 

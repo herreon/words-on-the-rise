@@ -75,11 +75,12 @@ font-size: 110%;
 /* line */
 
 
-$colors: red, green, blue, orange, purple, grey;
+$colors: orange, red, green, blue, cyan,
+purple, brown, yellow, pink, rgb(158, 226, 118);
 
 // @debug nth($colors, 1);
 
-@for $i from 0 through 3 {
+@for $i from 0 through 9 {
     .#{line-}#{$i}, .#{label-}#{$i} {
         fill: none;
         stroke: nth($colors, ($i + 1));
