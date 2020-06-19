@@ -173,23 +173,30 @@ export function chartTemplate() {
         //   return `translate(${labelX}, ${labelY})`;
         })
 
+        const hoverLines = lines.append("path")
+                                .attr("class", "hover-line")
+                                .attr("d", function(d) { return line(d.splined)})
+
 
         // console.log("selectAll", d3.selectAll(".label"))
-    const t = d3.transition()
+    // const t = d3.transition()
                 // .delay("100")
-                .duration("1")
-
-    svg.selectAll(".label")
-        .on('mouseover', function() {
-            const selected = d3.select(this).raise();
-            selected.transition(t).style("opacity", 1);
-        })
-        .on('mouseout', function() {
-            const selected = d3.select(this);
-            selected.transition(t).style("opacity", 0.2)
-        })
-    
+                // .duration()
+// console.log("come on", svg.selectAll(".hover-line").merge(svg.selectAll(".line")))
+    svg
+      .selectAll(".hover-line")
+      .merge(svg.selectAll(".label"))
+      .on("mouseover", function (d, i) {
+          console.log(d)
+        const selected = d3.selectAll(`.line-${i}, .label-${i}`).raise();
+        selected.transition().delay("0").duration("10").style("opacity", 1);
+      })
+      .on("mouseout", function (d, i) {
+        const selected = d3.selectAll(`.line-${i}, .label-${i}`);
+        selected.transition().style("opacity", 0.2);
+      });
     });
+
   }
 
   // accessor / setter functions for width and height
