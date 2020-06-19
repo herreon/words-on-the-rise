@@ -44,7 +44,7 @@ function changeYToMovingAverage (dataset) {
 
 // function retriever stores promises that fetch data from the file that 
 // corresponds to the index in the array querySubsets.
-// Input arg "termsArray" is a "terms-only" array (e.g. $2019)
+// Input arg "queriesArray" is a "terms-only" array (e.g. $2019)
 // Input array "querySubsets" contains subsets of queries, returned from function splitter in terms.js
 function retriever (querySubsets) {
   const retrieverPromises = [];
@@ -60,7 +60,7 @@ function retriever (querySubsets) {
 
 // returns a promise that creates the dataset for the d3 chart drawing function to use
 // takes in input args that were returned from the function "retriever"
-function createDataset (termsArray, arrayOfPromises) {
+function createDataset (queriesArray, termsArray, arrayOfPromises) {
     
     // this will store the dataset for d3 to use
     const dataset = [];
@@ -95,13 +95,13 @@ function createDataset (termsArray, arrayOfPromises) {
       let increment = promiseIndex === 0 ? 0 : 1;  // keeps track of the index within each subdataset
       let maxNumOfQueries = 5; // max num of queries in a single call using Google Trends API
 
-      while (increment < maxNumOfQueries && dataset.length < termsArray.length) {
+      while (increment < maxNumOfQueries && dataset.length < queriesArray.length) {
 
-        let termsArrayIndex = promiseIndex * (maxNumOfQueries - 1) + increment;
+        let queriesArrayIndex = promiseIndex * (maxNumOfQueries - 1) + increment;
 
     
         const slice = {
-          term: termsArray[termsArrayIndex],
+          term: termsArray[queriesArrayIndex],
           values: rawdata.map(function (rawdataSlice, rawdataIndex) {
 
               let point =
@@ -140,7 +140,7 @@ function createDataset (termsArray, arrayOfPromises) {
       return Promise.all(remainingPromises);
   })
   .then(res => {
-    console.log("dataset", dataset)
+    // console.log("dataset", dataset)
     
     changeYToMovingAverage(dataset);
     // console.log("datasetAfter MovingAverage", dataset)

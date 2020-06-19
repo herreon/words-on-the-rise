@@ -35,7 +35,7 @@ function addLabelCoords(data, space, xScale, yScale) {
         // let movingY = yLabelValuesOriginal[j] >= yLabelValuesOriginal[i] ? j : i;
 
         if (i !== j && yDiff < space) {
-          console.log("j hit", i, j);
+          // console.log("j hit", i, j);
           // console.log("yDiff",yDiff)
           let greaterIndex =
             yLabelValuesOriginal[j] - yLabelValuesOriginal[i] >= 0 ? j : i;

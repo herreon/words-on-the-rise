@@ -90,42 +90,44 @@ function searchTermsGenerator(array) {
     return searchTerms;
 };
 
-// Input arg "array" is the array of search queries; 
+// Input arg "queriesArray" is the array of search queries; 
 // "maxNumOfQueries" is the max num of queries allowed on Google Trends API;
 // "joinIndex" is the index of the common query on which we calibrate each subdataset.
 // Function splitter returns an array of querySubsets, and a a terms-only array rearranged with the common term at index 0.
 // Each querySubset is an array that contains the common query along with other queries; subarray.length = maxNumOfQueries.
 // Later, each querySubset is used to make 1 API call to obtain a dataSubset.
-function splitter(termsArray, maxNumOfQueries, joinIndex) {
-    
-    // remove the common query from the termsArray on which we'll iterate over to get the subsets of queries,
-    // and save the common query to const joinTerm
-    const joinTerm = termsArray.splice(joinIndex, 1);
+function splitter(queriesArray, maxNumOfQueries, joinIndex, termsArray) {
 
-    const interval = maxNumOfQueries - 1;
+  // remove the common query from the queriesArray on which we'll iterate over to get the subsets of queries,
+  // and save the common query to const joinTerm
+  const joinTerm = queriesArray.splice(joinIndex, 1);
 
-    let querySubsets = [];
+  const interval = maxNumOfQueries - 1;
 
-    for (let i = 0; i < termsArray.length;) {
-        // each set of queries excluding common query
-        const group = termsArray.slice(i, i + interval);
+  let querySubsets = [];
 
-        // each subarray has the common query as the first element, followed by other queries
-        const querySubset = joinTerm.concat(group);
+  for (let i = 0; i < queriesArray.length; ) {
+    // each set of queries excluding common query
+    const group = queriesArray.slice(i, i + interval);
 
-        querySubsets.push(querySubset);
+    // each subarray has the common query as the first element, followed by other queries
+    const querySubset = joinTerm.concat(group);
 
-        // jump to the next element in array which hasn't yet been added to a querySubset
-        i += interval;
-    }
+    querySubsets.push(querySubset);
 
-    termsArray = joinTerm.concat(termsArray);
+    // jump to the next element in array which hasn't yet been added to a querySubset
+    i += interval;
+  }
 
-    return [querySubsets, termsArray];
+  queriesArray = joinTerm.concat(queriesArray);
+  termsArray = termsArray.splice(joinIndex, 1).concat(termsArray)
+  
+
+  return [querySubsets, queriesArray, termsArray];
 }
 
 
 const $2019_searchTerms = searchTermsGenerator($2019);
-const $2019_splitQueries = splitter($2019_searchTerms, 5, $2019_searchTerms.length / 2);
+const $2019_splitQueries = splitter($2019_searchTerms, 5, $2019_searchTerms.length / 2, $2019);
 
 module.exports = { $2019_splitQueries };

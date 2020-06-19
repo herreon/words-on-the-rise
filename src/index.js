@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // CALL DRAW CHART FUNCTION
   console.log("$2019_splitqueries", $2019_splitQueries)
+  
 
-  createDataset($2019_splitQueries[1], test_retrieverPromises)
+  createDataset($2019_splitQueries[1],$2019_splitQueries[2], test_retrieverPromises)
   .then((d) => {
     console.log("woohoo", d)
     d3.select("#container").datum(d).call(chartTemplate())

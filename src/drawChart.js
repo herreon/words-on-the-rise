@@ -47,7 +47,7 @@ export function chartTemplate() {
     
 
     // add label coordinates to dataset's termSlices
-      addLabelCoords(data, 10, xScale, yScale);
+      addLabelCoords(data, 12, xScale, yScale);
       
 
     // VALUES: add splined values
@@ -148,7 +148,7 @@ export function chartTemplate() {
       lines
         .append("path")
         .attr("class", function (d, i) {
-          return `line-${i}`;
+          return `line line-${i}`;
         })
         .attr("d", function (d) {
             // return line(d.values);
@@ -166,17 +166,29 @@ export function chartTemplate() {
         })
         .attr("x", 5)
         .attr("transform", function (d, i) {
+            return `translate(${d.labelX}, ${d.labelY})`;
             // const lastIndex = d.values.length - 1;
             // const labelX = xScale(d.values[lastIndex].date);
             // const labelY = yScale(d.values[lastIndex].point);
-
-
         //   return `translate(${labelX}, ${labelY})`;
-          return `translate(${d.labelX}, ${d.labelY})`;
         })
 
 
-    console.log(d3.selectAll(".label"))
+        // console.log("selectAll", d3.selectAll(".label"))
+    const t = d3.transition()
+                // .delay("100")
+                .duration("1")
+
+    svg.selectAll(".label")
+        .on('mouseover', function() {
+            const selected = d3.select(this).raise();
+            selected.transition(t).style("opacity", 1);
+        })
+        .on('mouseout', function() {
+            const selected = d3.select(this);
+            selected.transition(t).style("opacity", 0.2)
+        })
+    
     });
   }
 

@@ -84,6 +84,7 @@ $colors: #E15D20, #B50001, #00A608, #1B3CF0, #00A6CC,
     .#{line-}#{$i}, .#{label-}#{$i} {
         fill: none;
         stroke: nth($colors, ($i + 1));
+        opacity: 0.2;
     }
 
     .#{label-}#{$i} {
@@ -93,7 +94,6 @@ $colors: #E15D20, #B50001, #00A608, #1B3CF0, #00A6CC,
         text-transform: uppercase;
     }
 }
-
 
 
 /* interactive elements */
