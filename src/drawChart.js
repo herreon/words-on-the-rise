@@ -38,7 +38,7 @@ export function chartTemplate() {
 
       // SCALES: y-axis
       // define max value for domain on y-axis (points)
-      const maxY = d3.max(data, function (s) {
+      let maxY = d3.max(data, function (s) {
         return d3.max(s.values, function (v) {
           return v.point;
         });
@@ -136,14 +136,16 @@ export function chartTemplate() {
         console.log("midMax", midMax);
         
         // append clip path
-        // svg
-        //   .append("clipPath")
-        //   .attr("id", "date-clip")
-        //   .append("rect")
+        const clip = svg.append("defs")
+          .append("clipPath")
+          .attr("id", "date-clip")
+          .append("rect")
+          .attr("x", xScale(startDate))
         //   .attr("x", xScale(startDate))
+          .attr("y", yScale(maxY))
         //   .attr("y", yScale(maxY - midMax))
-        //   .attr("width", xScale(midDate))
-        //   .attr("height", yScale(midMax));
+          .attr("width", width)
+          .attr("height", height);
 
       // draw x-axis
       svg
@@ -166,13 +168,14 @@ export function chartTemplate() {
 
       // draw lines
       const line = d3.line()
-        .x(function (d) {
-        //   return xScale(d.date);
-            return d[0];
+        .x(function (v) {
+            
+          return xScale(v.date);
+            // return d[0];
         })
-        .y(function (d) {
-            // return yScale(d.point);
-            return d[1];
+        .y(function (v) {
+            return yScale(v.point);
+            // return d[1];
         });
 
       const lines = svg.selectAll("lines").data(data).enter().append("g");
@@ -183,9 +186,10 @@ export function chartTemplate() {
           return `line line-${i}`;
         })
         .attr("d", function (d) {
-            // return line(d.values);
-          return line(d.splined);
-        });
+            return line(d.values);
+        //   return line(d.splined);
+        })
+        .attr("clip-path", "url(#date-clip)")
 
       // add labels to each line
       lines
@@ -207,7 +211,8 @@ export function chartTemplate() {
 
         const hoverLines = lines.append("path")
                                 .attr("class", "hover-line")
-                                .attr("d", function(d) { return line(d.splined)})
+                                // .attr("d", function(d) { return line(d.splined)})
+                                .attr("d", function(d) { return line(d.values)})
 
 
     // const t = d3.transition()
@@ -226,18 +231,70 @@ export function chartTemplate() {
         // const test1 = xScale.invert(extent[0])
         // const test2 = xScale.invert(extent[1])
         // console.log("updateChart", test1, test2)
-        xScale.domain(newStartDate, newEndDate)
+        xScale.domain([newStartDate, newEndDate])
+
+        let newStartIndex;
+        let newEndIndex;
+
+        // const newDataPoints = 
+        for (let i = 0; i < data[0].values.length; i++) {
+            if (data[0].values[i].date >= newStartDate) {
+                    newStartIndex = i;
+                    break;
+                }
+        }
+
+        for (let i = 0; i < data[0].values.length; i++) {
+            
+            if (data[0].values[i].date > newEndDate) {
+                newEndIndex = i;
+                break
+            }
+        }
+       
+
+        // filter((val, i) => {
+            // return i >= 1
+            // return val.date >= newStartDate && val.date <= newEndDate; 
+        // })
+        
+        // const newStartIndex = newDataPoints[0]
+
+        // const newEndIndex = newDataPoints[newDataPoints - 1]
+
+
+        console.log("newi" , newStartIndex, newEndIndex)
+
+        // define max value for domain on y-axis (points)
+        maxY = d3.max(data, function (s) {
+            // console.log("s", s)
+            s = s.values.slice(newStartIndex, newEndIndex)
+            // console.log("s", s)
+            // console.log("s.length", s.length)
+            return d3.max(s, function (v) {
+                return v.point;
+            });
+        });
+
+      // set domain of y-axis
+    //   const yScale = d3.scaleLinear().domain([0, maxY]).rangeRound([height, 0]);
+        // yScale.domain([newStartDate, newEndDate])
         // update x axis
-        svg.call(xAxis).transition()
+        svg.select(".x-axis").call(xAxis).transition().delay(1000);
+        // svg.select(".y-axis").call(yAxis).transition().delay(1000);
+        
+        // console.log("xScale", xScale(newStartDate))
+        console.log("yScale", yScale(maxY))
+        yScale.domain([0, maxY])
+        // addSplinedValues()
 
-        addSplinedValues()
-
-        lines
-          .transition()
+        // console.log("lines", lines)
+        lines.selectAll(".line")
+        
+          .transition().delay(1000)
           .attr("d", function (d) {
-        //     // return line(d.values);
-        //     // return [1,1]
-                return line(d.splined);
+            //   console.log("line transition")
+                return line(d.values);
             });
 
 

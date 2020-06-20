@@ -6,7 +6,7 @@ const timeConv = d3.timeParse("%b %d, %Y");
 // 
 function changeYToMovingAverage (dataset) {
     // interval is the num weeks over which the movingAverage is calculated
-    const interval = 9;
+    const interval = 6;
 
     dataset.forEach(function (termSlice) {
         const averageChecker = [];

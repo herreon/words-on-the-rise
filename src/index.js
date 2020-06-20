@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // createDataset($2019_splitQueries[1],$2019_splitQueries[2], test_retrieverPromises)
   // .then((d) => {
-  //   console.log("woohoo", d)
-  //   d3.select("#container").datum(d).call(chartTemplate())
-  // })
-
-
-
-  createDataset($2019_splitQueries[1],$2019_splitQueries[2], test_retrieverPromises)
-  .then((d) => {
+    //   d3.select("#container").datum(d).call(chartTemplate())
+    // })
+    
+    
+    
+    createDataset($2019_splitQueries[1],$2019_splitQueries[2], test_retrieverPromises)
+    .then((d) => {
+        console.log("woohoo", d)
     d3.select("#container2").datum(d).call(chartTemplate())
 
     // const zoom = d3.zoom()
