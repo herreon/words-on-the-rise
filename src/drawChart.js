@@ -19,13 +19,15 @@ export function chartTemplate() {
         });
       });
 
-      console.log("startDate", startDate)
-
+      
       const endDate = d3.max(data, function (d) {
-        return d3.max(d.values, function (v) {
-          return v.date;
+          return d3.max(d.values, function (v) {
+              return v.date;
+            });
         });
-      });
+        
+        // console.log("startDate", startDate)
+        // console.log("endDate", endDate)
 
       // set domain and range of x-axis
       const xScale = d3
@@ -51,39 +53,47 @@ export function chartTemplate() {
       
 
     // VALUES: add splined values
-      data.forEach(function (termSlice, i) {
-        const dates = termSlice.values.map(function (v) {
-            return xScale(v.date); // get array of dates mapped onto the browser
-        });
+    function addSplinedValues () {
+        data.forEach(function (termSlice, i) {
+          const dates = termSlice.values.map(function (v) {
+              return xScale(v.date); // get array of dates mapped onto the browser
+          });
+  
+          const points = termSlice.values.map(function (v) {
+              return yScale(v.point);
+          });
+  
+      
+          const splineDate = d3.interpolateBasis(dates);
+          
+          const splinePoint = d3.interpolateBasis(points);
+  
+          //   console.log("quantDate", d3.quantize(splineDate, 113*2))
+          //   console.log("quantPoint", d3.quantize(splinePoint, 113));
+          //   console.log("quantPointmax", d3.min(d3.quantize(splinePoint, 110)));
+  
+          const originalNumOfPoints = termSlice.values.length;
+          const degree = 21 * originalNumOfPoints;
+  
+          termSlice.splined = d3.zip(
+              d3.quantize(splineDate, degree),
+              d3.quantize(splinePoint, degree)
+          );
 
-        const points = termSlice.values.map(function (v) {
-            return yScale(v.point);
-        });
+          console.log("addsplinedvalues", originalNumOfPoints)
+  
+      });
 
-    
-        const splineDate = d3.interpolateBasis(dates);
-        
-        const splinePoint = d3.interpolateBasis(points);
+    }
 
-        //   console.log("quantDate", d3.quantize(splineDate, 113*2))
-        //   console.log("quantPoint", d3.quantize(splinePoint, 113));
-        //   console.log("quantPointmax", d3.min(d3.quantize(splinePoint, 110)));
+    addSplinedValues()
 
-        const originalNumOfPoints = termSlice.values.length;
-        const degree = 21 * originalNumOfPoints;
-
-        termSlice.splined = d3.zip(
-            d3.quantize(splineDate, degree),
-            d3.quantize(splinePoint, degree)
-        );
-
-    });
 
       // AXES
       const xAxis = d3
-        .axisBottom()
-        .scale(xScale)
-        .ticks(d3.timeMonth.every(12))
+        .axisBottom(xScale)
+        // .scale(xScale)
+    xAxis.ticks(d3.timeMonth.every(12))
         .tickFormat(d3.timeFormat("%b %Y"))
         .tickSizeOuter(0);
 
@@ -112,7 +122,28 @@ export function chartTemplate() {
           "viewBox",
           `-${adj * 2} -${adj * 3} ${width + adj * 10} ${height + adj * 2}`
         )
-        .attr("preserveAspectRatio", "xMinYMin meet");
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        
+        // date up to which clip path is appended
+        const midDate = new Date(2019, 5, 30);
+        const midMax = d3.max(data, function (s) {
+            return d3.max(s.values.filter(val => val.date <= midDate), function (v) {
+                return v.point;
+            });
+            
+        });
+        console.log("midDate", midDate);
+        console.log("midMax", midMax);
+        
+        // append clip path
+        // svg
+        //   .append("clipPath")
+        //   .attr("id", "date-clip")
+        //   .append("rect")
+        //   .attr("x", xScale(startDate))
+        //   .attr("y", yScale(maxY - midMax))
+        //   .attr("width", xScale(midDate))
+        //   .attr("height", yScale(midMax));
 
       // draw x-axis
       svg
@@ -131,6 +162,7 @@ export function chartTemplate() {
       // .attr("dy", "0.75em")
       // .attr("y", -40)
       // .style("text-anchor", "end");
+
 
       // draw lines
       const line = d3.line()
@@ -178,26 +210,95 @@ export function chartTemplate() {
                                 .attr("d", function(d) { return line(d.splined)})
 
 
-        // console.log("selectAll", d3.selectAll(".label"))
     // const t = d3.transition()
-                // .delay("100")
-                // .duration()
-// console.log("come on", svg.selectAll(".hover-line").merge(svg.selectAll(".line")))
+    // .delay(1)
+    // .duration()
+
+    
+    
+    function updateChart() {
+        // console.log("updateChart",d3.selection.event)
+        const newStartDate = new Date(2017, 11, 1);
+        const newEndDate  = new Date(2019, 6, 31);
+        // const extent = [newStartDate, newEndDate];
+        // console.log("extent", extent)
+
+        // const test1 = xScale.invert(extent[0])
+        // const test2 = xScale.invert(extent[1])
+        // console.log("updateChart", test1, test2)
+        xScale.domain(newStartDate, newEndDate)
+        // update x axis
+        svg.call(xAxis).transition()
+
+        addSplinedValues()
+
+        lines
+          .transition()
+          .attr("d", function (d) {
+        //     // return line(d.values);
+        //     // return [1,1]
+                return line(d.splined);
+            });
+
+
+    }
+    
+    updateChart() 
+
+    svg.attr("clip-path", "url(#date-clip)").style('fill', "lightgrey");
+    
     svg
-      .selectAll(".hover-line")
-      .merge(svg.selectAll(".label"))
-      .on("mouseover", function (d, i) {
-          console.log(d)
-        const selected = d3.selectAll(`.line-${i}, .label-${i}`).raise();
-        selected.transition().delay("0").duration("10").style("opacity", 1);
-      })
-      .on("mouseout", function (d, i) {
-        const selected = d3.selectAll(`.line-${i}, .label-${i}`);
-        selected.transition().style("opacity", 0.2);
-      });
+      .selectAll(".hover-line, .label, .line")
+      .on("mouseover", function (d, i, nodes) {
+        //   console.log("mousin", i)
+        // console.log("this", this)  
+        // console.log("d", d)
+        // console.log("i", i)
+        // console.log("nodes", nodes)
+        
+        // nodes = [line(0), label(0), hover-line(0), line(1), label(1), hover-line(1)...]
+        const selected_i = Math.floor(i/3)
+        
+        // increase opacity of both line and label
+        const selected = d3
+          .selectAll(`.line-${selected_i}, .label-${selected_i}`)
+          .raise()
+          .style("opacity", 1)
+        
+        selected.transition()
+
+        // apply thicker stroke only to line
+        d3.selectAll(`.line-${selected_i}`).style("stroke-width", 5);
+        
+        // console.log("transition",t)
+        
+    })
+    .on("mouseout", function (d, i, nodes) {
+
+        // console.log("mousout", i)
+    
+        const selected_i = Math.floor(i / 3);
+
+        const selected = d3
+          .selectAll(`.line-${selected_i}, .label-${selected_i}`)
+          .style("opacity", 0.4)
+          .style("stroke-width", 1);
+
+        selected.transition();
+    });
+    
+    
+    
+    
+    
+    
+
+    
+
     });
 
-  }
+
+    }
 
   // accessor / setter functions for width and height
   draw.width = function (value) {
