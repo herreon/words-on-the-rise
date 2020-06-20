@@ -3,44 +3,6 @@ import { $2019_splitQueries } from "./terms.js";
 // parse the date and time; store data in variable dataA
 const timeConv = d3.timeParse("%b %d, %Y");
 
-// 
-function changeYToMovingAverage (dataset) {
-    // interval is the num weeks over which the movingAverage is calculated
-    const interval = 6;
-
-    dataset.forEach(function (termSlice) {
-        const averageChecker = [];
-      const averages = termSlice.values.map(function (v, i) {
-        // console.log("v", v)
-        // console.log("i", i)
-        // console.log("d.values", d.values)
-
-        if (i < interval) {
-          return;
-        }
-
-        let movingTotal = 0;
-
-        termSlice.values.slice(i - interval, i).forEach(function (v) {
-          movingTotal += v.point;
-        });
-
-        const movingAverage = Math.round(movingTotal / interval);
-
-        averageChecker.push([v.point, movingAverage])
-
-        // console.log("movingTotal", movingTotal);
-        // console.log("movingAverage", movingAverage);
-
-        return {
-          date: v.date,
-          point: movingAverage,
-        };
-      });
-    //   console.log("averages",averageChecker)
-      termSlice.values = averages.slice(interval);
-    });
-}
 
 // function retriever stores promises that fetch data from the file that 
 // corresponds to the index in the array querySubsets.
@@ -58,34 +20,75 @@ function retriever (querySubsets) {
 }
 
 
+// function to change all point values to a moving average (of interval = x weeks)
+function changeYToMovingAverage (dataset) {
+    // interval is the num weeks over which the movingAverage is calculated
+    const interval = 6;
+
+    dataset.forEach(function (termSlice) {
+
+      // const averageChecker = [];
+      
+      const averages = termSlice.values.map(function (v, i) {
+        // console.log("v", v)
+        // console.log("i", i)
+        // console.log("d.values", d.values)
+
+        if (i < interval) {
+          return;
+        }
+
+        let movingTotal = 0;
+
+        termSlice.values.slice(i - interval, i).forEach(function (v) {
+          movingTotal += v.point;
+        });
+
+        const movingAverage = Math.round(movingTotal / interval);
+
+        // averageChecker.push([v.point, movingAverage])
+
+        // console.log("movingTotal", movingTotal);
+        // console.log("movingAverage", movingAverage);
+
+        return {
+          date: v.date,
+          point: movingAverage,
+        };
+      });
+    //   console.log("averages",averageChecker)
+      termSlice.values = averages.slice(interval);
+    });
+}
+
+
 // returns a promise that creates the dataset for the d3 chart drawing function to use
 // takes in input args that were returned from the function "retriever"
 function createDataset (queriesArray, termsArray, arrayOfPromises) {
     
-    // this will store the dataset for d3 to use
-    const dataset = [];
+  // this will store the dataset for d3 to use
+  const dataset = [];
 
-    // // keeps track of the index of each term
-    // let mainIndex = 0;
+  // // keeps track of the index of each term
+  // let mainIndex = 0;
 
-    // returns the appropriate relative value of each term in a querySubset, 
-    // using the point value of the common query as a reference
-    function calibrate(rawdataSlice, rawdataIndex, rValueIndex) {
-        
-        let numerator = dataset[0].values[rawdataIndex].point; // comparison value in previous promise (already in var dataset)
-        let denominator = rawdataSlice.value[0]; // comparison value in current promise
-        let ratio;
-        
-        if (denominator === 0) {
-        ratio = 0;
-        } else {ratio = numerator / denominator;
-        }
+  // returns the appropriate relative value of each term in a querySubset, 
+  // using the point value of the common query as a reference
+  function calibrate(rawdataSlice, rawdataIndex, rValueIndex) {
+      
+      let numerator = dataset[0].values[rawdataIndex].point; // comparison value in previous promise (already in var dataset)
+      let denominator = rawdataSlice.value[0]; // comparison value in current promise
+      let ratio;
+      
+      if (denominator === 0) {
+      ratio = 0;
+      } else {ratio = numerator / denominator;
+      }
 
-        return Math.round(+rawdataSlice.value[rValueIndex] * ratio);
-    }
+      return Math.round(+rawdataSlice.value[rValueIndex] * ratio);
+  }
 
 
- 
   // takes in a promise, and its index in the arrayOfPromises (to tell if it will access the first or subsequent subdatasets)
   // returns a promise that writes the data into const "dataset", in appropriate format 
   function getData (promise, promiseIndex) {
@@ -99,7 +102,7 @@ function createDataset (queriesArray, termsArray, arrayOfPromises) {
 
         let queriesArrayIndex = promiseIndex * (maxNumOfQueries - 1) + increment;
 
-    
+        // each slice contains all info for a term
         const slice = {
           term: termsArray[queriesArrayIndex],
           values: rawdata.map(function (rawdataSlice, rawdataIndex) {

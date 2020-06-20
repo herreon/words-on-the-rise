@@ -52,41 +52,7 @@ export function chartTemplate() {
       addLabelCoords(data, 12, xScale, yScale);
       
 
-    // VALUES: add splined values
-    function addSplinedValues () {
-        data.forEach(function (termSlice, i) {
-          const dates = termSlice.values.map(function (v) {
-              return xScale(v.date); // get array of dates mapped onto the browser
-          });
-  
-          const points = termSlice.values.map(function (v) {
-              return yScale(v.point);
-          });
-  
-      
-          const splineDate = d3.interpolateBasis(dates);
-          
-          const splinePoint = d3.interpolateBasis(points);
-  
-          //   console.log("quantDate", d3.quantize(splineDate, 113*2))
-          //   console.log("quantPoint", d3.quantize(splinePoint, 113));
-          //   console.log("quantPointmax", d3.min(d3.quantize(splinePoint, 110)));
-  
-          const originalNumOfPoints = termSlice.values.length;
-          const degree = 21 * originalNumOfPoints;
-  
-          termSlice.splined = d3.zip(
-              d3.quantize(splineDate, degree),
-              d3.quantize(splinePoint, degree)
-          );
-
-          console.log("addsplinedvalues", originalNumOfPoints)
-  
-      });
-
-    }
-
-    addSplinedValues()
+    
 
 
       // AXES
@@ -167,29 +133,33 @@ export function chartTemplate() {
 
 
       // draw lines
-      const line = d3.line()
+      const line = d3
+        .line()
+
         .x(function (v) {
-            
           return xScale(v.date);
-            // return d[0];
+          // return d[0];
         })
         .y(function (v) {
-            return yScale(v.point);
-            // return d[1];
-        });
+          return yScale(v.point);
+          // return d[1];
+        })
+        // .curve(d3 .curveCatmullRom.alpha(0.5));
+        .curve(d3.curveBasis);
 
       const lines = svg.selectAll("lines").data(data).enter().append("g");
 
       lines
-        .append("path")
+      .append("path")
+      
         .attr("class", function (d, i) {
           return `line line-${i}`;
         })
         .attr("d", function (d) {
-            return line(d.values);
-        //   return line(d.splined);
+          return line(d.values);
+          //   return line(d.splined);
         })
-        .attr("clip-path", "url(#date-clip)")
+        .attr("clip-path", "url(#date-clip)");
 
       // add labels to each line
       lines
@@ -300,7 +270,7 @@ export function chartTemplate() {
 
     }
     
-    updateChart() 
+    // updateChart() 
 
     svg.attr("clip-path", "url(#date-clip)").style('fill', "lightgrey");
     
