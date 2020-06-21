@@ -3,8 +3,8 @@ import { addLabelCoords } from "./labelCoords.js"
 // creating reusable chart
 export function chartTemplate() {
   // set the dimensions and margins of the svg
-  let width = 800;
-  let height = 800;
+  let width = 1200*0.6;
+  let height = 800*0.6;
   let adj = 30;
 
 

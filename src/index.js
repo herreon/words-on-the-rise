@@ -24,26 +24,19 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //// console.log("search terms", searchTerms)
 
-  const test_retrieverPromises = retriever($2019_splitQueries[0]);
-  console.log("test_retrieverPromises", test_retrieverPromises)
-  // let test = createDataset(test_retrieverPromises);
-  // console.log('indexjs Test', test)
-
+  const $2019_retrieverPromises = retriever($2019_splitQueries[0]);
+  console.log("$2019_retrieverPromises", $2019_retrieverPromises)
+  
   // CALL DRAW CHART FUNCTION
   console.log("$2019_splitqueries", $2019_splitQueries)
   
 
-  // createDataset($2019_splitQueries[1],$2019_splitQueries[2], test_retrieverPromises)
-  // .then((d) => {
-    //   d3.select("#container").datum(d).call(chartTemplate())
-    // })
+  createDataset($2019_splitQueries[1],$2019_splitQueries[2], $2019_retrieverPromises)
+  .then((d) => {
+      d3.select("#container").datum(d).call(chartTemplate())
+    })
     
-    
-    
-    createDataset($2019_splitQueries[1],$2019_splitQueries[2], test_retrieverPromises)
-    .then((d) => {
-        console.log("woohoo", d)
-    d3.select("#container2").datum(d).call(chartTemplate())
+  
 
     // const zoom = d3.zoom()
     //                 .scaleExtent()
@@ -63,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //       .attr("width", 400)
     //       .attr("height", 600);
     
-  })
+
 
 //  d3.select("#svg").on("mouseover", function (d, i) {
   //  console.log("test worked", this);
