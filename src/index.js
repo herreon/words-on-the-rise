@@ -33,36 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   createDataset($2019_splitQueries[1],$2019_splitQueries[2], $2019_retrieverPromises)
   .then((d) => {
+      console.log("dataset", d)
       d3.select("#container").datum(d).call(chartTemplate())
     })
     
-  
-
-    // const zoom = d3.zoom()
-    //                 .scaleExtent()
-    //                 .extent([0,0], [800,800])
-
-    // d3.select("svg").call(zoom)
-    // const ithink = d3.selectAll(".chart").filter(function(d, i) {
-    //   return i === 0
-    // })
-    // console.log("ithink", ithink)
-    // ithink
-    // d3.select("#container2").append("clipPath")
-    //       .attr("id", "date-clip")
-    //       .append("rect")
-    //       .attr("x", 0)
-    //       .attr("y", 200)
-    //       .attr("width", 400)
-    //       .attr("height", 600);
-    
-
-
-//  d3.select("#svg").on("mouseover", function (d, i) {
-  //  console.log("test worked", this);
-
-  //  d3.selectAll("#date-clip").attr("width", xScale(endDate)).transition();
-//  });
 
   // simple_example();
   // test_function();
@@ -83,3 +57,5 @@ document.addEventListener("DOMContentLoaded", function () {
 //   //   .attr("r", 1)
 //   //   .attr("class", "point")
 //   //   .style("opacity", 1);
+
+

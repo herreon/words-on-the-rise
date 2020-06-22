@@ -1,5 +1,6 @@
 // function to separate out labels that overlap
-function addLabelCoords(data, space, xScale, yScale) {
+function addLabelCoords(data, chartIndexEnd, space, xScale, yScale) {
+  
   let noCollisions = false;
 
   let yLabelValues = [];
@@ -13,10 +14,14 @@ function addLabelCoords(data, space, xScale, yScale) {
   // })
 
   data.forEach(function (s) {
-    let lastIndex = s.values.length - 1;
+    let lastIndex = chartIndexEnd - 1;
 
     s.labelX = xScale(s.values[lastIndex].date);
     s.labelY = yScale(s.values[lastIndex].point);
+    // if using max value of term's point as labelY
+    // s.labelY = yScale(d3.max(s.values, function(v) {
+    //   return v.point;
+    // }) - 2);
 
     yLabelValues.push(s.labelY);
     yLabelValuesOriginal.push(s.labelY);
@@ -38,7 +43,7 @@ function addLabelCoords(data, space, xScale, yScale) {
           // console.log("j hit", i, j);
           // console.log("yDiff",yDiff)
           let greaterIndex =
-            yLabelValuesOriginal[j] - yLabelValuesOriginal[i] >= 0 ? j : i;
+            yLabelValuesOriginal[j] - yLabelValuesOriginal[i] > 0 ? j : i;
 
           yLabelValues[greaterIndex] += addDiff;
           // console.log("updated", yLabelValues)
@@ -55,6 +60,9 @@ function addLabelCoords(data, space, xScale, yScale) {
   data.forEach(function (s, i) {
     s.labelY = yLabelValues[i];
   });
+
+
+  
 }
 
 

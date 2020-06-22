@@ -1,27 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@100;300;400&family=Titillium+Web:wght@300&display=swap');
-
-// font-family: 'Roboto', sans-serif;
-// font-family: 'Roboto Mono', monospace;
-// font-family: 'Titillium Web', sans-serif;
-// rgb(241, 242, 242);
-
-
-
-#intro {
-    background-color: rgb(255, 255, 255);   
-    height: 100vh;
-    width: 100%;
-    padding: 0px 60px 0px 30px;
-    box-sizing: border-box;
-    display: flex;
-    
-    // flex-direction: column;
-    // justify-content: flex-end;
-    // background-color: rgb(232, 251, 255);
-    
-}
-
-#title, #text-1 {
+#left, #right, #panel {
     font: {
         family: 'Roboto', sans-serif;
         weight: 300;
@@ -29,21 +6,9 @@
     line-height: 1.6;
 }
 
-#title {
-    // height: 100vh;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    // bottom: 150px;
-    padding: 100px 0 100px 0;
-    box-sizing: border-box;
-    text-align: left;
-    justify-content: center;
-    // align-items: flex-end;
-    text-align: center;
-}
 
-#title h1 {
+
+#left h1 {
     font: {
         family: 'Titillium Web', sans-serif;
         size: 60px;
@@ -51,12 +16,11 @@
     color: rgb(6, 47, 135);
     line-height: 1;
     box-sizing: border-box;
-    // padding-bottom: 20px;
     margin-bottom: 20px;
     
 }
 
-#title p:last-of-type {
+#left p:last-of-type {
     padding: 0 10% 0 10%;
 }
 
@@ -66,7 +30,7 @@
     padding-bottom: 60px;
 }
 
-#text-1 {
+#right {
     width: 40%;
     // padding: 0 150px 0 30px;
     // text-align: center;
@@ -79,7 +43,7 @@
     // top: 0;
 }
 
-#text-1 > a {
+#right > a {
     text-decoration: none;
     box-sizing: border-box;
     text-align: center;
@@ -93,36 +57,10 @@
     border-radius: 25px;
 }
 
-#text-1 > a:hover {
+#right > a:hover {
     background-color: rgb(139,211,238);
     color: white;
     font-weight: normal;
 }
 
-
-
-
-#graph-1 {
-    display: flex;
-    
-}
-.svg-container {
-    width: 720px;
-    height: 480px;
-    background-color: yellow;
-    position: sticky;
-    top: 0px;   
-    // box-sizing: border-box;
-}
-
-#panel {
-    // padding: 30px 20px 30px 20px;
-    padding: 25vh 10vh 25vh 10vh;
-}
-
-#banner-1, #banner-2 {
-    background-color: red;
-    height: 80px;
-    width: 100%;
-}
 

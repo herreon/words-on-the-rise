@@ -1,0 +1,68 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#intro {
+    background-color: rgb(255, 255, 255);   
+    height: 100vh;
+    width: 100%;
+    padding: 0px 60px 0px 30px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#left {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0 100px 0;
+    box-sizing: border-box;
+    text-align: left;
+    justify-content: center;
+    text-align: center;
+}
+
+#graph-1 {
+    display: flex;
+    // position: relative;
+    height: 100vh;
+    overflow: scroll;
+}
+
+#graph-1 > .svg-container {
+    // width: 60%;
+    // height: 800*0.6;
+    background-color: rgb(245, 245, 235);
+    // position: relative;
+    // position: fixed;
+    position: sticky;
+    top: 0;
+    // box-sizing: border-box;
+}
+
+#graph-1 svg {
+    padding: $padding;
+}
+
+#text-1 {
+    width: 100vw;
+    // position: relative;
+    // right: 0;
+    // left: 60vw;
+    // bottom: 800*0.6;
+    // left: 600px;
+    // overflow: scroll;
+}
+
+
+#panel {
+    // padding: 30px 20px 30px 20px;
+    padding: 35vh 10vh 40vh 10vh;
+    // width: 40%;
+}
+
+#banner-1, #banner-2 {
+    background-color: red;
+    height: 80px;
+    width: 100%;
+}

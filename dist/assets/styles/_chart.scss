@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@100;300;400&family=
-illium+Web:wght@300&display=swap');
-@use "sass:list";
+
 
 path {
     fill: none;
@@ -8,18 +6,7 @@ path {
 }
 
 /* variables */
-$padding: 20px;
-$margin: 5;
-$chart-label: 'Roboto', sans-serif;
-$chart-width: 50%;
-// $chart-width: 800px;
-$chart-height: 100vh;
-// $chart-height: 600px;
-$chart-adj: 100px;
 
-#container svg {
-    padding: $padding;
-}
 
 .svg-container {
     // width: 400px;

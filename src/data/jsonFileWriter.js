@@ -27,7 +27,7 @@ function arrayDataGenerator (query, startTime, endTime, fileName) {
 
   .then(res => {
     // console.log(res)
-    fs.writeFile(__dirname + `/../dist/assets/data/${fileName}.json`, res, function (err) {
+    fs.writeFile(__dirname + `/../../dist/assets/data/${fileName}.json`, res, function (err) {
       if (err) { console.log(err); }
       else { console.log('write operation complete.') }
     })
@@ -37,7 +37,7 @@ function arrayDataGenerator (query, startTime, endTime, fileName) {
 
 
 $2019_splitQueries[0].forEach((query, i) => {
-  const startTime = new Date(2017, 11, 1);
+  const startTime = new Date(2017, 10, 1);
   const endTime = new Date(2019, 12, 31);
   // const endTime = new Date(2019, 6, 30);
   const fileName = `2019_${i}`;
