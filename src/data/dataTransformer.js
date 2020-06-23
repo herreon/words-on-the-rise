@@ -64,7 +64,7 @@ function changeYToMovingAverage (dataset) {
 
 // returns a promise that creates the dataset for the d3 chart drawing function to use
 // takes in input args that were returned from the function "retriever"
-function createDataset (queriesArray, termsArray, arrayOfPromises) {
+function createDataset (queriesArray, termsArray, retrieverPromises) {
     
   // this will store the dataset for d3 to use
   const dataset = [];
@@ -89,7 +89,7 @@ function createDataset (queriesArray, termsArray, arrayOfPromises) {
   }
 
 
-  // takes in a promise, and its index in the arrayOfPromises (to tell if it will access the first or subsequent subdatasets)
+  // takes in a promise, and its index in the retrieverPromises (to tell if it will access the first or subsequent subdatasets)
   // returns a promise that writes the data into const "dataset", in appropriate format 
   function getData (promise, promiseIndex) {
 
@@ -134,7 +134,7 @@ function createDataset (queriesArray, termsArray, arrayOfPromises) {
 
 
   // each promise will be transformed to the data-writing promise and stored in newPromisesArray
-  const newPromisesArray = arrayOfPromises.map(function(promise, index) {
+  const newPromisesArray = retrieverPromises.map(function(promise, index) {
       return getData(promise, index);
   })
 

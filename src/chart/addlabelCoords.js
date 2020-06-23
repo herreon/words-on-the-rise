@@ -1,4 +1,5 @@
 // function to separate out labels that overlap
+
 function addLabelCoords(data, chartIndexEnd, space, xScale, yScale) {
   
   let noCollisions = false;
@@ -14,6 +15,7 @@ function addLabelCoords(data, chartIndexEnd, space, xScale, yScale) {
   // })
 
   data.forEach(function (s) {
+    console.log("add label values", s)
     let lastIndex = chartIndexEnd - 1;
 
     s.labelX = xScale(s.values[lastIndex].date);

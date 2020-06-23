@@ -1,12 +1,9 @@
-import test_function from "./references/z_example.js";
-import simple_example from "./references/z_simple.js";
-
 // data
 import { retriever, createDataset } from "./data/dataTransformer.js";
 import { $2019, $2019_searchTerms, $2019_splitQueries } from "./data/terms.js";
 
 // d3 chart
-import { chartTemplate } from "./drawChart.js";
+import { chartA } from "./chart/chartA.js";
 
 import '../dist/assets/styles/styles.scss';
 
@@ -24,18 +21,26 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //// console.log("search terms", searchTerms)
 
-  const $2019_retrieverPromises = retriever($2019_splitQueries[0]);
-  console.log("$2019_retrieverPromises", $2019_retrieverPromises)
+  const [$2019_querySubsets, $2019_queriesArray, $2019_termsArray] = $2019_splitQueries;
+
+  const $2019_retrieverPromises = retriever($2019_querySubsets);
   
   // CALL DRAW CHART FUNCTION
-  console.log("$2019_splitqueries", $2019_splitQueries)
   
-
-  createDataset($2019_splitQueries[1],$2019_splitQueries[2], $2019_retrieverPromises)
+  createDataset($2019_queriesArray, $2019_termsArray, $2019_retrieverPromises)
   .then((d) => {
-      console.log("dataset", d)
-      d3.select("#container").datum(d).call(chartTemplate())
-    })
+      console.log("index.js dataset", d)
+      d3.select("#container").datum(d).call(chartA())
+  })
+
+  // createDataset($2019_queriesArray, $2019_termsArray, $2019_retrieverPromises)
+  // .then((d) => {
+  //     console.log("dataset", d)
+  //     d3.select("#container").datum(d).call(chartTemplate())
+  // })
+
+
+  
     
 
   // simple_example();

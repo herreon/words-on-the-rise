@@ -1,4 +1,4 @@
-#left, #right, #panel {
+#left, #right, .panel {
     font: {
         family: 'Roboto', sans-serif;
         weight: 300;
@@ -63,4 +63,7 @@
     font-weight: normal;
 }
 
+.panel {
+    // font-size: 14px;
+}
 
