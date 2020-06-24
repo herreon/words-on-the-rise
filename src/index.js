@@ -2,7 +2,7 @@
 import { retriever, createDataset } from "./data/dataTransformer.js";
 import { $2019, $2019_searchTerms, $2019_splitQueries } from "./data/terms.js";
 
-// d3 chart
+// chart drawing function
 import { chartA } from "./chart/chartA.js";
 
 import '../dist/assets/styles/styles.scss';
@@ -33,18 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
       d3.select("#container").datum(d).call(chartA())
   })
 
-  // createDataset($2019_queriesArray, $2019_termsArray, $2019_retrieverPromises)
-  // .then((d) => {
-  //     console.log("dataset", d)
-  //     d3.select("#container").datum(d).call(chartTemplate())
-  // })
-
-
-  
-    
-
-  // simple_example();
-  // test_function();
 
 });
 

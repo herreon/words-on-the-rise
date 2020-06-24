@@ -15,7 +15,7 @@ function addLabelCoords(data, chartIndexEnd, space, xScale, yScale) {
   // })
 
   data.forEach(function (s) {
-    console.log("add label values", s)
+    // console.log("add label values", s)
     let lastIndex = chartIndexEnd - 1;
 
     s.labelX = xScale(s.values[lastIndex].date);

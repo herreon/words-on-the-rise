@@ -24,20 +24,16 @@ html {
 
 #graph-1 {
     display: flex;
-    // position: relative;
     height: 100vh;
-    overflow: scroll;
 }
 
 #graph-1 > .svg-container {
     // width: 60%;
-    // height: 800*0.6;
+    height: 100vh;
     background-color: rgb(245, 245, 235);
-    // position: relative;
-    // position: fixed;
-    position: sticky;
-    top: 0;
-    // box-sizing: border-box;
+    // position: sticky;
+    // top: 0;
+    
 }
 
 #graph-1 svg {
@@ -45,19 +41,13 @@ html {
 }
 
 #text-1 {
-    width: 100vw;
-    // position: relative;
-    // right: 0;
-    // left: 60vw;
-    // bottom: 800*0.6;
-    // left: 600px;
-    // overflow: scroll;
+    // width: 100vw;
+    overflow: scroll;
 }
 
 
 .panel {
-    // padding: 30px 20px 30px 20px;
-    padding: 35vh 10vh 40vh 10vh;
+    padding: 35vh 10vh 35vh 10vh;
     // width: 40%;
 }
 
