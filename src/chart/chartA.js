@@ -56,6 +56,8 @@ export function chartA() {
   function draw(selection) {
       selection.each(function (data) {
 
+        console.log("doctor")
+
       const hardMaxY = d3.max(data, function (termSlice) {
         return d3.max(termSlice.values, function (v) {
           return v.point;
@@ -143,7 +145,7 @@ export function chartA() {
           .attr("class", "chart")
           .attr("width", width)
           .attr("height", height)
-          .attr("viewBox", `-${adj * 2} -${adj * 3} ${width + adj * 10} ${height + adj * 2}`)
+          .attr("viewBox", `-${adj * 2} -${adj * 3} ${width + adj * 5} ${height + adj * 4}`)
           .attr("preserveAspectRatio", "xMinYMin meet");
 
       // draw x-axis
@@ -177,8 +179,7 @@ export function chartA() {
         //   .attr("y", yScale(maxY - midMax))
         .attr("width", width)
         .attr("height", height);
-      
-  
+
       const line = d3
         .line()
         .x(function (v) {
@@ -187,15 +188,9 @@ export function chartA() {
         .y(function (v) {
           return yScale(v.point);
         })
-        .curve(d3.curveBasis)
-        
+        .curve(d3.curveBasis);
 
-      const lines = svg
-        .selectAll("lines")
-        .data(data)
-        .enter()
-        .append("g")
-        
+      const lines = svg.selectAll("lines").data(data).enter().append("g");
       
       lines.append("path")
         .attr("class", function (d, i) {
@@ -233,22 +228,20 @@ export function chartA() {
       const hoverLines = lines
             .append("path")
             .attr("class", "hover-line")
-          
-      
-      // lines.attr("clip-path", "url(#date-clip)");
+
+    
       // svg.attr("clip-path", "url(#date-clip)").style("fill", "lightgrey");
 
       
-      
       // FUNCTION TO UPDATE CHART PER FRAME
       function updateChart(newStartDate, newEndDate) {
-        const t = d3.transition()
+        const t = d3
+          .transition()
           .ease(d3.easeCubicInOut)
-            // .ease(d3.easeCubic)
-            .delay(300)
-            .duration(1000);
+          // .ease(d3.easeCubic)
+          .delay(300)
+          .duration(1000);
         
-
         svg.selectAll("*").interrupt();
 
         console.log("CHART IS UPDATING");
@@ -295,6 +288,22 @@ export function chartA() {
           
       }
 
+      function removeChart () {
+      
+        svg.selectAll("*").interrupt();
+
+        lines
+          .selectAll(".line")
+          .transition()
+          .attr("d", function (d) {
+            return line(d.values);
+          })
+          .attr("stroke-dashoffset", pathLength)
+          .attr("stroke-dasharray", pathLength);
+
+        lines.selectAll(".label").transition().attr("x", pathLength);
+      }
+
       
       
       // Add mousover interactive elements
@@ -334,14 +343,13 @@ export function chartA() {
 
 
       // Add scrolling interactive elements
-      let scrollTop = 0;
-      let newScrollTop = 0;
+      // let scrollTop = 0;
+      // let newScrollTop = 0;
 
-      d3.selectAll(".panel").attr("class", function(p, i) {
+      d3.selectAll(".panel")
+      .attr("class", function(p, i) {
           return `panel panel-${i}`
       })
-      
-      
       
       let scrollDiv = document.getElementById("text-1");
 
@@ -349,7 +357,9 @@ export function chartA() {
       const boundRects = []; // stores the bounding client rectangles of each panel
 
       document.getElementsByClassName("panel").forEach((p, i) => {
-        let frame = document.getElementsByClassName(`panel-${i}`)[0];
+        // p.style("padding", "35vh 10vh 35vh 10vh")
+        let frame = p;
+        // let frame = document.getElementsByClassName(`panel-${i}`)[0];
         frames.push(frame);
         boundRects.push(frame.getBoundingClientRect());
       })
@@ -370,21 +380,30 @@ export function chartA() {
       let WIDTH = window.innerWidth;
       let toFirst = 0;
       let toSecond = 0;
-      
-      
 
+      
+      
+  
       scrollDiv.addEventListener('scroll', function(e) {
+
         frames.forEach((f, i) => {
           boundRects[i] = f.getBoundingClientRect();
-        })
+        });
+      
+        // console.log("scrolltop", frames[0].scrollTop)
+
+        if (this.scrollTop < 1) {
+          // updateChart()
+          removeChart(0)
+        }
 
 
         // console.log("boundRects", boundRects)
-        const flower = boundRects[0].top;
-        const flower2 = boundRects[0].bottom;
-        const flower3 = boundRects[0].height;
+        const panel_1_top = boundRects[0].top;
+        const panel_1_bottom = boundRects[0].bottom;
+        const panel_1__height = boundRects[0].height;
 
-        console.log("flower", flower, flower2, flower3)
+        console.log("flower", panel_1_top, panel_1_bottom, panel_1__height)
         // if(flower < 0) {
         //   updateChart(updates[1][0], updates[1][1])
         // }
@@ -396,6 +415,7 @@ export function chartA() {
           if(b.bottom < 0){
             updateChart(updates[i + 1][0], updates[i + 1][1]);
           }
+
         })
           // if(b.top > 0 && b.bottom < HEIGHT )
         //   if (b.bottom < 900 && b.bottom > 400 ) {
