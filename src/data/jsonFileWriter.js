@@ -2,8 +2,9 @@ const fs = require("fs");
 const googleTrends = require("google-trends-api");
 
 const termsModule = require("./terms.js");
-const $2019_searchTerms = termsModule.$2019_searchTerms;
+// const $2019_searchTerms = termsModule.$2019_searchTerms;
 const $2019_splitQueries = termsModule.$2019_splitQueries;
+const withContext_splitQueries = termsModule.withContext_splitQueries;
 
 
 function arrayDataGenerator (query, startTime, endTime, fileName) {
@@ -41,6 +42,15 @@ $2019_splitQueries[0].forEach((query, i) => {
   const endTime = new Date(2020, 04, 31);
   // const endTime = new Date(2019, 6, 30);
   const fileName = `2019_${i}`;
+  
+  arrayDataGenerator(query, startTime, endTime, fileName);
+})
+
+withContext_splitQueries[0].forEach((query, i) => {
+  const startTime = new Date(2017, 10, 1);
+  const endTime = new Date(2020, 04, 31);
+  // const endTime = new Date(2019, 6, 30);
+  const fileName = `withContext_${i}`;
   
   arrayDataGenerator(query, startTime, endTime, fileName);
 })

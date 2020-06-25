@@ -15,7 +15,14 @@ const $2019 = [
     // "yktv"
 ]
 
-const oneHit = ["slatt", "ants"];
+const withContext = $2019.concat([
+  "woke",
+  "non binary",
+  "uwu"
+])
+
+
+// const oneHit = ["slatt", "ants"];
 
 
 const $2018 = [
@@ -130,4 +137,9 @@ function splitter(queriesArray, maxNumOfQueries, joinIndex, termsArray) {
 const $2019_searchTerms = searchTermsGenerator($2019);
 const $2019_splitQueries = splitter($2019_searchTerms, 5, $2019_searchTerms.length / 2, $2019);
 
-module.exports = { $2019_splitQueries };
+const withContext_searchTerms = searchTermsGenerator(withContext);
+const withContext_splitQueries = splitter(withContext_searchTerms, 5, withContext.length / 2, withContext);
+
+
+
+module.exports = { $2019_splitQueries, withContext_splitQueries };

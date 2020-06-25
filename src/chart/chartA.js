@@ -4,7 +4,6 @@ import { addLabelCoords } from "./addlabelCoords.js";
 import * as getDates from "./getDates.js";
 import { renderDef, eraseDef } from "./termDefs.js"
 
-// import { termSliceValues } from "./getDates.js";
 
 // creating reusable chart
 export function chartA() {
@@ -106,7 +105,7 @@ export function chartA() {
 
 
       // add label coordinates to dataset's termSlices
-      addLabelCoords(data, chartIndexEnd, 12, xScale, yScale);
+      addLabelCoords(data, chartIndexEnd, 10, xScale, yScale);
 
       // AXES
       const xAxis = d3.axisBottom(xScale);
@@ -137,7 +136,7 @@ export function chartA() {
           .attr("class", "chart")
           .attr("width", width)
           .attr("height", height)
-          .attr("viewBox", `-${adj * 2} -${adj * 4} ${width + adj * 5} ${height + adj * 10}`)
+          .attr("viewBox", `-${adj * 2} -${adj * 4} ${width + adj * 4} ${height + adj * 9}`)
           .attr("preserveAspectRatio", "xMidYMid meet");
 
       
@@ -167,15 +166,7 @@ export function chartA() {
       .attr("class", "footnote footnote-2")
       .text(`†For example, searches for "meaning of vsco", "what does ok boomer mean".`)
       .attr("y", `${height + adj/3*14}` )
-
-      // quick definition of each term
-      // svg.append("text")
-      // .attr("class", "quick-def")
-      // .text("place")
-      // .attr("y", `${height + adj*7}`)
-
-
-      
+ 
 
       // draw x-axis
       svg
@@ -238,11 +229,6 @@ export function chartA() {
       
       // add labels
       lines
-      // .append("svg:a") // add hyperlinks to labels
-      // .attr("target", "_blank")
-      // .attr("x:href", function (d) {
-      //   return `http://www.google.com/search?q=what+does+${d.term}+mean`
-      // })
       .append("text")
       .attr("class", function (d, i) {
         return `label label-${i}`;
@@ -289,7 +275,7 @@ export function chartA() {
         svg.select(".x-axis").transition(t).call(xAxis);
         
         yScale.domain([0, maxY]);
-        addLabelCoords(data, chartIndexEnd, 12, xScale, yScale);
+        addLabelCoords(data, chartIndexEnd, 14, xScale, yScale);
 
 
         lines

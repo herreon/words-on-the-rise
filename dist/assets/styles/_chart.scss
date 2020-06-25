@@ -101,24 +101,13 @@ $colors: #E15D20, #B50001, #00A608, #1B3CF0, #00A6CC,
 
 .label {
     padding: 100;
-    font-size: 12px;
+    font-size: 14px;
 }
 
-/* interactive elements */
-/* TOOLTIP */
-.tooltip {
-    fill: #2b2929;
-    font-family: arial;
-    font-size: 20px;
+.x-axis {
+    font-size: 14px;
+    font: {
+        family: 'Roboto', sans-serif;
+    };
 }
 
-/* POINTS */
-.point {
-    stroke: none;
-    fill: #9c9c9c;
-}
-
-/* for experimenting - coloring elements */
-/* svg {
-    background-color: orange;
-} */

@@ -14,9 +14,9 @@ const def3 = [`Shout Out for Shoutout: commonly used by Instagramers to request 
 , "Urban Dictionary"    
 ]
 
-const def4 = [`The "For You" page on the massively popular short video app, TikTok. FYP acts like an individual landing page for users which showcases curated videos that TikTok thinks they might watch or like.
+const def4 = [`The "For You" page on the massively popular short video app, TikTok. 
 TikTok users often hashtag their videos with #fyp in hopes their content will make it onto other users’ FYP, thereby getting more views.
-${"<br />"}&ensp; E.g.: My fyp was loaded with cat videos today.`
+${"<br />"}E.g.: My fyp was loaded with cat videos today.`
 , "Dictionary.com"
 ]
 
@@ -56,6 +56,7 @@ const termDefs = [
 function eraseDef () {
     let question = document.getElementById("def-term");
     question.innerHTML = "";
+    question.style.border = "none";
 
     let answer = document.getElementById("def-ans");
     answer.innerHTML = "";
@@ -67,14 +68,30 @@ function eraseDef () {
 function renderDef (termSlice, index) {
 
     let question = document.getElementById("def-term");
-    question.innerHTML = `${termSlice.term}:`;
-
-    index = Math.floor(index/3);
     let answer = document.getElementById("def-ans");
+    let source = document.getElementById("def-source");
+    index = Math.floor(index/3);
+
+   
+    question.innerHTML = `${termSlice.term}: `;
+    
     answer.innerHTML = `${termDefs[index][0]}`;
     
-    let source = document.getElementById("def-source");
     source.innerHTML = `source: ${termDefs[index][1]}`;
+    
+    // requestAnimationFrame(() => {
+    //     question.innerHTML = `${termSlice.term}: `;
+    //     // question.style.borderBottom = "solid #F2B0F0 1px"
+    //     answer.innerHTML = `${termDefs[index][0]}`;
+    //     // answer.style.borderTop = "solid #F2B0F0 1px"
+    //     source.innerHTML = `source: ${termDefs[index][1]}`;
+    // }, 2000)
+
+
+    // question.style.transitionProperty = "border-top"
+    // question.transitionDuration = "5s"
+
+   
 
 }
 

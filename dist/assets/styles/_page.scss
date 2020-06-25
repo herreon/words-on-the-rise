@@ -22,7 +22,7 @@ html {
     text-align: center;
 }
 
-#graph-1 {
+#graph-1, #graph-2 {
     display: flex;
     height: 100vh;
 }
@@ -33,14 +33,25 @@ html {
     vertical-align: center;
 }
 
+
 #quick-def {
-    margin: 0 10vw 5vh 10vw;
-    padding: 10px;
-    border: 1px solid black;
-    // box-sizing: border-box;
-    // border-color: rgb(139,211,238);
-    // background-color: pink;
+    // height: 100%;
+    width: 520px;
+    margin: 2vh 0 5vh 10vw;
+    box-sizing: border-box;
+    padding-bottom: 2px;
+    background-clip: content-box;
+    background-color: rgb(222,239,241);
 }
+
+#quick-def * {
+
+    box-sizing: border-box;
+    padding-left: 12px;
+    padding-right: 14px;
+    background-clip: content-box;
+}
+
 
 svg {
     // margin: $margin;
@@ -80,5 +91,5 @@ svg {
 #graph-2 {
     // height: 100px;
     // width: 100px;
-    background-color: green;
+    // background-color: green;
 }

@@ -1,6 +1,6 @@
 // data
 import { retriever, createDataset } from "./data/dataTransformer.js";
-import { $2019, $2019_searchTerms, $2019_splitQueries } from "./data/terms.js";
+import { $2019, $2019_searchTerms, $2019_splitQueries, withContext_splitQueries } from "./data/terms.js";
 
 // chart drawing function
 import { chartA } from "./chart/chartA.js";
@@ -29,9 +29,21 @@ document.addEventListener("DOMContentLoaded", function () {
   
   createDataset($2019_queriesArray, $2019_termsArray, $2019_retrieverPromises)
   .then((d) => {
-      console.log("index.js dataset", d)
-      d3.select("#container-1").datum(d).call(chartA())
+    console.log("index.js dataset", d)
+    d3.select("#container-1").datum(d).call(chartA())
   })
+  
+  const [withContext_querySubsets, withContext_queriesArray, withContext_termsArray] = withContext_splitQueries;
+
+  const withContext_retrieverPromises = retriever(withContext_querySubsets);
+
+  // createDataset(withContext_queriesArray, withContext_termsArray, withContext_retrieverPromises)
+  // .then((d) => {
+  //     console.log("index.js dataset", d)
+  //     d3.select("#container-2").datum(d).call(chartA())
+  // })
+
+  
 
 
 });
