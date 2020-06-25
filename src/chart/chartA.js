@@ -2,7 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { addLabelCoords } from "./addlabelCoords.js";
 import * as getDates from "./getDates.js";
-import { resolve } from "../../webpack.config.js";
+import { renderDef, eraseDef } from "./termDefs.js"
 
 // import { termSliceValues } from "./getDates.js";
 
@@ -56,15 +56,6 @@ export function chartA() {
   function draw(selection) {
       selection.each(function (data) {
 
-        console.log("doctor")
-
-      const hardMaxY = d3.max(data, function (termSlice) {
-        return d3.max(termSlice.values, function (v) {
-          return v.point;
-        });
-      });
-
-      console.log("hard max y", hardMaxY)
       // define date min and max values for each chart frame
 
       // define min date for entire dataset
@@ -88,13 +79,12 @@ export function chartA() {
       // max date for the first frame
       const juneDate = new Date(2019, 5, 30);
 
-      // date of peak interest for vsco
+      // date of peak interest for vsco (max date for second frame)
       const vscoPeakDate = getDates.getTermPeakDate(data, "vsco");
       // console.log("vscopeakdate", vscoPeakDate)
 
-      // date of 1st week of 2020
+      // date of 1st week of 2020 (max date for third frame)
       const janDate = new Date(2020, 0, 8);
-      // console.log("vscopeakdate", vscoPeakDate)
 
       chartStartDate = minDate;
       // chartEndDate = new Date(2019, 6, 30);
@@ -123,9 +113,11 @@ export function chartA() {
       // .scale(xScale)
 
       xAxis
-          .ticks(d3.timeMonth.every(12))
+          // .ticks(d3.timeMonth.every(12))
+          .ticks(4)
           .tickFormat(d3.timeFormat("%b %Y"))
           .tickSizeOuter(0);
+      
 
       const yAxis = d3.axisLeft().scale(yScale).tickValues([]).tickSizeOuter(0);
 
@@ -145,8 +137,45 @@ export function chartA() {
           .attr("class", "chart")
           .attr("width", width)
           .attr("height", height)
-          .attr("viewBox", `-${adj * 2} -${adj * 3} ${width + adj * 5} ${height + adj * 4}`)
-          .attr("preserveAspectRatio", "xMinYMin meet");
+          .attr("viewBox", `-${adj * 2} -${adj * 4} ${width + adj * 5} ${height + adj * 10}`)
+          .attr("preserveAspectRatio", "xMidYMid meet");
+
+      
+      // add chart title
+      svg.append("text").attr("class", "chart-title")
+      .text("Search Interest 2018-2019")
+      .attr("y", adj)
+
+      // add chart subtitle
+      svg.append("text").attr("class", "chart-subtitle")
+      .text("Moving 6-Week Average for Rising New Words")
+      .attr("y", adj/3*5 + 3)
+
+
+      // add footnotes to chart
+      svg.append("text")
+      .attr("class", "footnote footnote-0")
+      .text(`Don't know what the word means? Hover for a quick definition, or click to look up Google search results.`)
+      .attr("y", `${height + adj*3}`)
+
+      svg.append("text")
+      .attr("class", "footnote footnote-1")
+      .text(`*A new word is a word which had a lower Search Interest prior to 2019, which then grew over the year.`)
+      .attr("y", `${height + adj*4}`)
+      
+      svg.append("text")
+      .attr("class", "footnote footnote-2")
+      .text(`†For example, searches for "meaning of vsco", "what does ok boomer mean".`)
+      .attr("y", `${height + adj/3*14}` )
+
+      // quick definition of each term
+      // svg.append("text")
+      // .attr("class", "quick-def")
+      // .text("place")
+      // .attr("y", `${height + adj*7}`)
+
+
+      
 
       // draw x-axis
       svg
@@ -173,10 +202,7 @@ export function chartA() {
         .attr("id", "date-clip")
         .append("rect")
         .attr("x", xScale(chartStartDate))
-        //   .attr("x", xScale(minDate))
         .attr("y", yScale(maxY))
-        // .attr("y", yScale(hardMaxY))
-        //   .attr("y", yScale(maxY - midMax))
         .attr("width", width)
         .attr("height", height);
 
@@ -212,6 +238,11 @@ export function chartA() {
       
       // add labels
       lines
+      // .append("svg:a") // add hyperlinks to labels
+      // .attr("target", "_blank")
+      // .attr("x:href", function (d) {
+      //   return `http://www.google.com/search?q=what+does+${d.term}+mean`
+      // })
       .append("text")
       .attr("class", function (d, i) {
         return `label label-${i}`;
@@ -224,13 +255,16 @@ export function chartA() {
         return `translate(${d.labelX}, ${d.labelY})`;
       });
 
+      
+
       // add hover lines
       const hoverLines = lines
             .append("path")
             .attr("class", "hover-line")
 
     
-      // svg.attr("clip-path", "url(#date-clip)").style("fill", "lightgrey");
+      // svg.attr("clip-path", "url(#date-clip)")
+      // .style("fill", "lightgrey");
 
       
       // FUNCTION TO UPDATE CHART PER FRAME
@@ -253,10 +287,10 @@ export function chartA() {
         
         xScale.domain([chartStartDate, chartEndDate]);
         svg.select(".x-axis").transition(t).call(xAxis);
-
+        
         yScale.domain([0, maxY]);
-
         addLabelCoords(data, chartIndexEnd, 12, xScale, yScale);
+
 
         lines
           .selectAll(".line")
@@ -308,10 +342,10 @@ export function chartA() {
       
       // Add mousover interactive elements
       svg.selectAll(".hover-line, .label, .line")
-      .on("mouseover", function (d, i, nodes) {
+      .on("mouseover", function (termSlice, i, nodes) {
           
         // console.log("this", this)
-        // console.log("d", d)
+        // console.log("termSlice", termSlice)
         // console.log("i", i)
         // console.log("nodes", nodes)
 
@@ -329,7 +363,11 @@ export function chartA() {
         // apply thicker stroke only to line
         d3.selectAll(`.line-${selected_i}`).style("stroke-width", 5);
 
+        // render quick definition 
+        renderDef(termSlice, i)
+
       })
+
       .on("mouseout", function (d, i, nodes) {
         const selected_i = Math.floor(i / 3);
 
@@ -339,139 +377,92 @@ export function chartA() {
             .style("stroke-width", 1);
 
         selected.transition();
-      });
 
+        // remove quick definition
+        eraseDef()
+        
+        
+      })
 
-      // Add scrolling interactive elements
-      // let scrollTop = 0;
-      // let newScrollTop = 0;
+      .on("click", function(d) {
+        window.open(`http://www.google.com/search?q=what+does+${d.term}+mean`)
+      })
+
 
       d3.selectAll(".panel")
       .attr("class", function(p, i) {
           return `panel panel-${i}`
       })
       
-      let scrollDiv = document.getElementById("text-1");
-
+      
+      const scrollDiv = document.getElementById("text-1");
+      const svgDiv = document.getElementsByClassName("x-axis")[0];
+      console.log("svgDiv", svgDiv)
+      const HEIGHT = window.innerHeight;
+      
       const frames = []; // stores the panels
       const boundRects = []; // stores the bounding client rectangles of each panel
+      
+      let firstUpdate = 0; // keeps track of whether the first frame was rendered
 
       document.getElementsByClassName("panel").forEach((p, i) => {
-        // p.style("padding", "35vh 10vh 35vh 10vh")
         let frame = p;
-        // let frame = document.getElementsByClassName(`panel-${i}`)[0];
         frames.push(frame);
         boundRects.push(frame.getBoundingClientRect());
       })
 
-      console.log("frames", frames)
+      // console.log("frames", frames)
       
-      const updates = [null, 
+      const updates = [ 
         [minDate, juneDate],
         [minDate, vscoPeakDate],
         [minDate, janDate],
         [minDate, maxDate]
       ]
-      
-      const tracker = Array(5).fill(0)
-      console.log("tracker", tracker)
-      
-      let HEIGHT = window.innerHeight;
-      let WIDTH = window.innerWidth;
-      let toFirst = 0;
-      let toSecond = 0;
 
       
+      // when user scrolls down to chart from the title page, execute the first frame animation
+      document.addEventListener('scroll', function(e) {
+        // console.log("hello", svgDiv.getBoundingClientRect().bottom)
+        // console.log("height", HEIGHT)
+        if (svgDiv.getBoundingClientRect().bottom < HEIGHT && firstUpdate < 1) {
+          console.log("rendered first chart frame, before chart.top = 0")
+          updateChart(updates[0][0], updates[0][1]);
+          firstUpdate += 1;
+        }
+      })
       
-  
+      let currentPanelIndex = 0; // index of the current panel on screen
+      
+      // subsequent frame animations depend on scrolling
       scrollDiv.addEventListener('scroll', function(e) {
 
         frames.forEach((f, i) => {
           boundRects[i] = f.getBoundingClientRect();
         });
-      
-        // console.log("scrolltop", frames[0].scrollTop)
 
-        if (this.scrollTop < 1) {
-          // updateChart()
-          removeChart(0)
+        let currentPanels = boundRects.filter(function(b) {
+          return (b.bottom < HEIGHT && b.bottom > 0)
+        })
+
+        let currentPanel = currentPanels[currentPanels.length -1]
+        let newPanelIndex = boundRects.indexOf(currentPanel)
+
+        // if viewing the first (index 0) panel and first frame is not rendered yet, render first frame
+        if (currentPanelIndex === 0 && firstUpdate === 0) {
+          updateChart(updates[0][0], updates[0][1]);
+          firstUpdate += 1;
         }
 
+        // if panel changed, update chart accordingly
+        if (newPanelIndex !== currentPanelIndex) {
+          updateChart(updates[newPanelIndex][0], updates[newPanelIndex][1])
+        }
 
-        // console.log("boundRects", boundRects)
-        const panel_1_top = boundRects[0].top;
-        const panel_1_bottom = boundRects[0].bottom;
-        const panel_1__height = boundRects[0].height;
-
-        console.log("flower", panel_1_top, panel_1_bottom, panel_1__height)
-        // if(flower < 0) {
-        //   updateChart(updates[1][0], updates[1][1])
-        // }
-
-        // if b[0].bottom < 0 
-
-        boundRects.forEach((b, i) => {
-
-          if(b.bottom < 0){
-            updateChart(updates[i + 1][0], updates[i + 1][1]);
-          }
-
-        })
-          // if(b.top > 0 && b.bottom < HEIGHT )
-        //   if (b.bottom < 900 && b.bottom > 400 ) {
-        //     updateChart(updates[i+1][0], updates[i+1][1])
-        //   }
-
-          // if (b.top > -220) {
-          //   console.log("i", i)
-          //   updateChart(updates[i + 1][0], updates[i + 1][1]);
-          // }
-        // })
-      })
-          // console.log(scrollDiv.nodes)
-          // let prevFrameOneTop = frameOneTop;
-          // frameZeroBCR = frameZero.getBoundingClientRect();
-          // frameOneBCR = frameOne.getBoundingClientRect();
-          // let frameOneTop = frameOne.getBoundingClientRect().top;
-          // console.log("0", frameZeroBCR.bottom)
-          // console.log("1", frameOneBCR.top)
-          // console.log("trigger", toFirst)
-
-          // console.log(b.bottom)
-
-          // boundRects.forEach((b, i) => {
-          //   console.log(b.bottom)
-          //   if (b.bottom < 0) {
-          //     updates[i]();
-          //   }
-          // })
-
-          // if (boundRects[0].bottom < 0 && toFirst === 0) {
-          //     updateChart(minDate, juneDate);
-          //     toFirst = 1;
-          // }
-
-          // if (frameZeroBCR.bottom < 0 && toFirst === 0) {
-          //     updateChart(minDate, juneDate);
-          //     toFirst = 1;
-          // }
-
-          // if (frameOneBCR.bottom < 0 && toSecond === 0) {
-   
-          //     updateChart(minDate, vscoPeakDate);
-              
-          //     toSecond = 1;
+        currentPanelIndex = newPanelIndex;
           
-
-          // }
-
-          // if(frameOneTop < 0 && frameOneBottom > 0 ) {
-          //     updateChart(minDate, juneDate)
-          // }
-      
-
-
-         
+      })
+          
       });
   }
 

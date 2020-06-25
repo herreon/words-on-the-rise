@@ -27,17 +27,27 @@ html {
     height: 100vh;
 }
 
-#graph-1 > .svg-container {
-    // width: 60%;
-    height: 100vh;
-    background-color: rgb(245, 245, 235);
-    // position: sticky;
-    // top: 0;
-    
+#graph-1-left {
+    display: flex;
+    flex-direction: column;
+    vertical-align: center;
 }
 
-#graph-1 svg {
-    padding: $padding;
+#quick-def {
+    margin: 0 10vw 5vh 10vw;
+    padding: 10px;
+    border: 1px solid black;
+    // box-sizing: border-box;
+    // border-color: rgb(139,211,238);
+    // background-color: pink;
+}
+
+svg {
+    // margin: $margin;
+    // background-color: cyan;
+    box-sizing: border-box;
+    // display: flex;
+    // justify-content: center;
 }
 
 #text-1 {
@@ -47,13 +57,28 @@ html {
 
 
 .panel {
-    margin: 20vh 10vh 70vh 10vh;
+    margin: 14vh 20vh 76vh 0vh;
     // padding: 35vh 10vh 35vh 10vh;
     // width: 40%;
+}
+
+.panel > p {
+    margin: 0vh 0vh 5vh 0vh;
+    box-sizing: border-box;
 }
 
 #banner-1, #banner-2 {
     background-color: red;
     height: 80px;
     width: 100%;
+}
+
+#text-2 .panel {
+    margin: 0;
+}
+
+#graph-2 {
+    // height: 100px;
+    // width: 100px;
+    background-color: green;
 }

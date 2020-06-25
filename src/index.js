@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   createDataset($2019_queriesArray, $2019_termsArray, $2019_retrieverPromises)
   .then((d) => {
       console.log("index.js dataset", d)
-      d3.select("#container").datum(d).call(chartA())
+      d3.select("#container-1").datum(d).call(chartA())
   })
 
 

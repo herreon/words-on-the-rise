@@ -1,4 +1,4 @@
-#left, #right, .panel {
+#left, #right, .panel, .chart-title, .chart-subtitle, .footnote, #quick-def {
     font: {
         family: 'Roboto', sans-serif;
         weight: 300;
@@ -64,6 +64,50 @@
 }
 
 .panel {
-    font-size: 15px;
+    font-size: 14px;
 }
 
+#bold {
+    font-weight: bold;
+}
+
+.chart-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.chart-subtitle {
+    font-size: 20px;
+    opacity: 0.5;
+}
+
+.footnote {
+    opacity: 0.5;
+}
+
+.footnote-0 {
+    opacity: 1;
+    font-weight: bold;
+}
+
+#quick-def {
+    font-size: 12px;
+    text-align: left;
+}
+
+#def-term {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#def-ans {
+    margin-top: 8px;
+    margin-left: 16px;
+    margin-right: 10px;
+    background-origin: border-box;
+}
+
+#def-source {
+    font-style: italic;
+    margin-top: 8px;
+}

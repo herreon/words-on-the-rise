@@ -76,7 +76,7 @@ $colors: #E15D20, #B50001, #00A608, #1B3CF0, #00A6CC,
         stroke: nth($colors, ($i + 1)); 
         opacity: 0.5;
         cursor: default;
-        padding: 1000px;
+        // padding: 1000px;
     }
 
     .#{label-}#{$i} {
@@ -84,6 +84,7 @@ $colors: #E15D20, #B50001, #00A608, #1B3CF0, #00A6CC,
         font-family: $chart-label;
         font-size: 70%;
         text-transform: uppercase;
+        cursor: pointer;
     }
 }
 
