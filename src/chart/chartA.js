@@ -391,7 +391,7 @@ export function chartA() {
       
       let firstUpdate = 0; // keeps track of whether the first frame was rendered
 
-      document.getElementsByClassName("panel").forEach((p, i) => {
+      document.getElementById("graph-1").getElementsByClassName("panel").forEach((p, i) => {
         let frame = p;
         frames.push(frame);
         boundRects.push(frame.getBoundingClientRect());
@@ -430,9 +430,13 @@ export function chartA() {
         let currentPanels = boundRects.filter(function(b) {
           return (b.bottom < HEIGHT && b.bottom > 0)
         })
-
-        let currentPanel = currentPanels[currentPanels.length -1]
+        // console.log("currentPanels", currentPanels)
+        let currentPanel = currentPanels[currentPanels.length - 1]
+        // console.log("currentPanel", currentPanel)
         let newPanelIndex = boundRects.indexOf(currentPanel)
+        // console.log("currentPanelIndex", currentPanelIndex)
+        // console.log("newPanelIndex", newPanelIndex)
+        // console.log("updates  ", updates  )
 
         // if viewing the first (index 0) panel and first frame is not rendered yet, render first frame
         if (currentPanelIndex === 0 && firstUpdate === 0) {

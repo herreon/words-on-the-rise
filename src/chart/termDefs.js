@@ -78,20 +78,56 @@ function renderDef (termSlice, index) {
     answer.innerHTML = `${termDefs[index][0]}`;
     
     source.innerHTML = `source: ${termDefs[index][1]}`;
+
+    let box = document.getElementById("quick-def");
+    box.style.opacity = 1;
+
     
-    // requestAnimationFrame(() => {
-    //     question.innerHTML = `${termSlice.term}: `;
-    //     // question.style.borderBottom = "solid #F2B0F0 1px"
-    //     answer.innerHTML = `${termDefs[index][0]}`;
-    //     // answer.style.borderTop = "solid #F2B0F0 1px"
-    //     source.innerHTML = `source: ${termDefs[index][1]}`;
-    // }, 2000)
+    function fadeIn(element) {
+
+        
+        element.style.display = 'block';
+        
+        let op = 0.1;
+        
+        
+        const timer = setInterval(function () {
+            if (op >= 1 ) {
+                clearInterval(timer);
+            }
+            
+            element.style.opacity = op;
+            // console.log(element.style.opacity)
+            
+            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            
+            op += 0.1;
+        }, 30);
+    }
+
+    // function moveDown(element){
 
 
-    // question.style.transitionProperty = "border-top"
-    // question.transitionDuration = "5s"
+        
+    //     let top = "0px";
+    //     // element.style.margin = "80px"
 
-   
+    //     const timer = setInterval(function () {
+    //         if (parseInt(top) >= 2) {
+    //             clearInterval(timer);
+    //         }
+
+            
+    //         console.log("test", element.style.top)
+    //         element.style.marginTop = top;
+            
+    //         top = `${parseInt(top) + 0.05}px`;
+            
+    //     }, 30);
+    // }
+
+    fadeIn(box);
+//    moveDown(box)
 
 }
 
