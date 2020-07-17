@@ -2,7 +2,7 @@
 
 [Popular New Words](https://herreon.github.io/popular-new-words/) is an interactive data visualization exploring the trendiest rising new words of 2019, as identified by Google Search Trends.
 
-![]()
+![](https://user-images.githubusercontent.com/58346289/87758993-67f65080-c7c2-11ea-9e24-7a2db15a0d13.png)
 
 ## Technologies & Features
 * Used npm's Google Trends API and file-system module to dynamically retreive search trend data for the popular words.
