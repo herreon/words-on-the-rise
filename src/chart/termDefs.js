@@ -66,44 +66,46 @@ function eraseDef () {
 }
     
 function renderDef (termSlice, index) {
-
-    let question = document.getElementById("def-term");
-    let answer = document.getElementById("def-ans");
-    let source = document.getElementById("def-source");
-    index = Math.floor(index/3);
+/////////////////
+    // let question = document.getElementById("def-term");
+    // let answer = document.getElementById("def-ans");
+    // let source = document.getElementById("def-source");
+    // index = Math.floor(index/3);
 
    
-    question.innerHTML = `${termSlice.term}: `;
+    // question.innerHTML = `${termSlice.term}: `;
     
-    answer.innerHTML = `${termDefs[index][0]}`;
+    // answer.innerHTML = `${termDefs[index][0]}`;
     
-    source.innerHTML = `source: ${termDefs[index][1]}`;
+    // source.innerHTML = `source: ${termDefs[index][1]}`;
+//////////////////////
+    // let box = document.getElementById("quick-def");
+    // box.style.opacity = 1;
 
-    let box = document.getElementById("quick-def");
-    box.style.opacity = 1;
+    $("#def-ans").html("hello").fadeIn(5000)
+    // $("#quick-def").fadeIn(5000)
 
-    
-    function fadeIn(element) {
+    // function fadeIn(element) {
 
         
-        element.style.display = 'block';
+    //     element.style.display = 'block';
         
-        let op = 0.1;
+    //     let op = 0.1;
         
         
-        const timer = setInterval(function () {
-            if (op >= 1 ) {
-                clearInterval(timer);
-            }
+    //     const timer = setInterval(function () {
+    //         if (op >= 1 ) {
+    //             clearInterval(timer);
+    //         }
             
-            element.style.opacity = op;
-            // console.log(element.style.opacity)
+    //         element.style.opacity = op;
+    //         // console.log(element.style.opacity)
             
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+    //         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
             
-            op += 0.1;
-        }, 30);
-    }
+    //         op += op * 2;
+    //     }, 100);
+    // }
 
     // function moveDown(element){
 
@@ -126,7 +128,7 @@ function renderDef (termSlice, index) {
     //     }, 30);
     // }
 
-    fadeIn(box);
+    // fadeIn(box);
 //    moveDown(box)
 
 }
