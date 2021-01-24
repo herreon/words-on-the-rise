@@ -265,7 +265,7 @@ export function chartA() {
         
         svg.selectAll("*").interrupt();
 
-        console.log("CHART IS UPDATING");
+        // console.log("CHART IS UPDATING");
 
         chartStartDate = newStartDate;
         chartEndDate = newEndDate;
