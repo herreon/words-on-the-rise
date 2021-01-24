@@ -3,24 +3,68 @@ html {
 }
 
 #intro {
-    background-color: rgb(255, 255, 255);   
+    // background-color: rgb(192, 78, 78);   
     height: 100vh;
     width: 100%;
-    padding: 0px 60px 0px 30px;
+    
+    padding: 0px 0px 0px 0px;
     box-sizing: border-box;
     display: flex;
+    position: relative;
 }
 
-#left {
-    width: 60%;
+#top-banner {
+    height: 20%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    
+}
+
+.top-banner-img {
+    height: 100%;
+    opacity: 50%;
+    // display: block;
+    
+}
+
+#left, #right {
+    width: 50%;
+    // display: flex;
+    // flex-direction: column;
+    // padding: 100px 0 100px 30px;
+    // box-sizing: border-box;
+    // text-align: left;
+    // justify-content: center;
+    // text-align: center;   
+}
+
+#right {
+    position: relative;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 100px 0 100px 0;
-    box-sizing: border-box;
-    text-align: left;
-    justify-content: center;
-    text-align: center;
 }
+
+#left-top, #right-top {
+    height: 80%;
+
+}
+#left-top {
+    background-image: url("../images/bubble.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+#right-top {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
 
 #graph-1, #graph-2 {
     display: flex;
@@ -64,11 +108,14 @@ svg {
 #text-1 {
     // width: 100vw;
     overflow: scroll;
+    padding-left: 50px;
+    padding-right: 70px;
 }
 
 
 .panel {
-    margin: 14vh 20vh 76vh 0vh;
+    margin: 14vh 0vh 100vh 0vh;
+    // margin: 14vh 20vh 76vh 0vh;
     // padding: 35vh 10vh 35vh 10vh;
     // width: 40%;
 }

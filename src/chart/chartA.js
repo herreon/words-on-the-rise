@@ -8,8 +8,8 @@ import { renderDef, eraseDef } from "./termDefs.js"
 // creating reusable chart
 export function chartA() {
   // set the dimensions and margins of the svg
-  let width = 1200 * 0.6;
-  let height = 800 * 0.6;
+  let width = 1200 * 0.7;
+  let height = 800 * 0.8;
   let adj = 30;
 
   // the following variables are used to render the actual date ranges on the chart
@@ -136,7 +136,8 @@ export function chartA() {
           .attr("class", "chart")
           .attr("width", width)
           .attr("height", height)
-          .attr("viewBox", `-${adj * 2} -${adj * 4} ${width + adj * 4} ${height + adj * 9}`)
+          .attr("viewBox", `-${adj * 0} -${adj * 2} ${width + adj*1} ${height + adj*7}`)
+          // .attr("viewBox", `-${adj * 2} -${adj * 4} ${width + adj * 4} ${height + adj * 9}`)
           .attr("preserveAspectRatio", "xMidYMid meet");
 
       
@@ -154,7 +155,7 @@ export function chartA() {
       // add footnotes to chart
       svg.append("text")
       .attr("class", "footnote footnote-0")
-      .text(`Don't know what the word means? Hover for a quick definition, or click to look up Google search results.`)
+      .text(`Don't know what the word means? Click on the word to see Google search results in a new tab.`)
       .attr("y", `${height + adj*3}`)
 
       svg.append("text")
