@@ -2,7 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { addLabelCoords } from "./addlabelCoords.js";
 import * as getDates from "./getDates.js";
-import { renderDef, eraseDef } from "./termDefs.js"
+// import { renderDef, eraseDef } from "./termDefs.js"
 
 
 // creating reusable chart
@@ -351,7 +351,7 @@ export function chartA() {
         d3.selectAll(`.line-${selected_i}`).style("stroke-width", 5);
 
         // render quick definition 
-        renderDef(termSlice, i)
+        // renderDef(termSlice, i)
 
       })
 
@@ -366,7 +366,7 @@ export function chartA() {
         selected.transition();
 
         // remove quick definition
-        eraseDef()
+        // eraseDef()
         
         
       })
@@ -386,10 +386,12 @@ export function chartA() {
       const svgDiv = document.getElementsByClassName("x-axis")[0];
       console.log("svgDiv", svgDiv)
       const HEIGHT = window.innerHeight;
+      console.log("HEIGHT", HEIGHT)
       
       const frames = []; // stores the panels
       const boundRects = []; // stores the bounding client rectangles of each panel
       
+
       let firstUpdate = 0; // keeps track of whether the first frame was rendered
 
       document.getElementsByClassName("panel").forEach((p, i) => {
@@ -398,8 +400,6 @@ export function chartA() {
         boundRects.push(frame.getBoundingClientRect());
       })
 
-      // console.log("frames", frames)
-      
       const updates = [ 
         [minDate, juneDate],
         [minDate, vscoPeakDate],
@@ -407,19 +407,25 @@ export function chartA() {
         [minDate, maxDate]
       ]
 
-      
+      // console.log("frames", frames)
+
       // when user scrolls down to chart from the title page, execute the first frame animation
       document.addEventListener('scroll', function(e) {
-        // console.log("hello", svgDiv.getBoundingClientRect().bottom)
+        console.log("svg.bottom", svgDiv.getBoundingClientRect().bottom)
         // console.log("height", HEIGHT)
+
         if (svgDiv.getBoundingClientRect().bottom < HEIGHT && firstUpdate < 1) {
-          console.log("rendered first chart frame, before chart.top = 0")
+          console.log("rendered first chart frame");
+
           updateChart(updates[0][0], updates[0][1]);
           firstUpdate += 1;
         }
       })
       
-      let currentPanelIndex = 0; // index of the current panel on screen
+      let currentPanels;
+      let currentPanel;
+      let currentPanelIndex; // index of the current panel on screen
+      let storePreviousPanel;
       
       // subsequent frame animations depend on scrolling
       scrollDiv.addEventListener('scroll', function(e) {
@@ -428,25 +434,33 @@ export function chartA() {
           boundRects[i] = f.getBoundingClientRect();
         });
 
-        let currentPanels = boundRects.filter(function(b) {
-          return (b.bottom < HEIGHT && b.bottom > 0)
+        // console.log("boundRects", boundRects)
+        
+        currentPanels = boundRects.filter(function(b) {
+          return ( (b.top >= 0 && b.top <= HEIGHT*0.5) || (b.bottom < HEIGHT && b.bottom > 0) )
+          // return (b.bottom < HEIGHT && b.bottom > 0)
         })
+        
+        // console.log("currentPanels", currentPanels)
 
-        let currentPanel = currentPanels[currentPanels.length -1]
-        let newPanelIndex = boundRects.indexOf(currentPanel)
+        currentPanel = currentPanels[currentPanels.length - 1];
+        currentPanelIndex = boundRects.indexOf(currentPanel);
+       
+        if (currentPanels.length > 1) {
+          storePreviousPanel = currentPanels[0]
+        } 
+        
+        // if panel changed,
+        if ((storePreviousPanel) && (storePreviousPanel !== currentPanel)) {
 
-        // if viewing the first (index 0) panel and first frame is not rendered yet, render first frame
-        if (currentPanelIndex === 0 && firstUpdate === 0) {
-          updateChart(updates[0][0], updates[0][1]);
-          firstUpdate += 1;
-        }
+          // since panel changed, update chart accordingly
+          updateChart(updates[currentPanelIndex][0], updates[currentPanelIndex][1]);
+        } 
 
-        // if panel changed, update chart accordingly
-        if (newPanelIndex !== currentPanelIndex) {
-          updateChart(updates[newPanelIndex][0], updates[newPanelIndex][1])
-        }
+        storePreviousPanel = currentPanel;
 
-        currentPanelIndex = newPanelIndex;
+        console.log("storePreviousPanel", storePreviousPanel)
+        console.log("currentPanel", currentPanel)
           
       })
           

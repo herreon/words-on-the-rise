@@ -117,10 +117,14 @@ svg {
 
 
 .panel {
-    margin: 14vh 0vh 100vh 0vh;
+    height: 100vh;
+    padding-top: 50%;
+    box-sizing: border-box;
+    // margin: 14vh 0vh 100vh 0vh;
     // margin: 14vh 20vh 76vh 0vh;
     // padding: 35vh 10vh 35vh 10vh;
     // width: 40%;
+    
 }
 
 .panel > p {
