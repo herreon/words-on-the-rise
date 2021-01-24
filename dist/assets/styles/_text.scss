@@ -84,12 +84,38 @@
 }
 
 
-
 #bold {
     font-weight: bold;
     -webkit-text-stroke: 0.8;
 }
 
+
+
+.nav-next, .nav-prev {
+    text-decoration: none;
+    // box-sizing: border-box;
+    text-align: center;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:white;
+    // background-color: rgb(207, 236, 248);
+    color: black;
+    font-weight: bold;
+    border: black solid 1px;
+    border-radius: 25px;
+    -webkit-text-stroke: 0;
+    opacity: 50%;
+}
+
+.nav-next:hover, .nav-prev:hover {
+    opacity: 100%;
+    background-color: rgb(139,211,238);
+    color: white;
+    // background-color: rgba(191, 232, 252, 0.938);
+    border: 0px;
+}
+// chart text
 .chart-title {
     font-size: 22px;
     font-weight: bold;

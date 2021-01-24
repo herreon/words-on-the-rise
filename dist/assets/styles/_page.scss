@@ -127,10 +127,15 @@ svg {
     
 }
 
-.panel > p {
-    margin: 0vh 0vh 5vh 0vh;
+.panel-text > p {
+    // margin: 0vh 0vh 5vh 0vh;
     box-sizing: border-box;
+    padding-bottom: 5vh;
 }
+
+// .panel > p:last-of-type {
+//     padding-bottom: 20vh;
+// }
 
 #banner-1, #banner-2 {
     background-color: red;
@@ -142,3 +147,16 @@ svg {
     margin: 0;
 }
 
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.nav-div {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 10vh;
+    // position: relative;
+    // bottom: 0;
+}   

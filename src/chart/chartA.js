@@ -165,7 +165,7 @@ export function chartA() {
       
       svg.append("text")
       .attr("class", "footnote footnote-2")
-      .text(`†For example, searches for "meaning of vsco", "what does ok boomer mean".`)
+      .text(`†For example, searches for "meaning of vsco", or "what does ok boomer mean".`)
       .attr("y", `${height + adj/3*14}` )
  
 
@@ -384,9 +384,9 @@ export function chartA() {
       
       const scrollDiv = document.getElementById("text-1");
       const svgDiv = document.getElementsByClassName("x-axis")[0];
-      console.log("svgDiv", svgDiv)
+      // console.log("svgDiv", svgDiv)
       const HEIGHT = window.innerHeight;
-      console.log("HEIGHT", HEIGHT)
+      // console.log("HEIGHT", HEIGHT)
       
       const frames = []; // stores the panels
       const boundRects = []; // stores the bounding client rectangles of each panel
@@ -411,11 +411,11 @@ export function chartA() {
 
       // when user scrolls down to chart from the title page, execute the first frame animation
       document.addEventListener('scroll', function(e) {
-        console.log("svg.bottom", svgDiv.getBoundingClientRect().bottom)
+        // console.log("svg.bottom", svgDiv.getBoundingClientRect().bottom)
         // console.log("height", HEIGHT)
 
         if (svgDiv.getBoundingClientRect().bottom < HEIGHT && firstUpdate < 1) {
-          console.log("rendered first chart frame");
+          // console.log("rendered first chart frame");
 
           updateChart(updates[0][0], updates[0][1]);
           firstUpdate += 1;
@@ -459,8 +459,8 @@ export function chartA() {
 
         storePreviousPanel = currentPanel;
 
-        console.log("storePreviousPanel", storePreviousPanel)
-        console.log("currentPanel", currentPanel)
+        // console.log("storePreviousPanel", storePreviousPanel)
+        // console.log("currentPanel", currentPanel)
           
       })
           

@@ -17,7 +17,7 @@ import '../dist/assets/styles/styles.scss';
 
 document.addEventListener("DOMContentLoaded", function () {
   
-  console.log("index.js content has loaded");
+  // console.log("index.js content has loaded");
   
   //// console.log("search terms", searchTerms)
 
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   createDataset($2019_queriesArray, $2019_termsArray, $2019_retrieverPromises)
   .then((d) => {
-    console.log("index.js dataset", d)
+    // console.log("index.js dataset", d)
     d3.select("#container-1").datum(d).call(chartA())
   })
   
