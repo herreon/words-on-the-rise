@@ -1,4 +1,4 @@
-#left, #right, .panel, .chart-title, .chart-subtitle, .footnote, #quick-def {
+#left, #right, #text-1, .chart-title, .chart-subtitle, .footnote, #quick-def {
     font: {
         family: 'Roboto', sans-serif;
         weight: 300;
@@ -12,7 +12,6 @@
     position: absolute;
     bottom: 0px;
 }
-
 
 
 #subtitle {
@@ -29,10 +28,6 @@
 
 #right {
     text-align: center;
-    
-    // align-items: center;
-    // position: sticky;
-    // top: 0;
 }
 
 #right-top > a {
@@ -70,6 +65,7 @@
     line-height: 1;
     box-sizing: border-box;
     padding-right: 30px;
+    color:rgb(6, 47, 135);
     padding-left: 30px;
     padding-bottom: 40px;
     padding-top: 100px;
@@ -83,13 +79,19 @@
     font-weight: normal;
 }
 
-
+// bolding the terms
 #bold {
     font-weight: bold;
     -webkit-text-stroke: 0.8;
 }
 
+#instructions {
+    font-style: italic;
+    text-decoration: underline;
+    color: rgb(91, 94, 100);
+}
 
+// nav buttons styling
 
 .nav-next, .nav-prev {
     text-decoration: none;
